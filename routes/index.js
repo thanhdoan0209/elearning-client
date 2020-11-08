@@ -4,8 +4,21 @@ const userController = require('../controller/users');
 
 //kd45UzTiPpcSHlSZ
 /* GET home page. */
+
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
+});
+
+router.get('/home', (req, res, next) => {
+  res.render('layout', {
+    contentPage: './homepage/home'
+  });
+});
+
+router.get('/class', (req, res, next) => {
+  res.render('layout', {
+    contentPage: './class/class'
+  });
 });
 
 router.get('/classes', (req, res, next) => {
