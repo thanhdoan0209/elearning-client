@@ -182,7 +182,7 @@ nav.meta-login
 }
 .popular-courses .btn-orange i
 {
-	ont-size:16px
+	font-size:16px
 }
 .breadcrumb-section
 {
@@ -632,7 +632,7 @@ nav.meta-login
 }
 .sorting label
 {
-	fontt:normal 15px Montserrat,sans-serif;
+	font:normal 15px Montserrat,sans-serif;
 	padding:5px 10px 0 0
 }
 .sorting select
