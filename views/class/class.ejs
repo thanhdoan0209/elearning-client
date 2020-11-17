@@ -2,11 +2,42 @@
 <html lang="en">
 
 <!--classes-3-columns23:37  -->
-
+<body onload="loadclass()">
 <button onclick="myFunction()">Try it</button>
-
 <script>
-function myFunction() {
+	function myFunction() {
+		var classnew = document.createElement("div");
+		classnew.classList.add("col-xs-12", "col-sm-4", "zoom");
+		var classes = document.createElement("div");
+		classes.classList.add("classes");
+		var class_info = document.createElement("div");
+		class_info.classList.add("classes-info");
+		//picture
+			var pic = document.createElement("img");
+			pic.src = "images/use_img/course_img2.png";         //change here
+			var fig = document.createElement("figure");
+			fig.appendChild(pic);
+			var linkpic = document.createElement("a");
+			linkpic.href="";                                   //change here
+			fig.classList.add("img-thumb");
+			pic.appendChild(linkpic);
+		//-----------------------------
+		//Class info  
+			var para = document.createElement("h3");           //change here
+			var linkclass = document.createElement('a'); 
+			linkclass.href="classes-3-columns.html#";          //change here
+			para.appendChild(linkclass);
+			linkclass.innerHTML = "This is a paragraph.";      //change here
+		//-------------------------
+		class_info.appendChild(para);
+		classes.appendChild(fig);
+		classes.appendChild(class_info);
+		classnew.appendChild(classes);
+		document.getElementById("test").appendChild(classnew);
+	}
+	</script>	
+<!--script>
+<function myFunction() {
    var x = document.getElementById("primary");
   if (x.style.display === "none") {
     x.style.display = "block";
@@ -20,7 +51,7 @@ function myFunction() {
     x.style.display = "none";
   }
 }
-</script>
+</script-->
 
 <div class="breadcrumb-section">
 <div class="container">
@@ -36,98 +67,9 @@ function myFunction() {
 <div class="container">
 <div class="row">
 <main class="site-main col-xs-12 ">
-<div class="school-classes inner-classes">
-
-<div id="test", class="col-xs-12 col-sm-4 zoom">
-	<div class="classes">
-		<a id="pic1", href="classes-3-columns.html#" class="img-thumb"><figure>
-		<img src="images/use_img/course_img2.png" alt="" /></figure></a>
-		<div class="classes-info">
-			<h3><a href="classes-3-columns.html#">Features Name Here</a></h3>
-			<p></p>
-		</div>
-	</div>
-</div> 
-<div class="col-xs-12 col-sm-4 zoom">
-	<div class="classes">
-		<a href="classes-3-columns.html#" class="img-thumb"><figure>
-		<img src="images/use_img/course_img2.png" alt="" /></figure></a>
-		<div class="classes-info">
-			<h3><a href="classes-3-columns.html#">Features Name Here</a></h3>
-			<p></p>
-		</div>
-	</div>
-</div> 
-
-<div class="col-xs-12 col-sm-4 zoom">
-	<div class="classes">
-		<a href="classes-3-columns.html#" class="img-thumb"><figure>
-		<img src="images/use_img/course_img2.png" alt="" /></figure></a>
-		<div class="classes-info">
-			<h3><a href="classes-3-columns.html#">Features Name Here</a></h3>
-			<p></p>
-		</div>
-	</div>
-</div> 
-<div class="col-xs-12 col-sm-4 zoom">
-	<div class="classes">
-		<a href="classes-3-columns.html#" class="img-thumb"><figure>
-		<img src="images/use_img/course_img2.png" alt="" /></figure></a>
-		<div class="classes-info">
-			<h3><a href="classes-3-columns.html#">Features Name Here</a></h3>
-			<p></p>
-		</div>
-	</div>
-</div> 
-<div class="col-xs-12 col-sm-4 zoom">
-	<div class="classes">
-		<a href="classes-3-columns.html#" class="img-thumb"><figure>
-		<img src="images/use_img/course_img2.png" alt="" /></figure></a>
-		<div class="classes-info">
-			<h3><a href="classes-3-columns.html#">Features Name Here</a></h3>
-			<p></p>
-		</div>
-	</div>
-</div> 
-<div class="col-xs-12 col-sm-4 zoom">
-	<div class="classes">
-		<a href="classes-3-columns.html#" class="img-thumb"><figure>
-		<img src="images/use_img/course_img2.png" alt="" /></figure></a>
-		<div class="classes-info">
-			<h3><a href="classes-3-columns.html#">Features Name Here</a></h3>
-			<p></p>
-		</div>
-	</div>
-</div> 
-<div class="col-xs-12 col-sm-4 zoom">
-	<div class="classes">
-		<a href="classes-3-columns.html#" class="img-thumb"><figure>
-		<img src="images/use_img/course_img2.png" alt="" /></figure></a>
-		<div class="classes-info">
-			<h3><a href="classes-3-columns.html#">Features Name Here</a></h3>
-			<p></p>
-		</div>
-	</div>
-</div> 
-<div class="col-xs-12 col-sm-4 zoom">
-	<div class="classes">
-		<a href="classes-3-columns.html#" class="img-thumb"><figure>
-		<img src="images/use_img/course_img2.png" alt="" /></figure></a>
-		<div class="classes-info">
-			<h3><a href="classes-3-columns.html#">Features Name Here</a></h3>
-			<p></p>
-		</div>
-	</div>
-</div> 
-<div class="col-xs-12 col-sm-4 zoom">
-	<div class="classes">
-		<a href="classes-3-columns.html#" class="img-thumb"><figure>
-		<img src="images/use_img/course_img2.png" alt="" /></figure></a>
-		<div class="classes-info">
-			<h3><a href="classes-3-columns.html#">Features Name Here</a></h3>
-			<p></p>
-		</div>
-	</div>
+<div id="test" class="school-classes inner-classes">
+</div>
+</div>
 </div> 	
 <div class="pagination">
 <span class="page-numbers current">1</span>
