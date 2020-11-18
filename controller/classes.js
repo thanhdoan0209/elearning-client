@@ -53,4 +53,20 @@ classController.getClassDetail = async (req, res, next) => {
 
 }
 
+classController.getAdduser = async (req, res, next) => {
+    const classCode = req.params.classCode;
+    try {
+        const Adduser = await classes.findOne({
+            classCode: classCode
+        });
+        res.render('layout', {
+            contentPage: '../views/classes/classAdduser',
+            Adduser: Adduser
+        })
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+
+}
 module.exports = classController;
