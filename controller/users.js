@@ -4,10 +4,17 @@ const user = require('../models/users')
 
 const userController = {};
 
-userController.getUser = async (req, res, next) => {
-    const usersList = await user.find();
-    console.log(usersList);
-    res.send(JSON.stringify(usersList));
+userController.getAllUser = async (req, res, next) => {
+    try {
+        const usersList = await user.find();
+        res.render('layout', {
+            contentPage: '../views/users/users',
+            usersList: usersList
+        })
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
 }
 
 userController.signUp = async (req, res, next) => {
