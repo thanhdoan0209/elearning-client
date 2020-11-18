@@ -12,18 +12,24 @@ userController.getUser = async (req, res, next) => {
 
 userController.signUp = async (req, res, next) => {
     const userData = req.body
+    let teacher = false
+    if (userData.teacher == 'true') {
+        teacher = true
+    }
+    console.log(userData)
     const newUser = new user({
         username: userData.username,
         password: userData.password,
         email: userData.email,
         firstName: userData.firstname,
-        lastName: userData.lastname
+        lastName: userData.lastname,
+        teacher: teacher
     });
+
     try {
         const user = await newUser.save();
         console.log(user)
         res.send(user);
-        console
     } catch (err) {
         if (err)
             console.log(err);
