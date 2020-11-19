@@ -4,18 +4,14 @@
     <div class="container">
       <div class="row">
         <header class="entry-header">
-          <h1 class="entry-title"><%= userDetail.className %></h1>
+          <h1 class="entry-title"><%= userDetail.firstName %></h1>
         </header>
       </div>
     </div>
   </div>
   <div class="breadcrumb-detail-page">
     <div class="container">
-      <div class="row">
-        <p><a href="users-details.html#">HOME</a><i class="fa fa-angle-right"></i><a href="users-details.html#">ALL
-            Classes</a><i class="fa fa-angle-right"></i><a href="users-details.html#">ICON DESIGN</a><i
-            class="fa fa-angle-right"></i>Adobe Photoshop cc</p>
-      </div>
+      
     </div>
   </div>
   <div class="page-spacer co-detail-page clearfix">
@@ -24,7 +20,8 @@
         <div class="row">
           <main id="main" class="site-main col-xs-12 col-sm-8 left-block">
             <div class="courses-info">
-              <h1>Adobe Photoshop CC</h1>
+              <img src="/images/use_img/avatar.jpg" width="150" height="150" />
+              <h1><%= userDetail.firstName %></h1>
               <p class="excerpt">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
               <p class="meta">Instructed by: <a href="users-details.html#">Greg Christman</a> . in: <a
                   href="users-details.html#">Icon Design</a></p>
@@ -311,7 +308,7 @@
           <div id="secondary" class="widget-area col-xs-12 col-sm-4 left-block" role="complementary">
             <div class="co-join-info">
               <div class="btns">
-                <a class="btn btn-orange btn-medium" data-animation="animated zoomInUp" href="/classes/addUser/<%= classDetail.classCode %>">Enroll This Classes </a>
+                <a class="btn btn-orange btn-medium" data-animation="animated zoomInUp" href=>Enroll This Classes </a>
               </div>
             </div>
             <aside class="widget widget_courses">
