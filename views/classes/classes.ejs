@@ -3,11 +3,11 @@
 
 <!--classes-3-columns23:37  -->
 
-<!-- <button onclick="myFunction()">Try it</button>
+<!--button onclick="myFunction()">Try it</button>
 
 <script>
 	function myFunction() {
-		var x = document.getElementById("primary");
+		var x = document.getElementById("antt");
 		if (x.style.display === "none") {
 			x.style.display = "block";
 		} else {
@@ -20,7 +20,7 @@
 			x.style.display = "none";
 		}
 	}
-</script> -->
+</script--> 
 
 <div class="breadcrumb-section">
 	<div class="container">
@@ -42,10 +42,11 @@
 							<a href="/classes/create-class" class="btn btn-orange btn-medium">
 								Create class
 							</a>
+							<input type="text" id="searchClass" onkeyup="myFunction1()" placeholder="Tìm kiếm lớp.." title="Type in a class">
 						</section>
 
 						<% for (var prop in classesList ) { %>
-						<div id="test" , class="col-xs-12 col-sm-4 zoom">
+						<div id="<%= classesList[prop].className %>" , class="col-xs-12 col-sm-4 zoom">
 							<div class="classes">
 								<a id="pic1" , href="classes-3-columns.html#" class="img-thumb">
 									<figure>
@@ -70,21 +71,16 @@
 			</div>
 		</div>
 	</div>
-	<div id="primary1" style="display:none">
+	<div id="primary1" style="display:none;">
 		<div class="container">
 			<div class="row">
 				<main id="main" class="site-main col-xs-12 ">
 					<div class="site-main col-xs-12 ">
-						<ul class="menu">
-							<li><a href="home-1.html#">Home</a></li>
-							<li><a href="home-1.html#">Shortcodes</a></li>
-							<li><a href="home-1.html#">about US</a></li>
-							<li><a href="home-1.html#">Blog</a></li>
-							<li><a href="home-1.html#">classes</a></li>
-							<li><a href="home-1.html#">Contact US</a></li>
-							<li><a href="home-1.html#">Teachers</a></li>
-							<li><a href="home-1.html#">Privacy Policy</a></li>
-							<li><a href="home-1.html#">Events</a></li>
+						<ul id="menu">
+							<% for (var prop in classesList ) { %>
+								<li><<a href="/classes/class-detail/<%= classesList[prop].classCode %>"><%= classesList[prop].className %></a></li>
+								<% } %>
+							
 						</ul>
 
 					</div>
@@ -131,8 +127,30 @@
 			</form>
 		</div>
 	</div>
-
-
+	<script>
+		
+	</script>
+	<script>
+		function myFunction1() {
+			var input, filter, ul, li, a, i, txtValue;
+			input = document.getElementById("searchClass");
+			filter = input.value.toUpperCase();
+			ul = document.getElementById("menu");
+			li = ul.getElementsByTagName("li");
+			for (i = 0; i < li.length; i++) {
+				a = li[i].getElementsByTagName("a")[0];
+				txtValue = a.textContent || a.innerText;
+				var x = document.getElementById(txtValue);
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					x.style.display = "";
+					//li[i].style.display = "";
+				} else {
+					x.style.display = "none";
+					//li[i].style.display = "none";
+				}
+			}
+		}
+		</script>	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 
