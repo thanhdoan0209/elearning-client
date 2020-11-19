@@ -20,7 +20,7 @@
 			x.style.display = "none";
 		}
 	}
-</script--> 
+</script-->
 
 <div class="breadcrumb-section">
 	<div class="container">
@@ -42,7 +42,8 @@
 							<a href="/classes/create-class" class="btn btn-orange btn-medium">
 								Create class
 							</a>
-							<input type="text" id="searchClass" onkeyup="myFunction1()" placeholder="Tìm kiếm lớp.." title="Type in a class">
+							<input type="text" id="searchClass" onkeyup="myFunction1()" placeholder="Tìm kiếm lớp.."
+								title="Type in a class">
 						</section>
 
 						<% for (var prop in classesList ) { %>
@@ -53,7 +54,9 @@
 										<img src="images/use_img/course_img2.png" alt="" /></figure>
 								</a>
 								<div class="classes-info">
-									<h3><a href="/classes/class-detail/<%= classesList[prop].classCode %>"><%= classesList[prop].className %></a></h3>
+									<h3><a
+											href="/classes/class-detail/<%= classesList[prop].classCode %>"><%= classesList[prop].className %></a>
+									</h3>
 									<p></p>
 								</div>
 							</div>
@@ -78,9 +81,12 @@
 					<div class="site-main col-xs-12 ">
 						<ul id="menu">
 							<% for (var prop in classesList ) { %>
-								<li><<a href="/classes/class-detail/<%= classesList[prop].classCode %>"><%= classesList[prop].className %></a></li>
-								<% } %>
-							
+							<li>
+								<<a href="/classes/class-detail/<%= classesList[prop].classCode %>">
+									<%= classesList[prop].className %></a>
+							</li>
+							<% } %>
+
 						</ul>
 
 					</div>
@@ -128,7 +134,7 @@
 		</div>
 	</div>
 	<script>
-		
+
 	</script>
 	<script>
 		function myFunction1() {
@@ -150,7 +156,7 @@
 				}
 			}
 		}
-		</script>	
+	</script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 

@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 var users = new Schema({
     username: {
         type: String,
+        unique: true,
         require: true
     },
     email: {
@@ -16,6 +17,7 @@ var users = new Schema({
     },
     firstName: String,
     lastName: String,
+    teacher: Boolean,
     password: {
         type: String,
         require: true

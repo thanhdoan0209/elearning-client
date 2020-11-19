@@ -2,6 +2,8 @@ const express = require('express');
 const classController = require('../controller/classes');
 const router = express.Router();
 const userController = require('../controller/users');
+const passport = require('../passportConfig');
+const { route } = require('./users');
 
 //kd45UzTiPpcSHlSZ
 /* GET home page. */
@@ -18,16 +20,30 @@ router.get('/login', (req, res, next) => {
   });
 });
 
-router.get('/login/sign-up', (req, res, next) => {
+router.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/login');
+});
+
+
+router.get('/sign-up', (req, res, next) => {
   res.render('layout', {
     contentPage: './login/signUp'
   });
 });
 
-router.post('/login', userController.signIn);
+// router.post('/login', (req, res, next) => {
+//   console.log(req.body)
+// });
+
+router.post('/login', passport.authenticate('login', {
+  successRedirect: '/',
+  failureRedirect: '/login',
+  failureFlash: true
+}));
 
 
-router.post('/login/sign-up', userController.signUp)
+router.post('/sign-up', userController.signUp)
 
 router.post('/create-class', classController.createClass)
 
