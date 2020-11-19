@@ -19,6 +19,13 @@ router.get('/login', (req, res, next) => {
   });
 });
 
+router.get('/logout', (req, res, next) => {
+  res.render('layout', {
+    contentPage: './login/signIn'
+  });
+});
+
+
 router.get('/sign-up', (req, res, next) => {
   res.render('layout', {
     contentPage: './login/signUp'
