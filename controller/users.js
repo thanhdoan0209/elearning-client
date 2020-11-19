@@ -1,5 +1,6 @@
 'use strict';
 const mongoose = require("../models/index");
+const users = require("../models/users");
 const user = require('../models/users')
 
 const userController = {};
@@ -54,5 +55,24 @@ userController.signIn = async (req, res, next) => {
             console.log(err);
     }
 }
+
+userController.getUserDetail = async (req, res, next) => {
+    const firstName = req.params.firstName;
+    try {
+        const userDetail = await users.findOne({
+            firstName: firstName
+        });
+        res.render('layout', {
+            contentPage: '../views/users/userDetail',
+            userDetail: userDetail
+        })
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+
+}
+
+
 
 module.exports = userController;
