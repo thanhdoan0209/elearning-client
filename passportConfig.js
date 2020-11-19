@@ -16,7 +16,7 @@ passport.use('login', new LocalStrategy({
                     console.log('message', 'User Not found.'));
             }
             // User exists but wrong password, log the error 
-            if (user.password != password) {
+            if (!(await isValidPassword(user, password))) {
                 console.log('Invalid Password');
                 return done(null, false,
                     console.log('message', 'Invalid Password'));
@@ -32,7 +32,7 @@ passport.use('login', new LocalStrategy({
     })
 );
 
-var isValidPassword = async function (user, password) {
+const isValidPassword = async function (user, password) {
     try {
         const res = await bcrypt.compare(password, user.password);
         return res;

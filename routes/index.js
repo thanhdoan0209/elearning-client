@@ -3,6 +3,7 @@ const classController = require('../controller/classes');
 const router = express.Router();
 const userController = require('../controller/users');
 const passport = require('../passportConfig');
+const { route } = require('./users');
 
 //kd45UzTiPpcSHlSZ
 /* GET home page. */
@@ -19,10 +20,9 @@ router.get('/login', (req, res, next) => {
   });
 });
 
-router.get('/logout', (req, res, next) => {
-  res.render('layout', {
-    contentPage: './login/signIn'
-  });
+router.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/login');
 });
 
 
