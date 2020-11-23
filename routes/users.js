@@ -8,6 +8,6 @@ router.get('/1', function(req, res, next) {
 });
 
 router.get('/', userController.getAllUser);
-router.get('/users-detail/:firstName', userController.getUserDetail);
+router.get('/user-detail/:firstName', userController.getUserDetail);
 
 module.exports = router;
