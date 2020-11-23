@@ -81,12 +81,10 @@
 					<div class="site-main col-xs-12 ">
 						<ul id="menu">
 							<% for (var prop in classesList ) { %>
-							<li>
-								<<a href="/classes/class-detail/<%= classesList[prop].classCode %>">
-									<%= classesList[prop].className %></a>
+							<li><a
+									href="/classes/class-detail/<%= classesList[prop].classCode %>"><%= classesList[prop].className %></a>
 							</li>
 							<% } %>
-
 						</ul>
 
 					</div>
