@@ -37,7 +37,7 @@ app.use(function (req, res, next) {
   if (req.isAuthenticated()) {
     res.locals.isAuthenticated = true;
     res.locals.name = req.user.firstName + req.user.lastName;
-    res.locals.username = res.user.username;
+    res.locals.username = req.user.username;
   } else res.locals.isAuthenticated = false;
   next();
 })

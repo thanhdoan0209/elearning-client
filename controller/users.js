@@ -1,6 +1,5 @@
 'use strict';
 const mongoose = require("../models/index");
-const users = require("../models/users");
 const user = require('../models/users')
 var bcrypt = require('bcryptjs');
 
@@ -50,10 +49,10 @@ userController.signUp = async (req, res, next) => {
 }
 
 userController.getUserDetail = async (req, res, next) => {
-    const firstName = req.params.firstName;
+    const username = req.params.username;
     try {
-        const userDetail = await users.findOne({
-            firstName: firstName
+        const userDetail = await user.findOne({
+            username: username
         });
         res.render('layout', {
             contentPage: '../views/users/userDetail',
