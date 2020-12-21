@@ -1,6 +1,5 @@
 <body>
 
-
   <div class="breadcrumb-section">
     <div class="container">
       <div class="row">
@@ -13,6 +12,7 @@
     </div>
   </div>
 
+
   <div class="breadcrumb-detail-page">
     <div class="container">
       <div class="row">
@@ -21,59 +21,54 @@
           <%= classDetail.className %>
         </p>
         <ul class="nav nav-tabs">
-          <li class="active"><a href="/classes/class-detail/<%=classDetail.classCode%>"> Home </a></li>
+          <li><a href="/classes/class-detail/<%=classDetail.classCode%>"> Home </a></li>
           <li><a href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Bài tập </a></li>
-          <li><a href="/classes/class-detail/<%=classDetail.classCode%>/people"> Thành viên </a></li>
+          <li class="active"><a href="/classes/class-detail/<%=classDetail.classCode%>/people"> Thành viên </a></li>
         </ul>
+        <aside class="widget widget_courses">
 
-        <div id="tab1" class="tab-pane fade in active">
+          <h3 class="widget-title">Giảng viên</h3>
+          <ul>
 
-          <section class="our-features">
+            <li class="clearfix">
+              <div class="course-thumbnail">
+                <img src="/images/use_img/avatar.jpg" class="course-media-img" alt="">
+              </div>
+              <div class="simi-co">
+                <h5><a href="/users/user-detail/<%= classDetail.classTeacher %>">
+                    <%= classDetail.classTeacher %>
+                  </a>
+                </h5>
+                </p>
+              </div>
+            </li>
 
-            <a href="/classes/<%=classDetail.classCode%>/courses" class="btn btn-orange btn-medium">
-              (+) Thêm nội dung nào đó cho lớp học của bạn
-            </a>
-
-            <div class="comments-area" id="comments">
-              <h2 class="comments-title"> <span>(4)</span> Comments </h2>
-              <ol class="comment-list">
-                <li class="comment even thread-even">
-                  <article class="comment-body">
-                    <div class="author-photo"> <a href="blog-details.html" class="avatar"> <img class="avatar"
-                          src="images/use_img/post_author.jpg" alt=""></a> </div>
-                    <div class="comment-wrapper">
-                      <div class="comment-meta">
-                        <div class="comment-author vcard">
-                          <h5 class="fn">Jones Lee</h5>
-                        </div>
-                      </div>
-                      <div class="comment-content">
-                        <p>This looks like a dream. It makes perfect sense. A place where authentic problems are solved
-                          and learning takes place at “just the right moment.”</p>
-                      </div>
-                      <div class="comment-metadata">
-                        <span>April 2, 2016 <small>.</small> 5 months ago</span>
-                      </div>
-                      <div class="reply"> <a href="blog-details.html#"
-                          class="comment-reply-link btn btn-default">Reply</a> </div>
-                    </div>
-                  </article>
-
-                </li>
-              </ol>
-            </div>
-          </section>
-
-        </div>
+          </ul>
+          <h3 class="widget-title">Học viên</h3>
+          <ul>
+            <% for (var prop in classDetail.classStudents ) { %>
+              <li class="clearfix">
+                <div class="course-thumbnail">
+                  <img src="/images/use_img/avatar.jpg" class="course-media-img" alt="">
+                </div>
+                <div class="simi-co">
+                  <h5><a href="/users/user-detail/<%= classDetail.classStudents[prop] %>">
+                      <%= classDetail.classStudents[prop] %>
+                    </a>
+                  </h5>
+                  <!-- <p class="meta"><a href="classes-details.html#"></a><%= classDetail %></p> -->
+                  </p>
+                </div>
+              </li>
+              <% } %>
+          </ul>
+        </aside>
 
       </div>
-
-      </p>
     </div>
   </div>
+
   </div>
-
-
   <section class="call-to-action">
     <div class="container">
       <div class="row">
