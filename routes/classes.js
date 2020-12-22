@@ -20,6 +20,8 @@ router.post('/create-class', classController.createClass);
 
 router.post('/class-detail/:classCode/courses/add-exercise', classController.postAddExercise)
 
+router.post('/class-detail/:classCode/courses/submit-exercise/:_id', classController.postSubmitExercise);
+
 router.post('/class-detail/:classCode/courses/:_id', classController.postAddExercise);
 
 
@@ -28,6 +30,8 @@ router.get('/class-detail/:classCode', classController.getClassDetail);
 router.get('/class-detail/:classCode/courses', classController.getClassDetailCourses);
 
 router.get('/class-detail/:classCode/courses/add-exercise', classController.getAddExercise);
+
+router.get('/class-detail/:classCode/courses/submit-exercise', classController.getSubmitExercise);
 
 router.get('/class-detail/:classCode/courses/:_id', classController.getExerciseDetail);
 

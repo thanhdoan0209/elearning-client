@@ -93,7 +93,20 @@ classController.getAddExercise = async (req, res, next) => {
     }
 }
 
-
+classController.getAddExercise = async (req, res, next) => {
+    const classCode = req.params.classCode;
+    try {
+        const classDetail = await classes.findOne({
+            classCode: classCode
+        });
+        res.render('../views/exercise/submitExercise', {
+            classDetail: classDetail
+        })
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
 
 classController.getExerciseDetail = async (req, res, next) => {
     const exerciseId = req.params._id;

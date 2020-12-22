@@ -42,7 +42,7 @@
                             <h3>Bài tập</h3>
                             <form action="#" id="exercise-add" class="student-settings" method="post">
                                 <p><input placeholder="Tiêu đề" name="titleExercise" value="<%=exercise.title%>"
-                                        type="text"> </p>
+                                        type="text"></p>
                                 <p>
                                     <label></label>
                                     <textarea placeholder="Hướng dẫn (nếu có)" name="message" id="message"
@@ -121,7 +121,7 @@
         }
     }   
     if (!this.checked){
-        // Lặp và thiết lập checked
+        // Lặp và thiết lập unchecked
         for (var i = 1; i < checkboxes.length; i++){
             checkboxes[i].checked = false;
         }
