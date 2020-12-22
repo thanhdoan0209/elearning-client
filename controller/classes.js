@@ -93,7 +93,7 @@ classController.getAddExercise = async (req, res, next) => {
     }
 }
 
-classController.getAddExercise = async (req, res, next) => {
+classController.postSubmitExercise = async (req, res, next) => {
     const classCode = req.params.classCode;
     try {
         const classDetail = await classes.findOne({
