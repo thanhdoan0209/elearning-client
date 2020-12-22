@@ -62,7 +62,7 @@
                                     </div>
 
                                     <div id="checkboxes">
-                                        <input type="checkbox" name="selected[]" value="all"> Chọn tất cả
+                                        <input type="checkbox" name="selected[]" value="all" id="checkall"> Chọn tất cả
                                         <br>
 
                                         <% for (var prop in classDetail.classStudents ) { %>
@@ -107,6 +107,29 @@
         }
     }
 </script>
+
+<script language="javascript">
+ 
+    document.getElementById("checkall").onclick = function () 
+    {
+        // Lấy danh sách checkbox
+        var checkboxes = document.getElementsByName("selected[]");
+        if (this.checked){
+        // Lặp và thiết lập checked
+        for (var i = 1; i < checkboxes.length; i++){
+            checkboxes[i].checked = true;
+        }
+    }   
+    if (!this.checked){
+        // Lặp và thiết lập checked
+        for (var i = 1; i < checkboxes.length; i++){
+            checkboxes[i].checked = false;
+        }
+    }   
+    };
+
+</script>
+
 <!--login23:54  -->
 
 </html>
