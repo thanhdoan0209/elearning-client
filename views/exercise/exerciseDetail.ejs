@@ -40,17 +40,19 @@
                     <main id="main" class="site-main col-xs-12">
                         <div class="col-xs-12 col-sm-10 register-form form clearfix">
                             <h3>Bài tập</h3>
-                            <form action="#" id="exercise-add" class="student-settings" method="post">
+                            <form action="#" class="student-settings" method="post" enctype="multipart/form-data">
                                 <p><input placeholder="Tiêu đề" name="titleExercise" value="<%=exercise.title%>"
-                                        type="text"> </p>
+                                        type="text"></p>
                                 <p>
                                     <label></label>
                                     <textarea placeholder="Hướng dẫn (nếu có)" name="message" id="message"
                                         style="margin: 0px; width: 918px; height: 155px;"><%=exercise.description%></textarea>
                                 </p>
                                 <p>
-                                    <input type="file" id="myFile" name="filelink" />
-                                    <%=exercise.file%>
+                                    <input type="file" id="myFile" name="file" />
+                                    <a href="<%=exercise.file%>">
+                                        <%=exercise.file%>
+                                    </a>
                                 </p>
 
                                 <div class="multiselect">
@@ -62,7 +64,7 @@
                                     </div>
 
                                     <div id="checkboxes">
-                                        <input type="checkbox" name="selected[]" value="all"> Chọn tất cả
+                                        <input type="checkbox" name="selected[]" value="all" id="checkall"> Chọn tất cả
                                         <br>
 
                                         <% for (var prop in classDetail.classStudents ) { %>
@@ -78,12 +80,13 @@
                                         <input type="datetime-local" id="birthdaytime" name="deadline"
                                             value="<%=exercise.deadline%>">
                                     </p>
-
+                                    <p id="demo"></p>
                                 </div>
 
                                 <input name="submit" class="btn btn-default pull-right" value="Lưu chỉnh sửa"
                                     type="submit">
-                                <input name="submit" class="btn btn-default pull-right" value="Đóng" type="submit">
+                                <a class="btn btn-default btn-medium pull-right"
+                                    href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Đóng </a>
                             </form>
                         </div>
                     </main>
@@ -107,6 +110,34 @@
         }
     }
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var checkboxes = document.getElementsByName("selected[]");
+        var students = exercise.studentAssigned;
+        document.getElementById("demo").innerHTML = students.length;
+    });       
+</script>
+<script language="javascript">
+
+    document.getElementById("checkall").onclick = function () {
+        // Lấy danh sách checkbox
+        var checkboxes = document.getElementsByName("selected[]");
+        if (this.checked) {
+            // Lặp và thiết lập checked
+            for (var i = 1; i < checkboxes.length; i++) {
+                checkboxes[i].checked = true;
+            }
+        }
+        if (!this.checked) {
+            // Lặp và thiết lập unchecked
+            for (var i = 1; i < checkboxes.length; i++) {
+                checkboxes[i].checked = false;
+            }
+        }
+    };
+
+</script>
+
 <!--login23:54  -->
 
 </html>

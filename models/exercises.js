@@ -14,6 +14,7 @@ var exercises = new Schema({
     },
     description: String,
     file: String,
+    filename: String,
     deadline: String,
     studentAssigned: Array
     // salt: {
