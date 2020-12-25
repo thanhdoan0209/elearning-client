@@ -3,6 +3,18 @@ const mongoose = require("../models/index");
 const classes = require('../models/classes');
 const exercises = require('../models/exercises');
 
+//https://www.npmjs.com/package/dotenv
+const cloudinary = require("cloudinary");
+require('dotenv').config()
+const formidable = require('formidable');
+
+
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+});
+
 const classController = {};
 
 classController.getAllClass = async (req, res, next) => {
@@ -115,49 +127,54 @@ classController.getExerciseDetail = async (req, res, next) => {
     }
 }
 
-classController.postAddExercise = async (req, res, next) => {
-    const exerciseData = req.body
-    console.log(exerciseData)
-    if (exerciseData.submit == 'Đóng') {
+classController.postAddExercise = (req, res, next) => {
+    console.log("==================Form upload ======================");
+    const form = new formidable.IncomingForm();
+    form.parse(req, async (err, fields, files) => {
+        console.log(fields)
+        console.log(files.file.name);
+
+        let exercise
         try {
-            res.redirect("/classes/class-detail/" + req.params.classCode + "/courses")
-        } catch (err) {
-            if (err)
-                console.log(err);
-        }
-    }
-    else {
-        try {
-            let exercise
             if (req.params._id != null) {
                 exercise = await exercises.findById(req.params._id);
-                console.log("xxxxx", exercise)
+                console.log("edit exercise: \n", exercise)
             }
             else {
                 exercise = new exercises();
+                console.log("new exercise")
             }
-            console.log("new exercise")
-            console.log(exercise);
+            if (files.file != null) {
+                await cloudinary.v2.uploader.upload(files.file.path, {
+                    public_id: files.file.name,
+                    resource_type: "raw",
+                    folder: "exercise"
+                }, (err, result) => {
+                    console.log(err);
+                    console.log(result.url);
+                    exercise.file = result.url;
+                }
+                );
+            }
 
             exercise.classCode = req.params.classCode;
             console.log(req.params.classCode)
-            exercise.title = exerciseData.titleExercise;
-            exercise.description = exerciseData.message;
-            exercise.file = exerciseData.filelink;
-            exercise.studentAssigned = exerciseData.selected;
-            exercise.deadline = exerciseData.deadline
+            exercise.title = fields.titleExercise;
+            exercise.description = fields.message;
+            exercise.studentAssigned = fields.selected;
+            exercise.deadline = fields.deadline
 
             const exerciseResult = await exercise.save();
 
             console.log(exerciseResult)
-
             res.redirect("/classes/class-detail/" + req.params.classCode + "/courses")
 
-        } catch (err) {
+        } catch (error) {
             if (err)
                 console.log(err);
         }
-    }
+
+    });
 }
 
 classController.getClassDetailPeople = async (req, res, next) => {
