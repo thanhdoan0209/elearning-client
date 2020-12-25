@@ -2,7 +2,7 @@
 const mongoose = require("../models/index");
 const classes = require('../models/classes');
 const exercises = require('../models/exercises');
-const submission = require('../models/submission')
+const submissions = require('../models/submissions')
 
 //https://www.npmjs.com/package/dotenv
 const cloudinary = require("cloudinary");
@@ -124,42 +124,79 @@ classController.getSubmitExercise = async (req, res, next) => {
     }
 }
 
+classController.getManagement = async (req, res, next) => {
+    const classCode = req.params.classCode;
+    const exerciseId = req.params._id;
+    try {
+        const classDetail = await classes.findOne({
+            classCode: classCode
+        });
+        const exercise = await exercises.findById(exerciseId);
+        const listSubmission = await submissions.find(
+            {
+                $and: [{ classCode: classCode }, { exerciseId: exerciseId }]
+            })
+        console.log(classCode)
+        console.log(exerciseId)
+        console.log(exercise)
+
+        res.render('../views/exercise/management', {
+            classDetail: classDetail,
+            exercise: exercise,
+            listSubmission: listSubmission
+        })
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
+
 classController.postSubmitExercise = (req, res, next) => {
     console.log("==================Form submit ======================");
-    const form = new formidable.IncomingForm();
+    const form = new formidable.IncomingForm({ multiples: true });
     form.parse(req, async (err, fields, files) => {
         console.log(fields)
-        console.log(files.file.name);
-
-        var currentdate = new Date()
-        var datetime = currentdate.getMonth() + "/" + currentdate.getDay() + "/" + currentdate.getFullYear() + "-"
-            + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
 
         let fileurl
-        if (files.file != null) {
+        if (files.file.name != '') {
+            console.log(files.file.name);
             await cloudinary.v2.uploader.upload(files.file.path, {
-                public_id: files.file.name + datetime,
+                public_id: files.file.name,
                 resource_type: "raw",
-                folder: "submisstion"
+                folder: "submission"
             }, (err, result) => {
-                console.log(err);
-                console.log(result.url);
-                fileurl = result.url;
+                if (err) console.log(err)
+                else {
+                    console.log(result.url);
+                    fileurl = result.url;
+                }
             }
             );
         }
 
-        const newSubmistion = new submission({
-            classCode: req.params.classCode,
-            exerciseId: req.params._id,
-            user: res.locals.username,
-            file: fileurl,
-            filename: files.file.name,
-            createDate: datetime
-        });
+        var currentdate = new Date()
+        var month = currentdate.getMonth() + 1
+        var datetime = month + "/" + currentdate.getDate() + "/" + currentdate.getFullYear() + " - "
+            + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+        console.log(datetime)
+
         try {
-            const resultSubmisstion = await newSubmistion.save();
-            console.log(resultSubmisstion)
+            const newSubmission = new submissions({
+                classCode: req.params.classCode,
+                exerciseId: req.params._id,
+                user: res.locals.username,
+                file: fileurl,
+                filename: files.file.name,
+                description: fields.message,
+                createDate: datetime
+            });
+
+            const resultSubmission = await newSubmission.save();
+            console.log(resultSubmission)
+
+            const listSubmission = await submissions.find()
+            console.log(listSubmission)
+
             res.redirect("/classes/class-detail/" + req.params.classCode + "/courses")
         } catch (err) {
             if (err)
@@ -190,7 +227,7 @@ classController.getExerciseDetail = async (req, res, next) => {
 
 classController.postAddExercise = (req, res, next) => {
     console.log("==================Form upload ======================");
-    const form = new formidable.IncomingForm();
+    const form = new formidable.IncomingForm({ multiples: true });
     form.parse(req, async (err, fields, files) => {
         console.log(fields)
 
@@ -227,10 +264,9 @@ classController.postAddExercise = (req, res, next) => {
             exercise.description = fields.message;
             exercise.studentAssigned = fields.selected;
             exercise.deadline = fields.deadline
-            console.log(exercise)
-            // // const exerciseResult = await exercise.save();
 
-            // console.log(exerciseResult)
+            const exerciseResult = await exercise.save();
+            console.log(exerciseResult)
             res.redirect("/classes/class-detail/" + req.params.classCode + "/courses")
 
         } catch (error) {

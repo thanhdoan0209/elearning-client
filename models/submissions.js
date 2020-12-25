@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 // Define User Schema
 
-var submission = new Schema({
+var submissions = new Schema({
     classCode: {
         type: String,
         require: true
@@ -22,4 +22,4 @@ var submission = new Schema({
     createDate: String
 });
 
-module.exports = mongoose.model('Submission', submission);
+module.exports = mongoose.model('Submissions', submissions);

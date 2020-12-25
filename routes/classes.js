@@ -31,6 +31,8 @@ router.get('/class-detail/:classCode/courses', classController.getClassDetailCou
 
 router.get('/class-detail/:classCode/courses/add-exercise', classController.getAddExercise);
 
+router.get('/class-detail/:classCode/courses/management/:_id', classController.getManagement);
+
 router.get('/class-detail/:classCode/courses/submit-exercise/:_id', classController.getSubmitExercise);
 
 router.get('/class-detail/:classCode/courses/:_id', classController.getExerciseDetail);
