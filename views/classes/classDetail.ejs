@@ -22,46 +22,50 @@
         </p>
         <ul class="nav nav-tabs">
           <li class="active"><a href="/classes/class-detail/<%=classDetail.classCode%>"> Home </a></li>
-          <li><a href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Bài tập </a></li>
-          <li><a href="/classes/class-detail/<%=classDetail.classCode%>/people"> Thành viên </a></li>
+          <% if (isAuthenticated) { %>
+            <li><a href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Bài tập </a></li>
+            <li><a href="/classes/class-detail/<%=classDetail.classCode%>/people"> Thành viên </a></li>
+            <% } %>
         </ul>
 
         <div id="tab1" class="tab-pane fade in active">
 
           <section class="our-features">
+            <% if (isAuthenticated) { %>
+              <a href="/classes/<%=classDetail.classCode%>/courses" class="btn btn-orange btn-medium">
+                (+) Thêm nội dung nào đó cho lớp học của bạn
+              </a>
+              <% } %>
 
-            <a href="/classes/<%=classDetail.classCode%>/courses" class="btn btn-orange btn-medium">
-              (+) Thêm nội dung nào đó cho lớp học của bạn
-            </a>
-
-            <div class="comments-area" id="comments">
-              <h2 class="comments-title"> <span>(4)</span> Comments </h2>
-              <ol class="comment-list">
-                <li class="comment even thread-even">
-                  <article class="comment-body">
-                    <div class="author-photo"> <a href="blog-details.html" class="avatar"> <img class="avatar"
-                          src="images/use_img/post_author.jpg" alt=""></a> </div>
-                    <div class="comment-wrapper">
-                      <div class="comment-meta">
-                        <div class="comment-author vcard">
-                          <h5 class="fn">Jones Lee</h5>
+                <div class="comments-area" id="comments">
+                  <h2 class="comments-title"> <span>(4)</span> Comments </h2>
+                  <ol class="comment-list">
+                    <li class="comment even thread-even">
+                      <article class="comment-body">
+                        <div class="author-photo"> <a href="blog-details.html" class="avatar"> <img class="avatar"
+                              src="images/use_img/post_author.jpg" alt=""></a> </div>
+                        <div class="comment-wrapper">
+                          <div class="comment-meta">
+                            <div class="comment-author vcard">
+                              <h5 class="fn">Jones Lee</h5>
+                            </div>
+                          </div>
+                          <div class="comment-content">
+                            <p>This looks like a dream. It makes perfect sense. A place where authentic problems are
+                              solved
+                              and learning takes place at “just the right moment.”</p>
+                          </div>
+                          <div class="comment-metadata">
+                            <span>April 2, 2016 <small>.</small> 5 months ago</span>
+                          </div>
+                          <div class="reply"> <a href="blog-details.html#"
+                              class="comment-reply-link btn btn-default">Reply</a> </div>
                         </div>
-                      </div>
-                      <div class="comment-content">
-                        <p>This looks like a dream. It makes perfect sense. A place where authentic problems are solved
-                          and learning takes place at “just the right moment.”</p>
-                      </div>
-                      <div class="comment-metadata">
-                        <span>April 2, 2016 <small>.</small> 5 months ago</span>
-                      </div>
-                      <div class="reply"> <a href="blog-details.html#"
-                          class="comment-reply-link btn btn-default">Reply</a> </div>
-                    </div>
-                  </article>
+                      </article>
 
-                </li>
-              </ol>
-            </div>
+                    </li>
+                  </ol>
+                </div>
           </section>
 
         </div>

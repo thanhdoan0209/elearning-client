@@ -60,13 +60,19 @@
                         <div class="comment-content">
                           <%= listExercise[prop].description %>
                         </div>
+                        <div class="comment-content">File đính kèm: <a href="<%= listExercise[prop].file %>">
+                            <%= listExercise[prop].filename %>
+                          </a>
+                        </div>
                         <div class="comment-metadata">
                           <span>
-                            <%= listExercise[prop].deadline %> <small>.</small> 5 months ago
+                            <input type="datetime-local" id="birthdaytime" name="deadline"
+                              value="<%=listExercise[prop].deadline%>" disabled>
                           </span>
                         </div>
-                        <div class="reply"> <a
-                            href="/classes/class-detail/<%=classDetail.classCode%>/courses/<%=listExercise[prop]._id%>"
+
+                        <div class=" reply">
+                          <a href="/classes/class-detail/<%=classDetail.classCode%>/courses/<%=listExercise[prop]._id%>"
                             class="comment-reply-link btn btn-default">Chi tiết</a>
                           <a href="/classes/class-detail/<%=classDetail.classCode%>/courses/submit-exercise/<%=listExercise[prop]._id%>"
                             class="comment-reply-link btn btn-default">Nộp bài</a>

@@ -40,57 +40,70 @@
                     <main id="main" class="site-main col-xs-12">
                         <div class="col-xs-12 col-sm-10 register-form form clearfix">
                             <h3>Nộp bài tập</h3>
-                            <form action="#" id="exercise-add" class="student-settings" method="post">
+                            <form action="#" enctype="multipart/form-data" class="student-settings" method="post">
                                 <div class="panel-group">
                                     <div class="panel panel-default">
-                                      <div class="panel-heading">
-                                        <h4 class="panel-title"> <a href="shortcodes.html#custom-collapse-1">
-                                            Tiêu đề</a> </h4>
-                                      </div>
-                                      <div class="panel-collapse collapsed" id="custom-collapse-1" data-toggle="collapse">
-                                        <div class="panel-body"> Consectetur adipiscing elit integer lacinia malesuada justo site amet
-                                          vestibulum orci tristique nunc no ultricies enim ut a accumsan dolor nullam dapibus rhoncus vehicula
-                                          consectet interdum et vulputate in turpis mauris vestibulum ullamcorper sapien eget feugiat.<br>
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                Tiêu đề </h4>
                                         </div>
-                                      </div>
+                                        <div class="panel-collapse collapsed" id="custom-collapse-1"
+                                            data-toggle="collapse">
+                                            <div class="panel-body">
+                                                <%=exercise.title%> <br>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                          <h4 class="panel-title"> <a href="shortcodes.html#custom-collapse-1">
-                                             Hướng dẫn</a> </h4>
+                                            <h4 class="panel-title">
+                                                Hướng dẫn</h4>
                                         </div>
-                                        <div class="panel-collapse collapsed" id="custom-collapse-1" data-toggle="collapse">
-                                          <div class="panel-body"> Consectetur adipiscing elit integer lacinia malesuada justo site amet
-                                            vestibulum orci tristique nunc no ultricies enim ut a accumsan dolor nullam dapibus rhoncus vehicula
-                                            consectet interdum et vulputate in turpis mauris vestibulum ullamcorper sapien eget feugiat.<br>
-                                          </div>
+                                        <div class="panel-collapse collapsed" id="custom-collapse-1"
+                                            data-toggle="collapse">
+                                            <div class="panel-body">
+                                                <%=exercise.description%> <br>
+                                            </div>
                                         </div>
-                                      </div>
-                                      <div class="panel panel-default">
+                                    </div>
+                                    <div class="panel panel-default">
                                         <div class="panel-heading">
-                                          <h4 class="panel-title"> <a href="shortcodes.html#custom-collapse-1">
-                                              Hạn chót</a> </h4>
+                                            <h4 class="panel-title">
+                                                Hạn chót </h4>
                                         </div>
-                                        <div class="panel-collapse collapsed" id="custom-collapse-1" data-toggle="collapse">
-                                          <div class="panel-body"> Consectetur adipiscing elit integer lacinia malesuada justo site amet
-                                            vestibulum orci tristique nunc no ultricies enim ut a accumsan dolor nullam dapibus rhoncus vehicula
-                                            consectet interdum et vulputate in turpis mauris vestibulum ullamcorper sapien eget feugiat.<br>
-                                          </div>
+                                        <div class="panel-collapse collapsed" id="custom-collapse-1"
+                                            data-toggle="collapse">
+                                            <div class="panel-body">
+                                                <input type="datetime-local" id="birthdaytime" name="deadline"
+                                                    value="<%=exercise.deadline%>" disabled>
+                                            </div>
                                         </div>
-                                      </div>
-                                </div>   
-                                <p>
-                                    <input type="file" id="myFile" name="filelink">
-                                </p>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                Nộp bài </h4>
+                                        </div>
+                                        <div class="panel-collapse collapsed" id="custom-collapse-1"
+                                            data-toggle="collapse">
+                                            <div class="panel-body">
+                                                <input type="file" id="myFile" name="file">
 
-                                <input name="classCode" value="<%= classDetail.classCode %>" type="hidden">
-                                <input name="submit" class="btn btn-default pull-right" value="Giao bài" type="submit">
-                                <input name="submit" class="btn btn-default pull-right" value="Đóng" type="submit">
+                                                <textarea placeholder="Chú thích (nếu có)" name="message" id="message"
+                                                    style="margin: 0px; width: 800x; height: 155px;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <input name="submit" class="btn btn-default pull-right" value="Nộp bài" type="submit">
+                                <a class="btn btn-default btn-medium pull-right"
+                                    href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Đóng </a>
                             </form>
                         </div>
                     </main>
                 </div>
-</div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+            </div>
         </div>
     </div>
 </body>
@@ -111,23 +124,22 @@
 </script>
 
 <script language="javascript">
- 
-    document.getElementById("checkall").onclick = function () 
-    {
+
+    document.getElementById("checkall").onclick = function () {
         // Lấy danh sách checkbox
         var checkboxes = document.getElementsByName("selected[]");
-        if (this.checked){
-        // Lặp và thiết lập checked
-        for (var i = 1; i < checkboxes.length; i++){
-            checkboxes[i].checked = true;
+        if (this.checked) {
+            // Lặp và thiết lập checked
+            for (var i = 1; i < checkboxes.length; i++) {
+                checkboxes[i].checked = true;
+            }
         }
-    }   
-    if (!this.checked){
-        // Lặp và thiết lập unchecked
-        for (var i = 1; i < checkboxes.length; i++){
-            checkboxes[i].checked = false;
+        if (!this.checked) {
+            // Lặp và thiết lập unchecked
+            for (var i = 1; i < checkboxes.length; i++) {
+                checkboxes[i].checked = false;
+            }
         }
-    }   
     };
 
 </script>

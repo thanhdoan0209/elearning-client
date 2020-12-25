@@ -40,7 +40,7 @@
                     <main id="main" class="site-main col-xs-12">
                         <div class="col-xs-12 col-sm-10 register-form form clearfix">
                             <h3>Bài tập</h3>
-                            <form action="#" id="exercise-add" class="student-settings" method="post">
+                            <form action="#" class="student-settings" method="post" enctype="multipart/form-data">
                                 <p><input placeholder="Tiêu đề" name="titleExercise" value="<%=exercise.title%>"
                                         type="text"></p>
                                 <p>
@@ -49,7 +49,7 @@
                                         style="margin: 0px; width: 918px; height: 155px;"><%=exercise.description%></textarea>
                                 </p>
                                 <p>
-                                    <input type="file" id="myFile" name="filelink" />
+                                    <input type="file" id="myFile" name="file" />
                                     <a href="<%=exercise.file%>">
                                         <%=exercise.file%>
                                     </a>
@@ -69,7 +69,7 @@
 
                                         <% for (var prop in classDetail.classStudents ) { %>
                                             <input type="checkbox" name="selected[]"
-                                                value="<%= classDetail.classStudents[prop] %>" >
+                                                value="<%= classDetail.classStudents[prop] %>">
                                             <%= classDetail.classStudents[prop] %> <br>
                                                 <% } %>
 
@@ -85,7 +85,7 @@
 
                                 <input name="submit" class="btn btn-default pull-right" value="Lưu chỉnh sửa"
                                     type="submit">
-                                <a class="btn btn-blue btn-medium pull-right"
+                                <a class="btn btn-default btn-medium pull-right"
                                     href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Đóng </a>
                             </form>
                         </div>
@@ -111,30 +111,29 @@
     }
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded', function(){
-       var checkboxes = document.getElementsByName("selected[]");
-       var students = exercise.studentAssigned[];
-        document.getElementById("demo").innerHTML = students.length; 
-    }) ;       
+    document.addEventListener('DOMContentLoaded', function () {
+        var checkboxes = document.getElementsByName("selected[]");
+        var students = exercise.studentAssigned;
+        document.getElementById("demo").innerHTML = students.length;
+    });       
 </script>
 <script language="javascript">
- 
-    document.getElementById("checkall").onclick = function () 
-    {
+
+    document.getElementById("checkall").onclick = function () {
         // Lấy danh sách checkbox
         var checkboxes = document.getElementsByName("selected[]");
-        if (this.checked){
-        // Lặp và thiết lập checked
-        for (var i = 1; i < checkboxes.length; i++){
-            checkboxes[i].checked = true;
+        if (this.checked) {
+            // Lặp và thiết lập checked
+            for (var i = 1; i < checkboxes.length; i++) {
+                checkboxes[i].checked = true;
+            }
         }
-    }   
-    if (!this.checked){
-        // Lặp và thiết lập unchecked
-        for (var i = 1; i < checkboxes.length; i++){
-            checkboxes[i].checked = false;
+        if (!this.checked) {
+            // Lặp và thiết lập unchecked
+            for (var i = 1; i < checkboxes.length; i++) {
+                checkboxes[i].checked = false;
+            }
         }
-    }   
     };
 
 </script>

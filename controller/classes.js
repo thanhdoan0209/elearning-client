@@ -2,6 +2,7 @@
 const mongoose = require("../models/index");
 const classes = require('../models/classes');
 const exercises = require('../models/exercises');
+const submission = require('../models/submission')
 
 //https://www.npmjs.com/package/dotenv
 const cloudinary = require("cloudinary");
@@ -105,19 +106,66 @@ classController.getAddExercise = async (req, res, next) => {
     }
 }
 
-classController.postSubmitExercise = async (req, res, next) => {
+classController.getSubmitExercise = async (req, res, next) => {
     const classCode = req.params.classCode;
+    const exerciseId = req.params._id;
     try {
         const classDetail = await classes.findOne({
             classCode: classCode
         });
+        const exercise = await exercises.findById(exerciseId);
         res.render('../views/exercise/submitExercise', {
-            classDetail: classDetail
+            classDetail: classDetail,
+            exercise: exercise
         })
     } catch (err) {
         console.log(err);
         throw err;
     }
+}
+
+classController.postSubmitExercise = (req, res, next) => {
+    console.log("==================Form submit ======================");
+    const form = new formidable.IncomingForm();
+    form.parse(req, async (err, fields, files) => {
+        console.log(fields)
+        console.log(files.file.name);
+
+        var currentdate = new Date()
+        var datetime = currentdate.getMonth() + "/" + currentdate.getDay() + "/" + currentdate.getFullYear() + "-"
+            + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+        let fileurl
+        if (files.file != null) {
+            await cloudinary.v2.uploader.upload(files.file.path, {
+                public_id: files.file.name + datetime,
+                resource_type: "raw",
+                folder: "submisstion"
+            }, (err, result) => {
+                console.log(err);
+                console.log(result.url);
+                fileurl = result.url;
+            }
+            );
+        }
+
+        const newSubmistion = new submission({
+            classCode: req.params.classCode,
+            exerciseId: req.params._id,
+            user: res.locals.username,
+            file: fileurl,
+            filename: files.file.name,
+            createDate: datetime
+        });
+        try {
+            const resultSubmisstion = await newSubmistion.save();
+            console.log(resultSubmisstion)
+            res.redirect("/classes/class-detail/" + req.params.classCode + "/courses")
+        } catch (err) {
+            if (err)
+                console.log(err);
+        }
+    });
 }
 
 classController.getExerciseDetail = async (req, res, next) => {
@@ -145,41 +193,44 @@ classController.postAddExercise = (req, res, next) => {
     const form = new formidable.IncomingForm();
     form.parse(req, async (err, fields, files) => {
         console.log(fields)
-        console.log(files.file.name);
 
         let exercise
         try {
             if (req.params._id != null) {
                 exercise = await exercises.findById(req.params._id);
-                console.log("edit exercise: \n", exercise)
+                console.log("========edit exercise============== \n", exercise)
             }
             else {
                 exercise = new exercises();
-                console.log("new exercise")
+                console.log("========Create new exercise=========")
             }
-            if (files.file != null) {
+
+            if (files.file.name != '') {
+                console.log(files.file.path)
                 await cloudinary.v2.uploader.upload(files.file.path, {
                     public_id: files.file.name,
                     resource_type: "raw",
                     folder: "exercise"
                 }, (err, result) => {
-                    console.log(err);
-                    console.log(result.url);
-                    exercise.file = result.url;
+                    if (err) console.log(err)
+                    else {
+                        console.log(result.url);
+                        exercise.file = result.url;
+                        exercise.filename = files.file.name;
+                    }
                 }
                 );
             }
 
             exercise.classCode = req.params.classCode;
-            console.log(req.params.classCode)
             exercise.title = fields.titleExercise;
             exercise.description = fields.message;
             exercise.studentAssigned = fields.selected;
             exercise.deadline = fields.deadline
+            console.log(exercise)
+            // // const exerciseResult = await exercise.save();
 
-            const exerciseResult = await exercise.save();
-
-            console.log(exerciseResult)
+            // console.log(exerciseResult)
             res.redirect("/classes/class-detail/" + req.params.classCode + "/courses")
 
         } catch (error) {

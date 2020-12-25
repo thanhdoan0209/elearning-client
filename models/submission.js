@@ -3,24 +3,23 @@ var Schema = mongoose.Schema;
 
 // Define User Schema
 
-var exercises = new Schema({
+var submission = new Schema({
     classCode: {
         type: String,
         require: true
     },
-    title: {
+    exerciseId: {
+        type: String,
+        require: true
+    },
+    user: {
         type: String,
         require: true
     },
     description: String,
     file: String,
     filename: String,
-    deadline: String,
-    studentAssigned: Array
-    // salt: {
-    //     type: String
-    // }
-
+    createDate: String
 });
 
-module.exports = mongoose.model('Exercises', exercises);
+module.exports = mongoose.model('Submission', submission);

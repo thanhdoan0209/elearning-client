@@ -74,9 +74,8 @@
                                 </p>
                                 <input id="classCode" name="classCode" value="<%= classDetail.classCode %>"
                                     type="hidden">
-                                <input name="submit" class="btn btn-blue btn-medium pull-right" value="Giao bài"
-                                    type="submit">
-                                <a class="btn btn-blue btn-medium pull-right"
+                                <input name="submit" class="btn btn-default pull-right" value="Giao bài" type="submit">
+                                <a class="btn btn-default btn-medium pull-right"
                                     href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Đóng </a>
                             </form>
                         </div>
@@ -103,23 +102,22 @@
 </script>
 
 <script language="javascript">
- 
-    document.getElementById("checkall").onclick = function () 
-    {
+
+    document.getElementById("checkall").onclick = function () {
         // Lấy danh sách checkbox
         var checkboxes = document.getElementsByName("selected[]");
-        if (this.checked){
-        // Lặp và thiết lập checked
-        for (var i = 1; i < checkboxes.length; i++){
-            checkboxes[i].checked = true;
+        if (this.checked) {
+            // Lặp và thiết lập checked
+            for (var i = 1; i < checkboxes.length; i++) {
+                checkboxes[i].checked = true;
+            }
         }
-    }   
-    if (!this.checked){
-        // Lặp và thiết lập unchecked
-        for (var i = 1; i < checkboxes.length; i++){
-            checkboxes[i].checked = false;
+        if (!this.checked) {
+            // Lặp và thiết lập unchecked
+            for (var i = 1; i < checkboxes.length; i++) {
+                checkboxes[i].checked = false;
+            }
         }
-    }   
     };
 
 </script>
