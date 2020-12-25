@@ -42,7 +42,7 @@
                             <h3>Bài tập</h3>
                             <form action="#" id="exercise-add" class="student-settings" method="post">
                                 <p><input placeholder="Tiêu đề" name="titleExercise" value="<%=exercise.title%>"
-                                        type="text"> </p>
+                                        type="text"></p>
                                 <p>
                                     <label></label>
                                     <textarea placeholder="Hướng dẫn (nếu có)" name="message" id="message"
@@ -64,12 +64,12 @@
                                     </div>
 
                                     <div id="checkboxes">
-                                        <input type="checkbox" name="selected[]" value="all"> Chọn tất cả
+                                        <input type="checkbox" name="selected[]" value="all" id="checkall"> Chọn tất cả
                                         <br>
 
                                         <% for (var prop in classDetail.classStudents ) { %>
                                             <input type="checkbox" name="selected[]"
-                                                value="<%= classDetail.classStudents[prop] %>">
+                                                value="<%= classDetail.classStudents[prop] %>" >
                                             <%= classDetail.classStudents[prop] %> <br>
                                                 <% } %>
 
@@ -80,7 +80,7 @@
                                         <input type="datetime-local" id="birthdaytime" name="deadline"
                                             value="<%=exercise.deadline%>">
                                     </p>
-
+                                    <p id="demo"></p>
                                 </div>
 
                                 <input name="submit" class="btn btn-default pull-right" value="Lưu chỉnh sửa"
@@ -110,6 +110,35 @@
         }
     }
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+       var checkboxes = document.getElementsByName("selected[]");
+       var students = exercise.studentAssigned[];
+        document.getElementById("demo").innerHTML = students.length; 
+    }) ;       
+</script>
+<script language="javascript">
+ 
+    document.getElementById("checkall").onclick = function () 
+    {
+        // Lấy danh sách checkbox
+        var checkboxes = document.getElementsByName("selected[]");
+        if (this.checked){
+        // Lặp và thiết lập checked
+        for (var i = 1; i < checkboxes.length; i++){
+            checkboxes[i].checked = true;
+        }
+    }   
+    if (!this.checked){
+        // Lặp và thiết lập unchecked
+        for (var i = 1; i < checkboxes.length; i++){
+            checkboxes[i].checked = false;
+        }
+    }   
+    };
+
+</script>
+
 <!--login23:54  -->
 
 </html>
