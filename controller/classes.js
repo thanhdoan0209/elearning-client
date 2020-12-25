@@ -53,6 +53,21 @@ classController.getClassDetail = async (req, res, next) => {
     }
 }
 
+classController.getSettings = async (req, res, next) => {
+    const classCode = req.params.classCode;
+    try {
+        const classDetail = await classes.findOne({
+            classCode: classCode
+        });
+        res.render('../views/exercise/addExercise', {
+            classDetail: classDetail
+        })
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
+
 classController.getClassDetailCourses = async (req, res, next) => {
     const classCode = req.params.classCode;
     const username = res.locals.username;

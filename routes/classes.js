@@ -25,6 +25,8 @@ router.post('/class-detail/:classCode/courses/:_id', classController.postAddExer
 
 router.get('/class-detail/:classCode', classController.getClassDetail);
 
+router.get('/class-detail/:classCode/settings', classController.getSettings);
+
 router.get('/class-detail/:classCode/courses', classController.getClassDetailCourses);
 
 router.get('/class-detail/:classCode/courses/add-exercise', classController.getAddExercise);
