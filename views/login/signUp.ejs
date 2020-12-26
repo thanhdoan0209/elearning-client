@@ -68,7 +68,16 @@
     $(document).ready(function () {
         $("#validation").validate({
             rules: {
+                firstname:{
+                    required: true
+
+                },
+                lastname:{
+                    required: true
+
+                },
                 username: {
+                    required: true,
                     minlength: 5
                 },
                 email: {
@@ -78,6 +87,7 @@
 
 
                 password: {
+                    required: true,
                     minlength: 5
                 },
                 confirm_password: {
@@ -85,7 +95,16 @@
                 }
             },
             messages: {
+                firstname:{
+                    required: "Vui lòng nhập Tên"
+
+                },
+                lastname:{
+                    required: "Vui lòng nhập Họ"
+
+                },
                 username: {
+                    required: "Vui lòng nhập tên đăng nhập",
                     minlength: "Username quá ngắn"
                 },
                 email: {
