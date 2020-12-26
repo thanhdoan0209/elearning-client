@@ -59,7 +59,7 @@ classController.getSettings = async (req, res, next) => {
         const classDetail = await classes.findOne({
             classCode: classCode
         });
-        res.render('../views/exercise/addExercise', {
+        res.render('../views/classes/editClass', {
             classDetail: classDetail
         })
     } catch (err) {
