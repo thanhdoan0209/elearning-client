@@ -1,3 +1,5 @@
+
+
 <body>
 
   <div class="breadcrumb-section">
@@ -25,7 +27,11 @@
           <li><a href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Bài tập </a></li>
           <li class="active"><a href="/classes/class-detail/<%=classDetail.classCode%>/people"> Thành viên </a></li>
         </ul>
+        <button id="button" type=button>A đến Z</button>
+        <button class="button1" type=button>Z đến A</button>
         <aside class="widget widget_courses">
+
+          
 
           <h3 class="widget-title">Giảng viên</h3>
           <ul>
@@ -33,29 +39,30 @@
             <li class="clearfix">
               <div class="course-thumbnail">
                 <img src="/images/use_img/avatar.jpg" class="course-media-img" alt="">
+                
               </div>
               <div class="simi-co">
-                <h5><a href="/users/user-detail/<%= classDetail.classTeacher %>">
+                <h3><a href="/users/user-detail/<%= classDetail.classTeacher %>">
                     <%= classDetail.classTeacher %>
                   </a>
-                </h5>
+                </h3>
                 </p>
               </div>
             </li>
 
           </ul>
           <h3 class="widget-title">Học viên</h3>
-          <ul>
+          <ul class="sortby">
             <% for (var prop in classDetail.classStudents ) { %>
               <li class="clearfix">
                 <div class="course-thumbnail">
                   <img src="/images/use_img/avatar.jpg" class="course-media-img" alt="">
                 </div>
                 <div class="simi-co">
-                  <h5><a href="/users/user-detail/<%= classDetail.classStudents[prop] %>">
+                  <h3><a href="/users/user-detail/<%= classDetail.classStudents[prop] %>">
                       <%= classDetail.classStudents[prop] %>
                     </a>
-                  </h5>
+                  </h3>
                   <!-- <p class="meta"><a href="classes-details.html#"></a><%= classDetail %></p> -->
                   </p>
                 </div>
@@ -162,6 +169,43 @@
   </script>
 
   <script type="text/javascript" src="/js/ajax.test.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+
+  
+ 
+ <script>
+   
+   $('button').click(function() {
+    var x = document.getElementById('button');
+   $(".sortby li").sort(asc_sort).appendTo('.sortby');
+// Sắp xếp theo thứ tự tăng dần
+function asc_sort(a, b){
+    if(x.innerHTML === 'A đến Z')
+    {
+     
+    return ($(a).text()) > ($(b).text()) ? 1 : -1;   }
+    
+    
+    
+    
+    
+    
+}
+});
+$('.button1').click(function() {
+   $(".sortby li").sort(asc_sort).appendTo('.sortby');
+// Sắp xếp theo thứ tự tăng dần
+function asc_sort(a, b){
+    
+    return ($(a).text()) < ($(b).text()) ? 1 : -1;    
+}
+});
+ </script>
+ 
+  
 </body>
 
 <!--classes-details23:38  -->

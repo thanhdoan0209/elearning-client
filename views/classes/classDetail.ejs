@@ -1,3 +1,48 @@
+<meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    var flag = true;
+    function commentform() {
+      
+        var cform = "<form action='Comment'style='padding-left: 50px'>"
+               
+                + "<br><textarea placeholder='Viết bình luận vào đây!' class='pb-cmnt-textarea'></textarea><br>"
+                
+                + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;"
+                + "<input onclick='commentform()'class='reply' type='submit' value='Hủy'/>"
+                + "&emsp;"
+                + "<input type='submit' value='Đăng'/>"
+
+                + "</form>";
+        if (flag) {
+            document.getElementById("mylocation").innerHTML = cform;
+            flag = false;
+        } else {
+            document.getElementById("mylocation").innerHTML = "";
+            flag = true;
+        }
+    }
+</script>
+<style type="text/css">
+  input[type=submit] {
+  background-color: #337ab7;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+</style>
 <body>
 
 
@@ -54,8 +99,27 @@
                       <div class="comment-metadata">
                         <span>April 2, 2016 <small>.</small> 5 months ago</span>
                       </div>
-                      <div class="reply"> <a href="blog-details.html#"
-                          class="comment-reply-link btn btn-default">Reply</a> </div>
+                      <div onclick="commentform()" class="reply" > <p style="font-weight: bold;	">Trả lời</p>  </div>
+                      <div id="mylocation"></div>
+  <div class="container">
+
+
+
+ 
+
+<style>
+    
+    .pb-cmnt-textarea {
+        resize: none;
+        padding: 20px;
+        height: 130px;
+        width: 40%;
+        border: 1px solid #F2F2F2;
+
+    }
+</style>
+
+
                     </div>
                   </article>
 
