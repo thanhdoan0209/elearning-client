@@ -2,8 +2,9 @@
     <div class="container">
         <div class="row">
 
-            <div class="site-branding col-xs-12 col-sm-3" style="width: 100px;height: 100px;" ><img width="100" height="100" alt="1educationpress1" class="brand"
-                src="images/elearn.png" /> <a href="/">Trang Chủ</a> </div>
+            <div class="site-branding col-xs-12 col-sm-3" style="width: 100px;height: 100px;"> <a href="/">
+                    <img width="100" height="100" alt="1educationpress1" class="brand" src="/images/elearn.png" />
+                    Trang Chủ </a> </div>
 
 
             <nav class=" main-navigation navbar navbar-default" id="site-navigation">
@@ -35,14 +36,7 @@
                                 <li><a href="/classes">Danh sách lớp</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false" href="/">
-                                Sự kiện <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/events.html">Thông báo</a></li>
-                                <li><a href="/event-detail.html">Bài tập</a></li>
-                            </ul>
-                        </li>
+
                         <!--li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button"
                                 aria-haspopup="true" aria-expanded="false" href="/">
                                 Pages <span class="caret"></span></a>
@@ -70,29 +64,31 @@
                         </li-->
 
                         <% if (isAuthenticated) { %>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false" href="home#">
-                                <%= name %> <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/logout">Đăng xuất</a></li>
-                            </ul>
-                        </li>
-                        <% } else { %>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false" href="home#">
-                                Tài khoản<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-haspopup="true" aria-expanded="false" href="home#">
+                                    <%= name %> <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/logout">Đăng xuất</a></li>
+                                </ul>
+                            </li>
+                            <% } else { %>
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                        aria-haspopup="true" aria-expanded="false" href="home#">
+                                        Tài khoản<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
 
-                                <li><a href="/login">Đăng nhập</a></li>
-                                <li><a href="/sign-up">Tạo tài khoản</a></li>
-                            </ul>
-                        </li>
-                        <% } %>
-                        <li class="dropdown"><a role="button" aria-haspopup="true" aria-expanded="false" href="/users">
-                                DANH SÁCH NGƯỜI DÙNG<span class="caret"></span></a>
+                                        <li><a href="/login">Đăng nhập</a></li>
+                                        <li><a href="/sign-up">Tạo tài khoản</a></li>
+                                    </ul>
+                                </li>
+                                <% } %>
+                                    <li class="dropdown"><a role="button" aria-haspopup="true" aria-expanded="false"
+                                            href="/users">
+                                            DANH SÁCH NGƯỜI DÙNG<span class="caret"></span></a>
 
-                        </li>
-                        <!--li><a href="contactus.html">Contact Us</a></li>
+                                    </li>
+                                    <!--li><a href="contactus.html">Contact Us</a></li>
                         <li class="pull-right"><a title="View your cart" href="shopping-cart.html" class="menu-cart"><i
                                     class="lnr lnr-cart"></i> <span>0</span></a></li-->
                     </ul>
