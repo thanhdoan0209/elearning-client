@@ -1,3 +1,11 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.js">
+</script> 
+<style>
+    .error {color:red;}
+</style>
 <body>
 
     <div class="breadcrumb-section">
@@ -16,21 +24,63 @@
                     <main id="main" class="site-main col-xs-12">
                         <div class="col-xs-12 col-sm-10 register-form form clearfix">
                             <h3>Register</h3>
-                            <form name="loginform" id="student-settings" class="student-settings" method="post">
-                                <label>First Name <input name="firstname" value="" type="text"></label>
-                                <label>Last Name <input name="lastname" value="" type="text"></label>
-                                <label>User Name <input name="username" value="" type="text"></label>
+                            <form id="validation" name="loginform" id="student-settings" class="student-settings" method="post">
+                                <label>Tên <input name="first-name" value="" type="text"></label>
+                                <label>Họ <input name="last-name" value="" type="text"></label>
+                                <label>Tên đăng nhập <input name="username" value="" type="text"></label>
                                 <label>Email <input name="email" value="" type="text"></label>
-                                <label>Password <input name="password" value="" type="password"></label>
-                                <label>Confirm Password: <input name="confirm-password" value=""
-                                        type="password"></label> <br>
-                                <label>Teacher <input type="checkbox" name="teacher" value="true"> <br>
-                                </label>
-                                <label><br></label>
-                                <p>Already have an account? <a href="/login">Login to your account</a>!</p>
-                                <input name="submit" class="btn btn-default pull-right" value="Create an Account"
-                                    type="submit">
-                            </form>
+                                <label>Mật khẩu <input id="password"name="password" value="" type="password"></label>
+                                <label>Nhập lại mật khẩu: <input name="confirm_password" value="" type="password"></label>
+                                <p>Already have an account? <a href="register.html#">Login to your account</a>!</p>
+                                <input name="submit" class="btn btn-default pull-right" value="Tạo tài khoản" type="submit">
+                                
+                                
+                                </form>
+                                
+                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.js">
+                                    </script> 
+                                    <script>
+                                       $(document).ready(function() {
+                                           $("#validation").validate({
+                                               rules: {
+                                                   username: {   
+                                                       minlength: 5
+                                                   },
+                                                   email: {
+                                                       required: true,
+                                                       email: true // bắt lỗi định dạng mail
+                                                   },
+                                                   
+                                                   
+                                                   password : {
+                                                       minlength: 5
+                                                   },
+                                                   confirm_password : {
+                                                       equalTo: "#password"
+                                                   }
+                                               },
+                                               messages: {
+                                                   username: {
+                                                       minlength: "Username quá ngắn"
+                                                       },
+                                                   email: {
+                                                       required: "Vui lòng nhập email ",
+                                                       email: "Email sai định dạng, xin vui lòng kiểm tra lại "
+                                                       },
+                                                   
+                                                  
+                                                   password: {
+                                                       minlength: "Vui lòng nhập ít nhất 5 ký tự"
+                                                       },
+                                                   confirm_password: {
+                                                       equalTo: "Mật khẩu không trùng"
+                                
+                                                       }
+                                
+                                               }
+                                           });
+                                       });
+                                    </script>
                         </div>
                     </main>
                 </div>
