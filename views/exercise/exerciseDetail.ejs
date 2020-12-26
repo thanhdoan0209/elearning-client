@@ -68,10 +68,17 @@
                                         <br>
 
                                         <% for (var prop in classDetail.classStudents ) { %>
-                                            <input type="checkbox" name="selected[]"
-                                                value="<%= classDetail.classStudents[prop] %>">
-                                            <%= classDetail.classStudents[prop] %> <br>
-                                                <% } %>
+                                            <% if (exercise.studentAssigned.indexOf(classDetail.classStudents[prop])
+                                                !=-1) { %>
+                                                <input type="checkbox" name="selected[]"
+                                                    value="<%= classDetail.classStudents[prop] %>" checked="true">
+                                                <%= classDetail.classStudents[prop] %> <br>
+                                                    <% } else { %>
+                                                        <input type="checkbox" name="selected[]"
+                                                            value="<%= classDetail.classStudents[prop] %>">
+                                                        <%= classDetail.classStudents[prop] %> <br>
+                                                            <% } %>
+                                                                <% } %>
 
                                     </div>
 
@@ -108,6 +115,7 @@
             checkboxes.style.display = "none";
             expanded = false;
         }
+
     }
 </script>
 <script>
