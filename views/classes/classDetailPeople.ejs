@@ -51,6 +51,36 @@
             </li>
 
           </ul>
+
+  <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">Thêm giáo viên</button>
+
+  <!-- Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+    
+      <!-- Modal content-->
+          <div class="modal-content">
+          <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h5>Thêm giáo viên</h5>
+          
+        </div>
+        <div class="modal-body">
+          <div class="md-form active-cyan-2 mb-3">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Thêm</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+
           <h3 class="widget-title">Học viên</h3>
           <ul class="sortby">
             <% for (var prop in classDetail.classStudents ) { %>
@@ -69,10 +99,35 @@
               </li>
               <% } %>
           </ul>
+          <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">Thêm học viên</button>
+
+  <!-- Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+    
+      <!-- Modal content-->
+          <div class="modal-content">
+          <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="md-form active-cyan-2 mb-3">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
         </aside>
 
       </div>
     </div>
+    
   </div>
 
   </div>
@@ -204,8 +259,6 @@ function asc_sort(a, b){
 }
 });
  </script>
- 
-  
 </body>
 
 <!--classes-details23:38  -->
