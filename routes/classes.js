@@ -22,6 +22,8 @@ router.post('/class-detail/:classCode/courses/add-exercise', classController.pos
 
 router.post('/class-detail/:classCode/courses/submit-exercise/:_id', classController.postSubmitExercise);
 
+router.post('/class-detail/:classCode', classController.postComments);
+
 router.post('/class-detail/:classCode/courses/:_id', classController.postAddExercise);
 
 // get đi tới url này 

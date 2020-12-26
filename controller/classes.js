@@ -3,6 +3,7 @@ const mongoose = require("../models/index");
 const classes = require('../models/classes');
 const exercises = require('../models/exercises');
 const submissions = require('../models/submissions')
+const comments = require('../models/comments')
 
 //https://www.npmjs.com/package/dotenv
 const cloudinary = require("cloudinary");
@@ -56,9 +57,24 @@ classController.getClassDetail = async (req, res, next) => {
         const classDetail = await classes.findOne({
             classCode: classCode
         });
+        const listComments = await comments.find({
+            classCode: classCode
+        })
+        console.log(listComments)
+
+        let slistComments = new Array()
+        let j = listComments.length - 1;
+        for (var i = 0; i < listComments.length; i++) {
+            slistComments[i] = listComments[j];
+            j--;
+        }
+
+        console.log(slistComments)
+
         res.render('layout', {
             contentPage: '../views/classes/classDetail',
-            classDetail: classDetail
+            classDetail: classDetail,
+            listComments: slistComments
         })
     } catch (err) {
         console.log(err);
@@ -66,10 +82,33 @@ classController.getClassDetail = async (req, res, next) => {
     }
 }
 
+classController.postComments = async (req, res, next) => {
+    var currentdate = new Date()
+    var month = currentdate.getMonth() + 1
+    var datetime = month + "/" + currentdate.getDate() + "/" + currentdate.getFullYear() + " - "
+        + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+    const newComments = new comments({
+        user: res.locals.username,
+        classCode: req.params.classCode,
+        createDate: datetime,
+        text: req.body.comment
+    });
+    try {
+        const resultComment = await newComments.save();
+        console.log(resultComment)
+        res.redirect("/classes/class-detail/" + req.params.classCode)
+    } catch (err) {
+        if (err)
+            console.log(err);
+    }
+}
+
+
 classController.getClassDetailCourses = async (req, res, next) => {
     const classCode = req.params.classCode;
     const username = res.locals.username;
-    console.log("xxxxxxxxxx:", username)
+    console.log("username:", username)
 
     try {
         const classDetail = await classes.findOne({
