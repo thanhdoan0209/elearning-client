@@ -93,9 +93,12 @@
 
           <section class="our-features">
             <% if (isAuthenticated) { %>
-              <a href="/classes/<%=classDetail.classCode%>/courses" class="btn btn-orange btn-medium">
-                (+) Thêm nội dung nào đó cho lớp học của bạn
-              </a>
+              
+              <div onclick="commentform()" class="reply">
+                <p class="btn btn-orange btn-medium" style="font-weight: bold;	">(+) Thêm nội dung nào đó cho lớp học của bạn</p>
+              </div>
+              <div id="mylocation"></div>
+
               <% } %>
 
                 <div class="comments-area" id="comments">
@@ -119,10 +122,10 @@
                           <div class="comment-metadata">
                             <span>April 2, 2016 <small>.</small> 5 months ago</span>
                           </div>
-                          <div onclick="commentform()" class="reply">
+                          <div >
                             <p class="comment-reply-link btn btn-default" style="font-weight: bold;	">Trả lời</p>
                           </div>
-                          <div id="mylocation"></div>
+                          
                           <div class="container">
 
 
