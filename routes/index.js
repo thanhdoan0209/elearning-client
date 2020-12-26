@@ -3,7 +3,6 @@ const classController = require('../controller/classes');
 const router = express.Router();
 const userController = require('../controller/users');
 const passport = require('../passportConfig');
-const { route } = require('./users');
 
 //kd45UzTiPpcSHlSZ
 /* GET home page. */
