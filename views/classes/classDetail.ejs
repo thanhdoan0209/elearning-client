@@ -32,35 +32,6 @@
   </style>
 </head>
 
-<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-
-
-<script>
-  var flag = true;
-  function commentform() {
-
-    var cform = "<form action='#'style='padding-left: 50px' method='post'>"
-
-      + "<br><textarea placeholder='Viết bình luận vào đây!' class='pb-cmnt-textarea' name='comment'></textarea><br>"
-
-      + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;"
-      + "<input onclick='commentform()'class='reply' type='submit' value='Hủy'/>"
-      + "&emsp;"
-      + "<input type='submit' value='Đăng'/>"
-
-      + "</form>";
-    if (flag) {
-      document.getElementById("mylocation").innerHTML = cform;
-      flag = false;
-    } else {
-      document.getElementById("mylocation").innerHTML = "";
-      flag = true;
-    }
-  }
-</script>
-
-
 <body>
 
 
@@ -213,45 +184,72 @@
       </form>
     </div>
   </div>
+</body>
 
-  <button id="testBtn" value="test"></button>
-  <p id="test">i'm test</p>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
+<script src="/js/theme.js"></script>
 
-  <script src="/js/theme.js"></script>
+<script type="text/javascript" src="/vendor/fancybox/js/jquery.fancybox.js"></script>
+<script type="text/javascript" src="/vendor/fancybox/js/custom.fancybox.js"></script>
+<script>
+  jQuery.noConflict();
+  jQuery('.fancybox').fancybox();
+</script>
 
-  <script type="text/javascript" src="/vendor/fancybox/js/jquery.fancybox.js"></script>
-  <script type="text/javascript" src="/vendor/fancybox/js/custom.fancybox.js"></script>
-  <script>
-    jQuery.noConflict();
-    jQuery('.fancybox').fancybox();
-  </script>
+<script>
+  /* When the user clicks on the button, 
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
 
-  <script>
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
-    function myFunction() {
-      document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function (event) {
-      if (!event.target.matches("#buttonAddExercise")) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function (event) {
+    if (!event.target.matches("#buttonAddExercise")) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
         }
       }
     }
-  </script>
+  }
+</script>
 
-  <script type="text/javascript" src="/js/ajax.test.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+  var flag = true;
+  function commentform() {
+
+    var cform = "<form action='#'style='padding-left: 50px' method='post'>"
+
+      + "<br><textarea placeholder='Viết bình luận vào đây!' class='pb-cmnt-textarea' name='comment'></textarea><br>"
+
+      + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;"
+      + "<input onclick='commentform()'class='reply' type='submit' value='Hủy'/>"
+      + "&emsp;"
+      + "<input type='submit' value='Đăng'/>"
+
+      + "</form>";
+    if (flag) {
+      document.getElementById("mylocation").innerHTML = cform;
+      flag = false;
+    } else {
+      document.getElementById("mylocation").innerHTML = "";
+      flag = true;
+    }
+  }
+</script>
+
+
+<script type="text/javascript" src="/js/ajax.test.js"></script>
 </body>
 
 </html>
