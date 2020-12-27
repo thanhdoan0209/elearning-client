@@ -38,8 +38,13 @@
           <div>
             <h3 class="widget-title">Giảng viên</h3>
             <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal1">
-              Thêm giáo viên</button>
+            <% if (isAuthenticated) { %>
+              <% if (classDetail.classTeachers.indexOf(username) !=-1) { %>
+                <button type="button" id="btnAddTeachers" class="btn btn-danger btn-sm" data-toggle="modal"
+                  data-target="#myModal1">
+                  Thêm giảng viên</button>
+                <% } } %>
+
           </div><br>
 
           <ul>
@@ -84,11 +89,14 @@
 
           <div>
             <h3 class="widget-title">Học viên</h3>
+            <% if (isAuthenticated) { %>
+              <% if (classDetail.classTeachers.indexOf(username) !=-1) { %>
+                <!-- Trigger the modal with a button -->
+                <button type="button" id="btnAddStudents" class="btn btn-danger btn-sm" data-toggle="modal"
+                  data-target="#myModal2">
+                  Thêm học viên </button>
+                <% } } %>
 
-            <!-- Trigger the modal with a button -->
-            <button type="button" id="btnAddStudents" class="btn btn-danger btn-sm" data-toggle="modal"
-              data-target="#myModal2">
-              Thêm học viên </button>
           </div> <br>
 
           <!-- Modal -->
