@@ -2,6 +2,7 @@
 const mongoose = require("../models/index");
 const user = require('../models/users')
 var bcrypt = require('bcryptjs');
+const classes = require('../models/classes');
 
 const userController = {};
 
@@ -65,6 +66,38 @@ userController.getUserDetail = async (req, res, next) => {
 
 }
 
+userController.postInviteUser = async (req, res, next) => {
+    const data = req.body;
+    console.log(data)
+    try {
+        let classDetail = await classes.findOne({
+            classCode: data.classCode
+        });
+        const userDetail = await user.findOne({
+            username: data.username
+        });
+        if (classDetail.classStudents.indexOf(userDetail.username) == -1) {
+
+            classDetail.classStudents.unshift(userDetail.username)
+            const newClass = await classDetail.save()
+            console.log(newClass)
+
+            const resultUser = {
+                username: userDetail.username,
+                email: userDetail.email,
+                firstName: userDetail.firstName,
+                lastName: userDetail.lastName
+            }
+            res.send(resultUser)
+        } else {
+            res.send("user-existed")
+        }
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+
+}
 
 
 module.exports = userController;

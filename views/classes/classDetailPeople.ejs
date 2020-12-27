@@ -1,5 +1,3 @@
-
-
 <body>
 
   <div class="breadcrumb-section">
@@ -9,6 +7,10 @@
           <h1 class="entry-title">
             <%= classDetail.className %>
           </h1>
+          <h4 class="entry-title" style="padding:0px 20px;"> Mã lớp: <span id="classCode">
+              <%= classDetail.classCode %>
+            </span>
+          </h4>
         </header>
       </div>
     </div>
@@ -21,25 +23,30 @@
         <p><a href="/">HOME</a><i class="fa fa-angle-right"></i><a href="/classes">ALL
             Classes</a><i class="fa fa-angle-right"></i>
           <%= classDetail.className %>
+
         </p>
         <ul class="nav nav-tabs">
           <li><a href="/classes/class-detail/<%=classDetail.classCode%>"> Home </a></li>
           <li><a href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Bài tập </a></li>
           <li class="active"><a href="/classes/class-detail/<%=classDetail.classCode%>/people"> Thành viên </a></li>
         </ul>
-        <button id="button" type=button>A đến Z</button>
-        <button class="button1" type=button>Z đến A</button>
+        <!-- <button id="button" type=button>A đến Z</button>
+        <button class="button1" type=button>Z đến A</button> -->
         <aside class="widget widget_courses">
 
-          
 
-          <h3 class="widget-title">Giảng viên</h3>
+          <div>
+            <h3 class="widget-title">Giảng viên</h3>
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal1">
+              Thêm giáo viên</button>
+          </div><br>
+
           <ul>
-
             <li class="clearfix">
               <div class="course-thumbnail">
                 <img src="/images/use_img/avatar.jpg" class="course-media-img" alt="">
-                
+
               </div>
               <div class="simi-co">
                 <h3><a href="/users/user-detail/<%= classDetail.classTeacher %>">
@@ -49,12 +56,70 @@
                 </p>
               </div>
             </li>
-
           </ul>
-          <h3 class="widget-title">Học viên</h3>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h5>Thêm giáo viên</h5>
+
+                </div>
+                <div class="modal-body">
+                  <div class="md-form active-cyan-2 mb-3">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Thêm</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div>
+            <h3 class="widget-title">Học viên</h3>
+
+            <!-- Trigger the modal with a button -->
+            <button type="button" id="btnAddStudents" class="btn btn-danger btn-sm" data-toggle="modal"
+              data-target="#myModal2">
+              Thêm học viên </button>
+          </div> <br>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h5>Thêm học viên</h5>
+
+                </div>
+                <div class="modal-body">
+                  <div class="md-form active-cyan-2 mb-3">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()"
+                      onclick="myFunction()">
+                    <div id="myDropdown" class="dropdown-content">
+                    </div>
+                  </div>
+                </div>
+                <div class=" modal-footer">
+                  <button type="button" id="btnAddStudent" class="btn btn-default" data-dismiss="modal">Thêm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <ul class="sortby">
             <% for (var prop in classDetail.classStudents ) { %>
-              <li class="clearfix">
+              <li class="clearfix" id="student">
                 <div class="course-thumbnail">
                   <img src="/images/use_img/avatar.jpg" class="course-media-img" alt="">
                 </div>
@@ -63,16 +128,17 @@
                       <%= classDetail.classStudents[prop] %>
                     </a>
                   </h3>
-                  <!-- <p class="meta"><a href="classes-details.html#"></a><%= classDetail %></p> -->
                   </p>
                 </div>
               </li>
               <% } %>
           </ul>
+
         </aside>
 
       </div>
     </div>
+
   </div>
 
   </div>
@@ -134,79 +200,59 @@
   <button id="testBtn" value="test"></button>
   <p id="test">i'm test</p>
 
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
-  <script src="/js/theme.js"></script>
+<script src="/js/theme.js"></script>
+<script src="/js/ajax.test.js"></script>
 
-  <script type="text/javascript" src="/vendor/fancybox/js/jquery.fancybox.js"></script>
-  <script type="text/javascript" src="/vendor/fancybox/js/custom.fancybox.js"></script>
-  <script>
-    jQuery.noConflict();
-    jQuery('.fancybox').fancybox();
-  </script>
+<script>
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
 
-  <script>
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
-    function myFunction() {
-      document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function (event) {
-      if (!event.target.matches("#buttonAddExercise")) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
+  function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+      txtValue = a[i].textContent || a[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        a[i].style.display = "";
+      } else {
+        a[i].style.display = "none";
       }
     }
-  </script>
+  }
+</script>
 
-  <script type="text/javascript" src="/js/ajax.test.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-3.5.1.js"
-  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-  crossorigin="anonymous"></script>
+<script>
 
-  
- 
- <script>
-   
-   $('button').click(function() {
-    var x = document.getElementById('button');
-   $(".sortby li").sort(asc_sort).appendTo('.sortby');
-// Sắp xếp theo thứ tự tăng dần
-function asc_sort(a, b){
-    if(x.innerHTML === 'A đến Z')
-    {
-     
-    return ($(a).text()) > ($(b).text()) ? 1 : -1;   }
-    
-    
-    
-    
-    
-    
-}
-});
-$('.button1').click(function() {
-   $(".sortby li").sort(asc_sort).appendTo('.sortby');
-// Sắp xếp theo thứ tự tăng dần
-function asc_sort(a, b){
-    
-    return ($(a).text()) < ($(b).text()) ? 1 : -1;    
-}
-});
- </script>
- 
-  
-</body>
+    // $('button').click(function () {
+    //   var x = document.getElementById('button');
+    //   $(".sortby li").sort(asc_sort).appendTo('.sortby');
+    //   // Sắp xếp theo thứ tự tăng dần
+    //   function asc_sort(a, b) {
+    //     if (x.innerHTML === 'A đến Z') {
+
+    //       return ($(a).text()) > ($(b).text()) ? 1 : -1;
+    //     }
+    //   }
+    // });
+    // $('.button1').click(function () {
+    //   $(".sortby li").sort(asc_sort).appendTo('.sortby');
+    //   // Sắp xếp theo thứ tự tăng dần
+    //   function asc_sort(a, b) {
+
+    //     return ($(a).text()) < ($(b).text()) ? 1 : -1;
+    //   }
+    // });
+</script>
 
 <!--classes-details23:38  -->
 
