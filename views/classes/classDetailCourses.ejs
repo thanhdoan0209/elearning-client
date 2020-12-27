@@ -74,24 +74,25 @@
                               value="<%=listExercise[prop].deadline%>" disabled>
                           </span>
                         </div>
-                        <% if (classDetail.classTeachers.indexOf(username) !=-1) { %>
-                          <a href="/classes/class-detail/<%=classDetail.classCode%>/courses/<%=listExercise[prop]._id%>"
-                            class="comment-reply-link btn btn-default">Chi tiết</a>
-                          <a href="/classes/class-detail/<%=classDetail.classCode%>/courses/management/<%=listExercise[prop]._id%>"
-                            class="comment-reply-link btn btn-default">Quản lý</a>
-                          <% } %>
-                            <a href="/classes/class-detail/<%=classDetail.classCode%>/courses/submit-exercise/<%=listExercise[prop]._id%>"
-                              class="comment-reply-link btn btn-default">Nộp bài</a>
+                        <% if (isAuthenticated) { %>
+                          <% if (classDetail.classTeachers.indexOf(username) !=-1) { %>
+                            <a href="/classes/class-detail/<%=classDetail.classCode%>/courses/<%=listExercise[prop]._id%>"
+                              class="comment-reply-link btn btn-default">Chi tiết</a>
+                            <a href="/classes/class-detail/<%=classDetail.classCode%>/courses/management/<%=listExercise[prop]._id%>"
+                              class="comment-reply-link btn btn-default">Quản lý</a>
+                            <% } } %>
+                              <a href="/classes/class-detail/<%=classDetail.classCode%>/courses/submit-exercise/<%=listExercise[prop]._id%>"
+                                class="comment-reply-link btn btn-default">Nộp bài</a>
 
                       </div>
+                    </article>
+                  </li>
+                </ol>
+                <% } %>
 
             </div>
 
-            </article>
-            </li>
-            </ol>
 
-            <% } %>
 
 
 
