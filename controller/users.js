@@ -66,6 +66,60 @@ userController.getUserDetail = async (req, res, next) => {
 
 }
 
+userController.getInviteUser = async (req, res, next) => {
+    const query = req.query;
+    console.log(query)
+    try {
+
+        const users = await user.find();
+        const classDetail = await classes.findOne({
+            classCode: query.classCode
+        })
+        let resultListUser = new Array
+        let j = 0
+        for (var i = 0; i < users.length; i++) {
+            if (classDetail.classStudents.indexOf(users[i]["username"]) == -1) {
+                resultListUser[j] = users[i]
+                j++
+            }
+        }
+        console.log(resultListUser)
+        res.send(resultListUser)
+
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
+
+userController.getInviteTeacher = async (req, res, next) => {
+    const query = req.query;
+    console.log(query)
+    try {
+
+        const users = await user.find({
+            teacher: true
+        });
+        const classDetail = await classes.findOne({
+            classCode: query.classCode
+        })
+        let resultListUser = new Array
+        let j = 0
+        for (var i = 0; i < users.length; i++) {
+            if (classDetail.classTeacher != users[i]["username"]) {
+                resultListUser[j] = users[i]
+                j++
+            }
+        }
+        console.log(resultListUser)
+        res.send(resultListUser)
+
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
+
 userController.postInviteUser = async (req, res, next) => {
     const data = req.body;
     console.log(data)
@@ -96,8 +150,38 @@ userController.postInviteUser = async (req, res, next) => {
         console.log(err);
         throw err;
     }
-
 }
 
+userController.postInviteTeacher = async (req, res, next) => {
+    const data = req.body;
+    console.log(data)
+    try {
+        let classDetail = await classes.findOne({
+            classCode: data.classCode
+        });
+        const userDetail = await user.findOne({
+            username: data.username
+        });
+        if (classDetail.classTeachers.indexOf(userDetail.username) == -1) {
+
+            classDetail.classTeachers.unshift(userDetail.username)
+            const newClass = await classDetail.save()
+            console.log(newClass)
+
+            const resultUser = {
+                username: userDetail.username,
+                email: userDetail.email,
+                firstName: userDetail.firstName,
+                lastName: userDetail.lastName
+            }
+            res.send(resultUser)
+        } else {
+            res.send("teacher-existed")
+        }
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
 
 module.exports = userController;
