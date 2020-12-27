@@ -38,8 +38,8 @@ classController.createClass = async (req, res, next) => {
         className: classData.className,
         classCode: classData.classCode,
         numberOfStudent: classData.numberOfStudent,
-        classStudents: [],
-        classTeachers: [res.locals.username]
+        classStudents: [2],
+        classTeacher: "Gonzo"
     });
     try {
         const classes = await newClass.save();
@@ -114,18 +114,10 @@ classController.getClassDetailCourses = async (req, res, next) => {
         const classDetail = await classes.findOne({
             classCode: classCode
         });
-        let listExercise
-        if (classDetail.classTeachers.indexOf(res.locals.username) != -1) {
-            listExercise = await exercises.find({
-                classCode: classCode,
-            })
-        } else {
-            listExercise = await exercises.find({
-                classCode: classCode,
-                studentAssigned: { $in: [username] }
-            })
-        }
-
+        const listExercise = await exercises.find({
+            classCode: classCode,
+            studentAssigned: { $in: [username] }
+        })
         console.log(listExercise.length)
         res.render('layout', {
             contentPage: '../views/classes/classDetailCourses',

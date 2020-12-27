@@ -93,9 +93,9 @@
 
           <section class="our-features">
             <% if (isAuthenticated) { %>
-
+              
               <div onclick="commentform()" class="reply">
-                <p class="btn btn-orange btn-medium">(+) Thêm nội dung nào đó cho lớp học của bạn </p>
+                <p class="btn btn-orange btn-medium" >(+) Thêm nội dung nào đó cho lớp học của bạn </p>
               </div>
               <div id="mylocation"></div>
 
@@ -106,8 +106,7 @@
                   <ol class="comment-list">
                     <li class="comment even thread-even">
                       <article class="comment-body">
-                        <div class="author-photo"> <a href="blog-details.html" class="avatar"> <img
-                              src="/images/use_img/avatar.jpg" width="150" height="150" /></a> </div>
+                        <div class="author-photo"> <a href="blog-details.html" class="avatar"> <img src="/images/use_img/avatar.jpg" width="150" height="150" /></a> </div>
                         <div class="comment-wrapper">
                           <div class="comment-meta">
                             <div class="comment-author vcard">
@@ -122,10 +121,10 @@
                           <div class="comment-metadata">
                             <span>April 2, 2016 <small>.</small> 5 months ago</span>
                           </div>
-                          <div>
+                          <div >
                             <p class="comment-reply-link btn btn-default" style="font-weight: bold;	">Trả lời</p>
                           </div>
-
+                          
                           <div class="container">
 
 
@@ -206,72 +205,45 @@
       </form>
     </div>
   </div>
-</body>
 
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+  <button id="testBtn" value="test"></button>
+  <p id="test">i'm test</p>
 
-<script src="/js/theme.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="/vendor/fancybox/js/jquery.fancybox.js"></script>
-<script type="text/javascript" src="/vendor/fancybox/js/custom.fancybox.js"></script>
-<script>
-  jQuery.noConflict();
-  jQuery('.fancybox').fancybox();
-</script>
+  <script src="/js/theme.js"></script>
 
-<script>
-  /* When the user clicks on the button, 
-  toggle between hiding and showing the dropdown content */
-  function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
+  <script type="text/javascript" src="/vendor/fancybox/js/jquery.fancybox.js"></script>
+  <script type="text/javascript" src="/vendor/fancybox/js/custom.fancybox.js"></script>
+  <script>
+    jQuery.noConflict();
+    jQuery('.fancybox').fancybox();
+  </script>
 
-  // Close the dropdown if the user clicks outside of it
-  window.onclick = function (event) {
-    if (!event.target.matches("#buttonAddExercise")) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
+  <script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+      if (!event.target.matches("#buttonAddExercise")) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
         }
       }
     }
-  }
-</script>
+  </script>
 
-<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-
-
-<script>
-  var flag = true;
-  function commentform() {
-
-    var cform = "<form action='#'style='padding-left: 50px' method='post'>"
-
-      + "<br><textarea placeholder='Viết bình luận vào đây!' class='pb-cmnt-textarea' name='comment'></textarea><br>"
-
-      + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;"
-      + "<input onclick='commentform()'class='reply' type='submit' value='Hủy'/>"
-      + "&emsp;"
-      + "<input type='submit' value='Đăng'/>"
-
-      + "</form>";
-    if (flag) {
-      document.getElementById("mylocation").innerHTML = cform;
-      flag = false;
-    } else {
-      document.getElementById("mylocation").innerHTML = "";
-      flag = true;
-    }
-  }
-</script>
-
-
-<script type="text/javascript" src="/js/ajax.test.js"></script>
+  <script type="text/javascript" src="/js/ajax.test.js"></script>
 </body>
 
 <!--classes-details23:38  -->

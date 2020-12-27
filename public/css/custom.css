@@ -12,24 +12,7 @@
   width: 280px;
 }
 
-.wrapper{
-  width:200px;
-  padding:20px;
-  height: 150px;
-  }
-
-.scrollStudent {
-  width:300px;
-  height:350px;
-  overflow-x:hidden;
-  overflow-y:auto;
-}
-
 .studentTag {
-  cursor: pointer;
-}
-
-.teacherTag {
   cursor: pointer;
 }
 

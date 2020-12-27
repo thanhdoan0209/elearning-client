@@ -1,31 +1,26 @@
 (function ($) {
-    $('#btnAddStudents').on('click', function () {
-        console.log("CLICKED add students")
+    $('#testBtn').on('click', function () {
+        console.log("CLICKED")
         $.ajax({
-            url: "/users/ajax-users",
+            url: "/users",
             method: "GET",
-            data: { classCode: $('#classCode').text().replace(/\s/g, '') },
             success: (res) => {
-                console.log(res)
-                res.forEach((student, index) => {
-                    $('#myDropdown').append("<a class='studentTag' id=" + index + ">" + student.username + "</a>")
-                });
+                console.log(res[1]);
+                $('#test').html("2222222222");
             }
         })
     })
 })(jQuery);
 
 (function ($) {
-    $('#btnAddTeachers').on('click', function () {
-        console.log("CLICKED add techers")
+    $('#btnAddStudents').on('click', function () {
+        console.log("CLICKED add students")
         $.ajax({
-            url: "/users/ajax-teachers",
+            url: "/users/ajax-users",
             method: "GET",
-            data: { classCode: $('#classCode').text().replace(/\s/g, '') },
             success: (res) => {
-                console.log(res)
-                res.forEach((teacher, index) => {
-                    $('#myDropdown2').append("<a class='teacherTag' id=" + index + ">" + teacher.username + "</a>")
+                res.forEach((student, index) => {
+                    $('#myDropdown').append("<a class='studentTag' id=" + index + ">" + student.username + "</a>")
                 });
             }
         })
@@ -36,13 +31,6 @@
     $(document).on('click', '.studentTag', function () {
         const student = ($(this).text());
         $('#myInput').val(student);
-    })
-})(jQuery);
-
-(function ($) {
-    $(document).on('click', '.teacherTag', function () {
-        const student = ($(this).text());
-        $('#myInput2').val(student);
     })
 })(jQuery);
 
@@ -60,39 +48,7 @@
             success: (res) => {
                 console.log(res.username)
                 if (res != "user-existed") {
-                    $('#listStudents').prepend(
-                        "<li class='clearfix' id='student'>\
-                        <div class='course-thumbnail'>\
-                            <img src="+ '/images/use_img/avatar.jpg' + " class='course-media-img' alt=''>\
-                        </div >\
-                        <div class='simi-co'>\
-                            <h3><a href='/users/user-detail/"+ res.username + "'>" + res.username + "</a>\
-                            </h3>\
-                        </p>\
-                        </div >\
-                    </li >"
-                    )
-                }
-            }
-        })
-    })
-})(jQuery);
-
-(function ($) {
-    $('#btnAddTeacher').on('click', function () {
-        console.log("CLICKED add student")
-        const data = {
-            username: $('#myInput2').val(),
-            classCode: $('#classCode').text().replace(/\s/g, '')
-        }
-        $.ajax({
-            url: "/users/ajax-teachers/add",
-            method: "POST",
-            data: data,
-            success: (res) => {
-                console.log(res.username)
-                if (res != "teacher-existed") {
-                    $('#listTeachers').prepend(
+                    $('.sortby').prepend(
                         "<li class='clearfix' id='student'>\
                         <div class='course-thumbnail'>\
                             <img src="+ '/images/use_img/avatar.jpg' + " class='course-media-img' alt=''>\

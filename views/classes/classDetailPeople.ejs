@@ -38,13 +38,25 @@
           <div>
             <h3 class="widget-title">Giảng viên</h3>
             <!-- Trigger the modal with a button -->
-            <% if (classDetail.classTeachers.indexOf(username) !=-1) { %>
-              <button type="button" id="btnAddTeachers" class="btn btn-danger btn-sm" data-toggle="modal"
-                data-target="#myModal1">
-                Thêm giảng viên</button>
-              <% } %>
-
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal1">
+              Thêm giáo viên</button>
           </div><br>
+
+          <ul>
+            <li class="clearfix">
+              <div class="course-thumbnail">
+                <img src="/images/use_img/avatar.jpg" class="course-media-img" alt="">
+
+              </div>
+              <div class="simi-co">
+                <h3><a href="/users/user-detail/<%= classDetail.classTeacher %>">
+                    <%= classDetail.classTeacher %>
+                  </a>
+                </h3>
+                </p>
+              </div>
+            </li>
+          </ul>
 
           <!-- Modal -->
           <div class="modal fade" id="myModal1" role="dialog">
@@ -54,53 +66,29 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h5>Thêm giảng viên</h5>
+                  <h5>Thêm giáo viên</h5>
 
                 </div>
                 <div class="modal-body">
                   <div class="md-form active-cyan-2 mb-3">
-                    <input type="text" placeholder="Search.." id="myInput2"
-                      onkeyup="filterFunction('myInput2','myDropdown2')" onclick="myFunction('myDropdown2')">
-                    <div id="myDropdown2" class="dropdown-content scrollStudent">
-                    </div>
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                   </div>
                 </div>
-                <div class=" modal-footer">
-                  <button type="button" id="btnAddTeacher" class="btn btn-default" data-dismiss="modal">Thêm</button>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Thêm</button>
                 </div>
               </div>
+
             </div>
           </div>
-
-          <ul class="sortby" id="listTeachers">
-            <% for (var prop in classDetail.classTeachers ) { %>
-              <li class="clearfix">
-                <div class="course-thumbnail">
-                  <img src="/images/use_img/avatar.jpg" class="course-media-img" alt="">
-
-                </div>
-                <div class="simi-co">
-                  <h3><a href="/users/user-detail/<%= classDetail.classTeachers[prop] %>">
-                      <%= classDetail.classTeachers[prop] %>
-                    </a>
-                  </h3>
-                  </p>
-                </div>
-              </li>
-              <% } %>
-          </ul>
-
 
           <div>
             <h3 class="widget-title">Học viên</h3>
 
-            <% if (classDetail.classTeachers.indexOf(username) !=-1) { %>
-              <!-- Trigger the modal with a button -->
-              <button type="button" id="btnAddStudents" class="btn btn-danger btn-sm" data-toggle="modal"
-                data-target="#myModal2">
-                Thêm học viên </button>
-              <% } %>
-
+            <!-- Trigger the modal with a button -->
+            <button type="button" id="btnAddStudents" class="btn btn-danger btn-sm" data-toggle="modal"
+              data-target="#myModal2">
+              Thêm học viên </button>
           </div> <br>
 
           <!-- Modal -->
@@ -116,9 +104,9 @@
                 </div>
                 <div class="modal-body">
                   <div class="md-form active-cyan-2 mb-3">
-                    <input type="text" placeholder="Search.." id="myInput"
-                      onkeyup="filterFunction('myInput','myDropdown')" onclick="myFunction('myDropdown')">
-                    <div id="myDropdown" class="dropdown-content scrollStudent">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()"
+                      onclick="myFunction()">
+                    <div id="myDropdown" class="dropdown-content">
                     </div>
                   </div>
                 </div>
@@ -129,7 +117,7 @@
             </div>
           </div>
 
-          <ul class="sortby" id="listStudents">
+          <ul class="sortby">
             <% for (var prop in classDetail.classStudents ) { %>
               <li class="clearfix" id="student">
                 <div class="course-thumbnail">
@@ -209,6 +197,9 @@
     </div>
   </div>
 
+  <button id="testBtn" value="test"></button>
+  <p id="test">i'm test</p>
+
 </body>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
@@ -219,15 +210,15 @@
 <script>
   /* When the user clicks on the button,
   toggle between hiding and showing the dropdown content */
-  function myFunction(myDropdown) {
-    document.getElementById(myDropdown).classList.toggle("show");
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
   }
 
-  function filterFunction(myInput, myDropdown) {
+  function filterFunction() {
     var input, filter, ul, li, a, i;
-    input = document.getElementById(myInput);
+    input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
-    div = document.getElementById(myDropdown);
+    div = document.getElementById("myDropdown");
     a = div.getElementsByTagName("a");
     for (i = 0; i < a.length; i++) {
       txtValue = a[i].textContent || a[i].innerText;
