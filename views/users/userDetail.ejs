@@ -5,7 +5,7 @@
       <div class="row">
         <header class="entry-header">
           <h1 class="entry-title">
-            Thông tin chi tiết
+            <%= userDetail.username %>
           </h1>
         </header>
       </div>
@@ -24,17 +24,11 @@
             <div class="courses-info">
               <img src="/images/use_img/avatar.jpg" width="150" height="150" />
               <h1>
-                <%= userDetail.firstName %> <%= userDetail.lastName %>
+                <%= userDetail.firstName %>
               </h1>
-              <b>Tên đăng nhập</b>
-              <p class="excerpt"><%= userDetail.username %></p>
-              <b>Email</b>
-              <p class="excerpt" ><a style="color: #0583e4;" target="_blank" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to=<%= userDetail.email %>"><%= userDetail.email %></a></p>
-              <b>Nơi sống</b>
-              <p class="excerpt">
-                Thành phố Hồ Chí Minh</p>
-
-              
+              <p class="excerpt">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              <p class="meta">Instructed by: <a href="users-details.html#">Greg Christman</a> . in: <a
+                  href="users-details.html#">Icon Design</a></p>
             </div>
             <a class="img-thumb " href="users-details.html#">
               <figure>
@@ -42,59 +36,351 @@
               </figure>
             </a>
             <div class="courses-info">
-              <h3>Giới thiệu</h3>
-              <p>Chuyến phiêu lưu của đời là học hỏi. Mục đích của đời là trưởng thành. Bản tính của đời là thay đổi. Thách thức của đời là vượt qua. Tinh túy của đời là quan tâm. Cơ hội của đời là phụng sự. Bí mật của đời là dám làm. Hương vị của đời là giúp đỡ. Vẻ đẹp của đời là cho đi.</p>
-              
+              <h3>COURSE DESCRIPTION</h3>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              <p><i>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type specimen book.</i></p>
+              <h4>Requirements</h4>
+              <ul>
+                <li>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type specimen book.</li>
+                <li>It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                  essentially unchanged.</li>
+                <li>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
+                  Ipsum.</li>
+              </ul>
+              <h4>What am I going to get from this course?</h4>
+              <ul>
+                <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </li>
+                <li>Etiam varius tortor ut ligula facilisis varius in a leo.</li>
+                <li>Folutpat tempor tur duis mattis dapibus, felis amet.</li>
+              </ul>
+              <h4>What is the target audience?</h4>
+              <ul>
+                <li>Donec porta ultricies urna, faucibus magna dapibus.</li>
+                <li>Etiam varius tortor ut ligula facilisis varius in a leo.</li>
+                <li>Folutpat tempor tur duis mattis dapibus, felis amet.</li>
+              </ul>
+
+              <section class="courses-curriculum clearfix">
+                <h3>Curriculum</h3>
+                <h4>Section 1: Introduction</h4>
+                <ul>
+                  <li class="courses-open"><span class="no">1</span>
+                    <p class="ctitle">
+                      <span class="title"><i class="fa fa-play-circle"></i> Welcome to the Course! <a
+                          href="classes-details.html#"><i class="fa fa-angle-down"></i></a></span>
+                      <span class="type">Video</span>
+                    </p>
+                    <span class="preview">Preview</span>
+                    <p class="other">
+                      <span class="time"><i class="fa fa-clock-o"></i> 11:30</span>
+                      <span class="info"><i class="fa fa-lock"></i> PDF file</span>
+                    </p>
+                  </li>
+                  <li class="courses-close"><span class="no">2</span>
+                    <p class="ctitle">
+                      <span class="title"><i class="fa fa-file"></i> Course Introduction and Manual<a
+                          href="classes-details.html#"><i class="fa fa-angle-up"></i></a></span>
+                      <span class="type free">Free</span>
+                    </p>
+                    <p class="other">
+                      <span class="info"><i class="fa fa-paperclip"></i> PDF file</span>
+                    </p>
+                    <div class="desc">
+                      <p>It has survived not only five centuries.
+                        but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+                      <p><a href="classes-details.html#">Download PDF</a></p>
+                    </div>
+                  </li>
+                </ul>
+                <h4>Section 2: Title will be here</h4>
+                <ul>
+                  <li class="courses-open"><span class="no">3</span>
+                    <p class="ctitle">
+                      <span class="title"><i class="fa fa-paint-brush"></i> Icon Design <a
+                          href="classes-details.html#"><i class="fa fa-angle-down"></i></a></span>
+                      <span class="type">Lecture</span>
+                    </p>
+                    <span class="preview">Preview</span>
+                    <p class="other">
+                      <span class="info"><i class="fa fa-pencil"></i> Tools needed</span>
+                    </p>
+                  </li>
+                  <li class="courses-open"><span class="no">4</span>
+                    <p class="ctitle">
+                      <span class="title"><i class="fa fa-magic"></i> Donec porta ultricies urna <a
+                          href="classes-details.html#"><i class="fa fa-angle-down"></i></a></span>
+                      <span class="type free">Free</span>
+                    </p>
+                    <p class="other">
+                      <span class="info"><i class="fa fa-paperclip"></i> PDF file</span>
+                    </p>
+                  </li>
+                  <li class="courses-open"><span class="no">5</span>
+                    <p class="ctitle">
+                      <span class="title"><i class="fa fa-bell-o"></i> Aucibus magna dapibus <a
+                          href="classes-details.html#"><i class="fa fa-angle-down"></i></a></span>
+                      <span class="type exam">Exam</span>
+                    </p>
+                    <p class="other">
+                      <span class="info"><i class="fa fa-bullhorn"></i> Final</span>
+                    </p>
+                  </li>
+                </ul>
+                <h4>Section 3: Some big title will be here</h4>
+                <ul>
+                  <li class="courses-open"><span class="no">6</span>
+                    <p class="ctitle">
+                      <span class="title"><i class="fa fa-tv"></i> Presentation <a href="classes-details.html#"><i
+                            class="fa fa-angle-down"></i></a></span>
+                    </p>
+                    <p class="other">
+                      <span class="info"><i class="fa fa-check"></i> End of course</span>
+                    </p>
+                  </li>
+                </ul>
+              </section>
 
 
-              
+              <section class="courses-instructor clearfix">
+                <h3>ABOUT INSTRUCTOR</h3>
+                <div class="row instructor-single">
+                  <div class="col-xs-12 col-sm-2"> <img class="avatar" src="images/use_img/author_img.png" alt="" />
+                  </div>
+                  <div class="col-xs-12 col-sm-9">
+                    <h3 class="inst-name"><a href="classes-details.html#">Greg Christman</a></h3>
+                    <p class="meta">Head In Nichola's Sports Academy</p>
+                    <ul class="social-icons">
+                      <li><a href="http://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                      <li><a href="http://facebook.com/"><i class="fa fa-facebook-square"></i></a></li>
+                      <li><a href="http://linkedin.com/"><i class="fa fa-linkedin-square"></i></a></li>
+                      <li><a href="http://google.com/"><i class="fa fa-google-plus"></i></a></li>
+                      <li><a href="http://pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                      <li><a href="http://instagram.com/"><i class="fa fa-instagram"></i></a></li>
+                      <li><a href="http://youtube.com/"><i class="fa fa-youtube"></i></a></li>
+                    </ul>
+                  </div>
+                  <div class="about-instr clearfix">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet nulla sed neque congue
+                      pharetra sed sed leo. Pellentesque elementum porttitor libero hendrerit porta. Aenean vitae odio
+                      semper, iaculis nibh non, hendrerit augue. Nam non tincidunt justo, eu fermentum nulla</p>
+                  </div>
+                </div>
+              </section>
+
             </div>
-            
+            <div class="courses-info clearfix">
+              <div class="courses-review clearfix">
+                <h3>REVIEWS</h3>
+                <div class="col-xs-12 col-sm-3 average-rating">
+                  <p>Average Rating</p>
+                  <p class="total-rating">4.8</p>
+                  <div class="course_rating">
+                    <i class="glyphicons glyphicon-star"></i>
+                    <i class="glyphicons glyphicon-star"></i>
+                    <i class="glyphicons glyphicon-star"></i>
+                    <i class="glyphicons glyphicon-star"></i>
+                    <i class="glyphicons glyphicon-star"></i>
+                  </div>
+                  <p>12 ratings</p>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                  <p>Details</p>
+
+                  <div class="stars-rating">
+                    <span>5 Stars</span>
+                    <div class="progress active">
+                      <div class="progress-bar" style="width:90%"></div>
+                    </div>
+                    <span>9</span>
+                  </div>
+
+                  <div class="stars-rating">
+                    <span>4 Stars</span>
+                    <div class="progress active">
+                      <div class="progress-bar" style="width:30%"></div>
+                    </div>
+                    <span>3</span>
+                  </div>
+
+                  <div class="stars-rating">
+                    <span>3 Stars</span>
+                    <div class="progress active">
+                      <div class="progress-bar" style="width:0"></div>
+                    </div>
+                    <span></span>
+                  </div>
+
+                  <div class="stars-rating">
+                    <span>2 Stars</span>
+                    <div class="progress active">
+                      <div class="progress-bar" style="width:0"></div>
+                    </div>
+                    <span></span>
+                  </div>
+
+                  <div class="stars-rating">
+                    <span>1 Stars</span>
+                    <div class="progress active">
+                      <div class="progress-bar" style="width:0"></div>
+                    </div>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+              <ul class="review-list">
+                <li>
+                  <img src="images/use_img/author_img.png" class="avatar" alt="" />
+                  <div class="review-right col-xs-12 col-sm-9">
+                    <span class="author-name">Greg Christman</span>
+                    <div class="time">
+                      6 months ago
+                      <div class="course_rating">
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="review-des">
+                    <p>Excellent course!</p>
+                    <p>The material was presented in just the right sized topics so that learning and understanding were
+                      optimal.
+                      The instructor was articulate and easy to understand. Highly recommend!</p>
+                  </div>
+                </li>
+                <li>
+                  <img src="images/use_img/author_img.png" class="avatar" alt="" />
+                  <div class="review-right col-xs-12 col-sm-9">
+                    <span class="author-name">Mark Freeman</span>
+                    <div class="time">
+                      6 months ago
+                      <div class="course_rating">
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="review-des">
+                    <p>Well organized and Informative.</p>
+                    <p>The material was presented in just the right sized topics so that learning and understanding were
+                      optimal.
+                      The instructor was articulate and easy to understand. Highly recommend!</p>
+                  </div>
+                </li>
+              </ul>
+              <div class="add-review clearfix">
+                <h3>Add a Review</h3>
+                <div class="row">
+                  <form class="review_form" method="post" action="classes-details.html#">
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="form_row">
+                        <label>Name <span>*</span></label>
+                        <input name="name" type="text">
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="form_row">
+                        <label>Email <span>*</span></label>
+                        <input name="email" type="text">
+                      </div>
+                    </div>
+                    <div class="col-xs-12">
+                      <div class="form_row">
+                        <label>Your Rating</label>
+                        <div class="course_rating">
+                          <span class="glyphicon glyphicon-star-empty"></span>
+                          <span class="glyphicon glyphicon-star-empty"></span>
+                          <span class="glyphicon glyphicon-star-empty"></span>
+                          <span class="glyphicon glyphicon-star-empty"></span>
+                          <span class="glyphicon glyphicon-star-empty"></span>
+                        </div>
+                      </div>
+                      <div class="form_row">
+                        <label>Message <span>*</span></label>
+                        <textarea rows="10" name="message" class=""></textarea>
+                      </div>
+                      <input type="submit" value="Submit" id="submitReview" class="btn btn-default">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </main>
 
           <div id="secondary" class="widget-area col-xs-12 col-sm-4 left-block" role="complementary">
             <div class="co-join-info">
               <div class="btns">
-                <a class="btn btn-orange btn-medium" data-animation="animated zoomInUp" href='/'>Về lại trang chủ </a>
+                <a class="btn btn-orange btn-medium" data-animation="animated zoomInUp" href=>Enroll This Classes </a>
               </div>
             </div>
             <aside class="widget widget_courses">
-              <h3 class="widget-title">Danh sách lớp học</h3>
+              <h3 class="widget-title">Similar Classes</h3>
               <ul>
                 <li class="clearfix">
                   <div class="course-thumbnail">
                     <img src="images/use_img/widget-thumb.jpg" class="course-media-img" alt="">
                   </div>
-                  <img src="/images/use_img/course_img2.png" alt="">
                   <div class="simi-co">
-                    <h5><a href="/classes/class-detail/antt">
-                      antt
-                    </a></h5>
-                    
+                    <h5><a href="classes-details.html#">JavaScript: Understanding the Weird Parts</a></h5>
+                    <p class="meta"><a href="classes-details.html#">James Bond</a></p>
+                    <p><span class="simi-price">$65</span>
+                      <span class="rating">
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                      </span>
+                    </p>
                   </div>
                 </li>
                 <li class="clearfix">
                   <div class="course-thumbnail">
                     <img src="images/use_img/widget-thumb.jpg" class="course-media-img" alt="">
                   </div>
-                  <img src="/images/use_img/course_img2.png" alt="">
                   <div class="simi-co">
-                    <h5><a href="/classes/class-detail/antth">
-                      anttt
-                    </a></h5>
-                   
+                    <h5><a href="classes-details.html#">Become an iOS Developer from Scratch</a></h5>
+                    <p class="meta"><a href="classes-details.html#">Greg Christman</a></p>
+                    <p><span class="simi-price">$66</span>
+                      <span class="rating">
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                      </span>
+                    </p>
                   </div>
                 </li>
                 <li class="clearfix">
                   <div class="course-thumbnail">
                     <img src="images/use_img/widget-thumb.jpg" class="course-media-img" alt="">
                   </div>
-                  <img src="/images/use_img/course_img2.png" alt="">
                   <div class="simi-co">
-                    <h5><a href="/classes/class-detail/12312">
-                      123123
-                    </a></h5>
-                    
+                    <h5><a href="classes-details.html#">Ionic by Example: Create Mobile Apps in HTML5</a></h5>
+                    <p class="meta"><a href="classes-details.html#">Emma Wilson</a></p>
+                    <p><span class="simi-price">$35</span>
+                      <span class="rating">
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star"></i>
+                        <i class="glyphicons glyphicon-star-empty"></i>
+                        <i class="glyphicons glyphicon-star-empty"></i>
+                      </span>
+                    </p>
                   </div>
                 </li>
               </ul>
@@ -105,13 +391,125 @@
       </div>
     </div>
   </div>
- 
-  
+  <section class="call-to-action">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="col-xs-12 col-sm-8">
+            <h3>Remaining essentially unchanged.</h3>
+            <p>When an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          </div>
+          <a href="classes-details.html#" class="btn btn-medium btn-default pull-right">Know More <i
+              class="lnr lnr-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="site-footer" id="colophon">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4"><img src="images/logo5.png" alt="" /></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 footer-widget">
+          <aside class="widget widget_text">
+            <div class="textwidget">
+              The point of using Lorem Ipsum is that it has a more or less normal distribution of letters, as opposed to
+              using
+              'Content here, content here', making it look like readable English.
+            </div>
+          </aside>
+          <aside class="widget socialmedia-widget">
+            <ul class="social">
+              <li><a href="classes-details.html#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="classes-details.html#"><i class="fa fa-facebook-square"></i></a></li>
+              <li><a href="classes-details.html#"><i class="fa fa-linkedin-square"></i></a></li>
+              <li><a href="classes-details.html#"><i class="fa fa-pinterest"></i></a></li>
+              <li><a href="classes-details.html#"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="classes-details.html#"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+          </aside>
+        </div>
+        <div class="col-xs-12 col-sm-4 footer-widget">
+          <aside class="widget widget_nav_menu">
+            <ul class="menu">
+              <li><a href="classes-details.html#">Home</a></li>
+              <li><a href="classes-details.html#">Shortcodes</a></li>
+              <li><a href="classes-details.html#">about US</a></li>
+              <li><a href="classes-details.html#">Blog</a></li>
+              <li><a href="classes-details.html#">classes</a></li>
+              <li><a href="classes-details.html#">Contact US</a></li>
+              <li><a href="classes-details.html#">Teachers</a></li>
+              <li><a href="classes-details.html#">Privacy Policy</a></li>
+              <li><a href="classes-details.html#">Events</a></li>
+            </ul>
+          </aside>
+        </div>
+        <div class="col-xs-12 col-sm-4 footer-widget">
+          <aside class="widget newsletter-widget">
+            <h3>Sign up now</h3>
+            <p>When an printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <form id="newsletter">
+              <input type="email" name="email" class="form-control" placeholder="Email" />
+              <button type="submit" value="" class="btn btn-orange btn-medium"><i
+                  class="lnr lnr-arrow-right"></i></button>
+            </form>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="copyright">
+
+            <p class="develop col-xs-12 col-sm-4 text-right"><a target="_blank"
+                href="https://www.templateshub.net">Templates Hub</a> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
-  
+  <div id="login-form" style="display:none;">
+    <div class="row">
+      <h3>Login</h3>
+      <p>Please Login to Create a New Course</p>
+      <form id="login" action="classes-details.html#">
+        <input name="email" type="text" placeholder="Email or Username">
+        <input name="password" type="text" placeholder="Password">
+        <div class="row remeber">
+          <label><input name="rember" type="checkbox" value=""> Remember Me</label>
+          <a href="classes-details.html#">Forgot Password?</a>
+        </div>
+        <div class="text-center button">
+          <input name="Login" type="button" value="Login Now">
+        </div>
+      </form>
+    </div>
+  </div>
 
-  
+  <div id="register-form" style="display:none;">
+    <div class="row">
+      <h3>Register</h3>
+      <p>Please Register to Create a New Account</p>
+      <form id="register" action="classes-details.html#">
+        <input name="name" type="text" placeholder="Name">
+        <input name="username" type="text" placeholder="Username">
+        <input name="email" type="text" placeholder="Email">
+        <input name="password" type="text" placeholder="Password">
+        <input name="confirmpassword" type="text" placeholder="Confirm Password">
+        <div class="row new-login">
+          Already have an account? <a href="classes-details.html#">Login to your account! </a>
+        </div>
+        <div class="text-center button">
+          <input name="create-account" type="button" value="Create an Account">
+        </div>
+      </form>
+    </div>
+  </div>
 
 
   <script src="js/jquery.min.js"></script>
