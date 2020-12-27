@@ -22,163 +22,170 @@
 	}
 </script-->
 
-<div class="breadcrumb-section">
-	<div class="container">
-		<div class="row">
-			<header class="entry-header">
-				<h1 class="entry-title">Danh sách lớp</h1>
-			</header>
-		</div>
-	</div>
-</div>
-<div class="page-spacer clearfix">
-	<div id="primary">
+<body>
+
+
+	<div class="breadcrumb-section">
 		<div class="container">
 			<div class="row">
-				<main class="site-main col-xs-12 ">
-					<div class="school-classes inner-classes">
+				<header class="entry-header">
+					<h1 class="entry-title">Danh sách lớp</h1>
+				</header>
+			</div>
+		</div>
+	</div>
+	<div class="page-spacer clearfix">
+		<div id="primary">
+			<div class="container">
+				<div class="row">
+					<main class="site-main col-xs-12 ">
+						<div class="school-classes inner-classes">
 
-						<section class="our-features">
-							<a href="/classes/create-class" class="btn btn-orange btn-medium">
-								Create class
-							</a>
-							<input type="text" id="searchClass" onkeyup="myFunction1()" placeholder="Tìm kiếm lớp.."
-								title="Type in a class">
-						</section>
-
-						<% for (var prop in classesList ) { %>
-						<div id="<%= classesList[prop].className %>" , class="col-xs-12 col-sm-4 zoom">
-							<div class="classes">
-								<a id="pic1" , href="classes-3-columns.html#" class="img-thumb">
-									<figure>
-										<img src="images/use_img/course_img2.png" alt="" /></figure>
+							<section class="our-features">
+								<a href="/classes/create-class" class="btn btn-orange btn-medium">
+									Create class
 								</a>
-								<div class="classes-info">
-									<h3><a
-											href="/classes/class-detail/<%= classesList[prop].classCode %>"><%= classesList[prop].className %></a>
-									</h3>
-									<p></p>
-								</div>
-							</div>
-						</div>
-						<% } %>
+								<input type="text" id="searchClass" onkeyup="myFunction1()" placeholder="Tìm kiếm lớp.."
+									title="Type in a class">
+							</section>
 
-						<div class="pagination">
-							<span class="page-numbers current">1</span>
-							<a href="classes-3-columns.html#" class="page-numbers">2</a>
-							<a href="classes-3-columns.html#" class="page-numbers">3</a>
-							<a href="classes-3-columns.html#" class="next page-numbers"><i
-									class="fa fa-angle-right"></i></a>
-						</div>
-				</main>
-			</div>
-		</div>
-	</div>
-	<div id="primary1" style="display:none;">
-		<div class="container">
-			<div class="row">
-				<main id="main" class="site-main col-xs-12 ">
-					<div class="site-main col-xs-12 ">
-						<ul id="menu">
 							<% for (var prop in classesList ) { %>
-							<li><a
-									href="/classes/class-detail/<%= classesList[prop].classCode %>"><%= classesList[prop].className %></a>
-							</li>
-							<% } %>
-						</ul>
+								<div id="<%= classesList[prop].className %>" , class="col-xs-12 col-sm-4 zoom">
+									<div class="classes">
+										<a id="pic1" , href="classes-3-columns.html#" class="img-thumb">
+											<figure>
+												<img src="images/use_img/course_img2.png" alt="" />
+											</figure>
+										</a>
+										<div class="classes-info">
+											<h3><a href="/classes/class-detail/<%= classesList[prop].classCode %>">
+													<%= classesList[prop].className %>
+												</a>
+											</h3>
+											<p></p>
+										</div>
+									</div>
+								</div>
+								<% } %>
 
+									<div class="pagination">
+										<span class="page-numbers current">1</span>
+										<a href="classes-3-columns.html#" class="page-numbers">2</a>
+										<a href="classes-3-columns.html#" class="page-numbers">3</a>
+										<a href="classes-3-columns.html#" class="next page-numbers"><i
+												class="fa fa-angle-right"></i></a>
+									</div>
+					</main>
+				</div>
+			</div>
+		</div>
+		<div id="primary1" style="display:none;">
+			<div class="container">
+				<div class="row">
+					<main id="main" class="site-main col-xs-12 ">
+						<div class="site-main col-xs-12 ">
+							<ul id="menu">
+								<% for (var prop in classesList ) { %>
+									<li><a href="/classes/class-detail/<%= classesList[prop].classCode %>">
+											<%= classesList[prop].className %>
+										</a>
+									</li>
+									<% } %>
+							</ul>
+
+						</div>
+					</main>
+				</div>
+			</div>
+
+		</div>
+
+		<div id="login-form" style="display:none;">
+			<div class="row">
+				<h3>Login</h3>
+				<p>Please Login to Create a New Course</p>
+				<form id="login" action="classes-3-columns.html#">
+					<input name="email" type="text" placeholder="Email or Username">
+					<input name="password" type="text" placeholder="Password">
+					<div class="row remeber">
+						<label><input name="rember" type="checkbox" value=""> Remember Me</label>
+						<a href="classes-3-columns.html#">Forgot Password?</a>
 					</div>
-				</main>
+					<div class="text-center button">
+						<input name="Login" type="button" value="Login Now">
+					</div>
+				</form>
 			</div>
 		</div>
 
-	</div>
-
-	<div id="login-form" style="display:none;">
-		<div class="row">
-			<h3>Login</h3>
-			<p>Please Login to Create a New Course</p>
-			<form id="login" action="classes-3-columns.html#">
-				<input name="email" type="text" placeholder="Email or Username">
-				<input name="password" type="text" placeholder="Password">
-				<div class="row remeber">
-					<label><input name="rember" type="checkbox" value=""> Remember Me</label>
-					<a href="classes-3-columns.html#">Forgot Password?</a>
-				</div>
-				<div class="text-center button">
-					<input name="Login" type="button" value="Login Now">
-				</div>
-			</form>
+		<div id="register-form" style="display:none;">
+			<div class="row">
+				<h3>Register</h3>
+				<p>Please Register to Create a New Account</p>
+				<form id="register" action="classes-3-columns.html#">
+					<input name="name" type="text" placeholder="Name">
+					<input name="username" type="text" placeholder="Username">
+					<input name="email" type="text" placeholder="Email">
+					<input name="password" type="text" placeholder="Password">
+					<input name="confirmpassword" type="text" placeholder="Confirm Password">
+					<div class="row new-login">
+						Already have an account? <a href="classes-3-columns.html#">Login to your account! </a>
+					</div>
+					<div class="text-center button">
+						<input name="create-account" type="button" value="Create an Account">
+					</div>
+				</form>
+			</div>
 		</div>
-	</div>
+</body>
 
-	<div id="register-form" style="display:none;">
-		<div class="row">
-			<h3>Register</h3>
-			<p>Please Register to Create a New Account</p>
-			<form id="register" action="classes-3-columns.html#">
-				<input name="name" type="text" placeholder="Name">
-				<input name="username" type="text" placeholder="Username">
-				<input name="email" type="text" placeholder="Email">
-				<input name="password" type="text" placeholder="Password">
-				<input name="confirmpassword" type="text" placeholder="Confirm Password">
-				<div class="row new-login">
-					Already have an account? <a href="classes-3-columns.html#">Login to your account! </a>
-				</div>
-				<div class="text-center button">
-					<input name="create-account" type="button" value="Create an Account">
-				</div>
-			</form>
-		</div>
-	</div>
-	<script>
+<script>
 
-	</script>
-	<script>
-		function myFunction1() {
-			var input, filter, ul, li, a, i, txtValue;
-			input = document.getElementById("searchClass");
-			filter = input.value.toUpperCase();
-			ul = document.getElementById("menu");
-			li = ul.getElementsByTagName("li");
-			for (i = 0; i < li.length; i++) {
-				a = li[i].getElementsByTagName("a")[0];
-				txtValue = a.textContent || a.innerText;
-				var x = document.getElementById(txtValue);
-				if (txtValue.toUpperCase().indexOf(filter) > -1) {
-					x.style.display = "";
-					//li[i].style.display = "";
-				} else {
-					x.style.display = "none";
-					//li[i].style.display = "none";
-				}
+</script>
+<script>
+	function myFunction1() {
+		var input, filter, ul, li, a, i, txtValue;
+		input = document.getElementById("searchClass");
+		filter = input.value.toUpperCase();
+		ul = document.getElementById("menu");
+		li = ul.getElementsByTagName("li");
+		for (i = 0; i < li.length; i++) {
+			a = li[i].getElementsByTagName("a")[0];
+			txtValue = a.textContent || a.innerText;
+			var x = document.getElementById(txtValue);
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				x.style.display = "";
+				//li[i].style.display = "";
+			} else {
+				x.style.display = "none";
+				//li[i].style.display = "none";
 			}
 		}
-	</script>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	}
+</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
-	<script src="js/theme.js"></script>
+<script src="js/theme.js"></script>
 
-	<script type="text/javascript" src="vendor/fancybox/js/jquery.fancybox.js"></script>
-	<script type="text/javascript" src="vendor/fancybox/js/custom.fancybox.js"></script>
-	<script>
-		jQuery.noConflict();
-		jQuery('.fancybox').fancybox();
-	</script>
-	<script type="text/javascript">
-		jQuery.noConflict();
-		jQuery(document).ready(function ($) {
-			$('#list').click(function (event) { event.preventDefault(); $('#products .courses').addClass('list-group-item'); });
-			$('#grid').click(function (event) {
-				event.preventDefault(); $('#products .courses').removeClass('list-group-item');
+<script type="text/javascript" src="vendor/fancybox/js/jquery.fancybox.js"></script>
+<script type="text/javascript" src="vendor/fancybox/js/custom.fancybox.js"></script>
+<script>
+	jQuery.noConflict();
+	jQuery('.fancybox').fancybox();
+</script>
+<script type="text/javascript">
+	jQuery.noConflict();
+	jQuery(document).ready(function ($) {
+		$('#list').click(function (event) { event.preventDefault(); $('#products .courses').addClass('list-group-item'); });
+		$('#grid').click(function (event) {
+			event.preventDefault(); $('#products .courses').removeClass('list-group-item');
 
-				$('#products .courses').addClass('grid-group-item');
-			});
+			$('#products .courses').addClass('grid-group-item');
 		});
-	</script>
-	</body>
+	});
+</script>
 
-	<!--classes-3-columns23:37  -->
+<!--classes-3-columns23:37  -->
 
 </html>

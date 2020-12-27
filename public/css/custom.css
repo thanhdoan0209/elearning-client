@@ -12,6 +12,10 @@
   width: 280px;
 }
 
+.studentTag {
+  cursor: pointer;
+}
+
 /* The popup form - hidden by default */
 .form-popup {
   display: none;

@@ -7,6 +7,10 @@
           <h1 class="entry-title">
             <%= classDetail.className %>
           </h1>
+          <h4 class="entry-title" style="padding:0px 20px;"> Mã lớp: <span id="classCode">
+              <%= classDetail.classCode %>
+            </span>
+          </h4>
         </header>
       </div>
     </div>
@@ -160,42 +164,43 @@
     <button id="testBtn" value="test"></button>
     <p id="test">i'm test</p>
 
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+</body>
 
-    <script src="/js/theme.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="/vendor/fancybox/js/jquery.fancybox.js"></script>
-    <script type="text/javascript" src="/vendor/fancybox/js/custom.fancybox.js"></script>
-    <script>
-      jQuery.noConflict();
-      jQuery('.fancybox').fancybox();
-    </script>
+<script src="/js/theme.js"></script>
 
-    <script>
-      /* When the user clicks on the button, 
-      toggle between hiding and showing the dropdown content */
-      function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-      }
+<script type="text/javascript" src="/vendor/fancybox/js/jquery.fancybox.js"></script>
+<script type="text/javascript" src="/vendor/fancybox/js/custom.fancybox.js"></script>
+<script>
+  jQuery.noConflict();
+  jQuery('.fancybox').fancybox();
+</script>
 
-      // Close the dropdown if the user clicks outside of it
-      window.onclick = function (event) {
-        if (!event.target.matches("#buttonAddExercise")) {
-          var dropdowns = document.getElementsByClassName("dropdown-content");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-              openDropdown.classList.remove('show');
-            }
-          }
+<script>
+  /* When the user clicks on the button, 
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function (event) {
+    if (!event.target.matches("#buttonAddExercise")) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
         }
       }
-    </script>
+    }
+  }
+</script>
 
-    <script type="text/javascript" src="/js/ajax.test.js"></script>
-</body>
+<script type="text/javascript" src="/js/ajax.test.js"></script>
 
 <!--classes-details23:38  -->
 
