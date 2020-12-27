@@ -1,6 +1,3 @@
-<html lang="en">
-
-
 <meta charset="utf-8" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,10 +8,11 @@
 <head>
   <style>
     .pb-cmnt-textarea {
+      resize: none;
       padding: 20px;
       height: 130px;
-      width: 100%;
-      border: 2px solid #F2F2F2;
+      width: 40%;
+      border: 1px solid #F2F2F2;
 
     }
   </style>
@@ -40,11 +38,11 @@
   var flag = true;
   function commentform() {
 
-    var cform = "<form action='#'style='padding-left: 50px' method='post'>"
+    var cform = "<form action='Comment'style='padding-left: 50px'>"
 
-      + "<br><textarea placeholder='Viết bình luận vào đây!' class='pb-cmnt-textarea' name='comment'></textarea><br>"
+      + "<br><textarea placeholder='Viết bình luận vào đây!' class='pb-cmnt-textarea'></textarea><br>"
 
-      + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;"
+      + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;"
       + "<input onclick='commentform()'class='reply' type='submit' value='Hủy'/>"
       + "&emsp;"
       + "<input type='submit' value='Đăng'/>"
@@ -71,10 +69,6 @@
           <h1 class="entry-title">
             <%= classDetail.className %>
           </h1>
-          <h4 class="entry-title" style="padding:0px 20px;"> Mã lớp: <span id="classCode">
-              <%= classDetail.classCode %>
-            </span>
-          </h4>
         </header>
       </div>
     </div>
@@ -99,53 +93,51 @@
 
           <section class="our-features">
             <% if (isAuthenticated) { %>
-
+              
               <div onclick="commentform()" class="reply">
-                <p class="btn btn-orange btn-medium" style="font-weight: bold;	">(+) Thêm nội dung nào đó cho lớp học
-                  của bạn &emsp;</p>
+                <p class="btn btn-orange btn-medium" >(+) Thêm nội dung nào đó cho lớp học của bạn </p>
               </div>
               <div id="mylocation"></div>
+
               <% } %>
 
                 <div class="comments-area" id="comments">
-                  <h2 class="comments-title"> <span>
-                      (<%=listComments.length%>)
-                    </span> Comments </h2>
+                  <h2 class="comments-title"> <span>(4)</span> Comments1 </h2>
                   <ol class="comment-list">
-
-                    <% for (var prop in listComments ) { %>
-                      <li class="comment even thread-even">
-                        <article class="comment-body">
-
-                          <div class="author-photo"> <a href="blog-details.html" class="avatar"> <img class="avatar"
-                                src="images/use_img/post_author.jpg" alt=""></a> </div> <br>
-                          <h4 class="fn">&emsp; <%=listComments[prop].user%>
-                          </h4>
-
-                          <div class="comment-metadata">
-                            <h4>
-                              <%=listComments[prop].text%>
-                            </h4>
+                    <li class="comment even thread-even">
+                      <article class="comment-body">
+                        <div class="author-photo"> <a href="blog-details.html" class="avatar"> <img src="/images/use_img/avatar.jpg" width="150" height="150" /></a> </div>
+                        <div class="comment-wrapper">
+                          <div class="comment-meta">
+                            <div class="comment-author vcard">
+                              <h5 class="fn">Jones Lee</h5>
+                            </div>
+                          </div>
+                          <div class="comment-content">
+                            <p>This looks like a dream. It makes perfect sense. A place where authentic problems are
+                              solved
+                              and learning takes place at “just the right moment.”</p>
                           </div>
                           <div class="comment-metadata">
-                            <span>
-                              <%=listComments[prop].createDate%>
-                            </span>
+                            <span>April 2, 2016 <small>.</small> 5 months ago</span>
                           </div>
-                          <div>
-                            <span>
-                              <form>
-                                <textarea placeholder='Để lại bình luận của bạn tại đây ' class=''
-                                  name='comment'></textarea>
-                                <input class="btn btn-default pull-right" type="submit" value="Gửi"> <br>
-                              </form>
-                            </span>
+                          <div >
+                            <p class="comment-reply-link btn btn-default" style="font-weight: bold;	">Trả lời</p>
                           </div>
-                        </article>
+                          
+                          <div class="container">
 
-                      </li> <br>
 
-                      <% } %>
+
+
+
+
+
+
+                          </div>
+                      </article>
+
+                    </li>
                   </ol>
                 </div>
           </section>
@@ -253,5 +245,7 @@
 
   <script type="text/javascript" src="/js/ajax.test.js"></script>
 </body>
+
+<!--classes-details23:38  -->
 
 </html>
