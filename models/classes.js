@@ -13,7 +13,7 @@ var classes = new Schema({
         unique: true,
         require: true
     },
-    classTeacher: String,
+    classTeachers: Array,
     classStudents: Array,
     numberOfStudent: Number,
     pic: String
