@@ -24,32 +24,34 @@
             <div class="courses-info">
               <img src="/images/use_img/avatar.jpg" width="150" height="150" />
               <h1>
-                <%= userDetail.firstName %> <%= userDetail.lastName %>
+                <%= userDetail.firstName %>
+                  <%= userDetail.lastName %>
               </h1>
               <b>Tên đăng nhập</b>
-              <p class="excerpt"><%= userDetail.username %></p>
+              <p class="excerpt">
+                <%= userDetail.username %>
+              </p>
               <b>Email</b>
-              <p class="excerpt" ><a style="color: #0583e4;" target="_blank" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to=<%= userDetail.email %>"><%= userDetail.email %></a></p>
+              <p class="excerpt"><a style="color: #0583e4;" target="_blank"
+                  href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to=<%= userDetail.email %>">
+                  <%= userDetail.email %>
+                </a></p>
+              <b>Số điện thoại</b>
+              <p class="excerpt">
+                <%= userDetail.phone %>
+              </p>
               <b>Nơi sống</b>
               <p class="excerpt">
-                Thành phố Hồ Chí Minh</p>
-
-              
+                <%= userDetail.address %>
+              </p>
             </div>
-            <a class="img-thumb " href="users-details.html#">
-              <figure>
-                <img alt="" src="images/use_img/courses_detail_img.jpg">
-              </figure>
-            </a>
             <div class="courses-info">
               <h3>Giới thiệu</h3>
-              <p>Chuyến phiêu lưu của đời là học hỏi. Mục đích của đời là trưởng thành. Bản tính của đời là thay đổi. Thách thức của đời là vượt qua. Tinh túy của đời là quan tâm. Cơ hội của đời là phụng sự. Bí mật của đời là dám làm. Hương vị của đời là giúp đỡ. Vẻ đẹp của đời là cho đi.</p>
-              
-
-
-              
+              <p>Chuyến phiêu lưu của đời là học hỏi. Mục đích của đời là trưởng thành. Bản tính của đời là thay đổi.
+                Thách thức của đời là vượt qua. Tinh túy của đời là quan tâm. Cơ hội của đời là phụng sự. Bí mật của đời
+                là dám làm. Hương vị của đời là giúp đỡ. Vẻ đẹp của đời là cho đi.</p>
             </div>
-            
+
           </main>
 
           <div id="secondary" class="widget-area col-xs-12 col-sm-4 left-block" role="complementary">
@@ -59,44 +61,18 @@
               </div>
             </div>
             <aside class="widget widget_courses">
-              <h3 class="widget-title">Danh sách lớp học</h3>
+              <h3 class="widget-title">Danh sách lớp đang học</h3>
               <ul>
-                <li class="clearfix">
-                  <div class="course-thumbnail">
-                    <img src="images/use_img/widget-thumb.jpg" class="course-media-img" alt="">
-                  </div>
-                  <img src="/images/use_img/course_img2.png" alt="">
-                  <div class="simi-co">
-                    <h5><a href="/classes/class-detail/antt">
-                      antt
-                    </a></h5>
-                    
-                  </div>
-                </li>
-                <li class="clearfix">
-                  <div class="course-thumbnail">
-                    <img src="images/use_img/widget-thumb.jpg" class="course-media-img" alt="">
-                  </div>
-                  <img src="/images/use_img/course_img2.png" alt="">
-                  <div class="simi-co">
-                    <h5><a href="/classes/class-detail/antth">
-                      anttt
-                    </a></h5>
-                   
-                  </div>
-                </li>
-                <li class="clearfix">
-                  <div class="course-thumbnail">
-                    <img src="images/use_img/widget-thumb.jpg" class="course-media-img" alt="">
-                  </div>
-                  <img src="/images/use_img/course_img2.png" alt="">
-                  <div class="simi-co">
-                    <h5><a href="/classes/class-detail/12312">
-                      123123
-                    </a></h5>
-                    
-                  </div>
-                </li>
+                <% for (var prop in classesList ) { %>
+                  <li class="clearfix">
+                    <img src="/images/use_img/course_img2.png" alt="">
+                    <div class="simi-co">
+                      <h5><a href="/classes/class-detail/<%= classesList[prop].classCode %>">
+                          <%= classesList[prop].className %>
+                        </a></h5>
+                    </div>
+                  </li>
+                  <% } %>
               </ul>
             </aside>
           </div>
@@ -105,22 +81,14 @@
       </div>
     </div>
   </div>
- 
-  
 
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
 
-  
+  <script src="/js/theme.js"></script>
 
-  
-
-
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-
-  <script src="js/theme.js"></script>
-
-  <script type="text/javascript" src="vendor/fancybox/js/jquery.fancybox.js"></script>
-  <script type="text/javascript" src="vendor/fancybox/js/custom.fancybox.js"></script>
+  <script type="text/javascript" src="/vendor/fancybox/js/jquery.fancybox.js"></script>
+  <script type="text/javascript" src="/vendor/fancybox/js/custom.fancybox.js"></script>
   <script>
     jQuery.noConflict();
     jQuery('.fancybox').fancybox();

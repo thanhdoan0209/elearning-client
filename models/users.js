@@ -15,6 +15,8 @@ var users = new Schema({
         require: true,
         lowercase: true
     },
+    phone: String,
+    address: String,
     firstName: String,
     lastName: String,
     teacher: Boolean,

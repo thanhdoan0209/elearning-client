@@ -30,12 +30,14 @@
                                 method="post">
                                 <label>Tên <input name="firstname" value="" type="text"></label>
                                 <label>Họ <input name="lastname" value="" type="text"></label>
+                                <label>Số điện thoại <input name="phone" value="" type="text"></label>
+                                <label>Địa chỉ <input name="address" value="" type="text"></label>
                                 <label>Tên đăng nhập <input name="username" value="" type="text"></label>
                                 <label>Email <input name="email" value="" type="text"></label>
                                 <label>Mật khẩu <input id="password" name="password" value="" type="password"></label>
                                 <label>Nhập lại mật khẩu: <input name="confirm_password" value=""
                                         type="password"></label>
-                                <p>Bạn đã có tài khoản trước đó ?<b><a href="login">Đăng nhập ngay!</a></b></p>
+                                <p>Bạn đã có tài khoản trước đó ? <b><a href="login">Đăng nhập ngay!</a></b></p>
                                 <input name="submit" class="btn btn-default pull-right" value="Tạo tài khoản"
                                     type="submit">
                             </form>
@@ -68,11 +70,11 @@
     $(document).ready(function () {
         $("#validation").validate({
             rules: {
-                firstname:{
+                firstname: {
                     required: true
 
                 },
-                lastname:{
+                lastname: {
                     required: true
 
                 },
@@ -95,11 +97,11 @@
                 }
             },
             messages: {
-                firstname:{
+                firstname: {
                     required: "Vui lòng nhập Tên"
 
                 },
-                lastname:{
+                lastname: {
                     required: "Vui lòng nhập Họ"
 
                 },
