@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const userController = require('../controller/users');
+const user = require('../models/users');
+const classes = require('../models/classes');
 
 
 /* GET users listing. */
@@ -13,8 +15,6 @@ router.get('/', userController.getAllUser);
 
 router.get('/user-detail/:username', userController.getUserDetail);
 
-router.get('/user-detail/edit/:username', userController.getEditUserDetail);
-
 router.get('/ajax-users', userController.getInviteUser)
 
 router.get('/ajax-teachers', userController.getInviteTeacher)
@@ -22,13 +22,5 @@ router.get('/ajax-teachers', userController.getInviteTeacher)
 router.post('/ajax-users/add', userController.postInviteUser)
 
 router.post('/ajax-teachers/add', userController.postInviteTeacher)
-
-router.post('/user-detail/edit/:username', userController.postEditUserDetail);
-
-router.post('/user-detail/set-teacher/:username', userController.postSetTeacher);
-
-router.post('/user-detail/unset-teacher/:username', userController.postUnsetTeacher);
-
-router.delete('/user-detail/delete/:username', userController.deleteUser)
 
 module.exports = router;

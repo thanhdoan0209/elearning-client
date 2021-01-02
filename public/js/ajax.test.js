@@ -110,19 +110,5 @@
     })
 })(jQuery);
 
-function popUpDelete(classCode) {
-    console.log(classCode)
-    var r = confirm("Do you want to delete a class ?");
-    if (r == true) {
-        // $.ajax({
-        //     url: "/classes/class-detail/delete/" + classCode,
-        //     method: "DELETE",
-        //     data: classCode,
-        //     success: (res) => {
-        //         console.log(res)
-        //         document.getElementById(classCode).remove();
-        //     }
-        // })
-    } else {
-    }
-};
+
+

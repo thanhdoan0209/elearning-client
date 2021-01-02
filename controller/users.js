@@ -62,7 +62,8 @@ userController.getUserDetail = async (req, res, next) => {
         })
         console.log(username)
         console.log(listClasses)
-        res.render('../views/users/userDetail', {
+        res.render('layout', {
+            contentPage: '../views/users/userDetail',
             userDetail: userDetail,
             classesList: listClasses
         })
@@ -70,48 +71,8 @@ userController.getUserDetail = async (req, res, next) => {
         console.log(err);
         throw err;
     }
+
 }
-
-userController.getEditUserDetail = async (req, res, next) => {
-    const username = req.params.username;
-    try {
-        const userDetail = await user.findOne({
-            username: username
-        });
-
-        res.render('layout', {
-            contentPage: '../views/users/editUser',
-            userDetail: userDetail,
-        })
-    } catch (err) {
-        console.log(err);
-        throw err;
-    }
-}
-
-userController.postEditUserDetail = async (req, res, next) => {
-    const userData = req.body
-    const username = req.params.username;
-    try {
-        const userDetail = await user.findOne({
-            username: username
-        });
-        userDetail.email = userData.email;
-        userDetail.firstName = userData.firstName;
-        userDetail.lastName = userData.lastName;
-        userDetail.phone = userData.phone;
-        userDetail.address = userData.address;
-
-        const userResult = await userDetail.save();
-        console.log(userResult)
-        res.redirect("/users/")
-
-    } catch (err) {
-        console.log(err);
-        throw err;
-    }
-}
-
 
 userController.getInviteUser = async (req, res, next) => {
     const query = req.query;
@@ -231,87 +192,4 @@ userController.postInviteTeacher = async (req, res, next) => {
     }
 }
 
-userController.postSetTeacher = async (req, res, next) => {
-    const username = req.body.username;
-    console.log(username)
-    try {
-
-        let userDetail = await user.findOne({
-            username: username
-        })
-        if (userDetail.teacher) {
-            res.send("User had been teacher")
-        } else {
-            userDetail.teacher = true;
-            const userResult = await userDetail.save()
-            console.log(userResult)
-            res.send({
-                username: userResult.username,
-                email: userResult.email,
-                firstName: userResult.firstName,
-                lastName: userResult.lastName,
-                phone: userResult.phone,
-                address: userResult.address
-            })
-        }
-
-    } catch (err) {
-        console.log(err);
-        throw err;
-    }
-}
-
-userController.postUnsetTeacher = async (req, res, next) => {
-    const username = req.body.username;
-    console.log(username)
-    try {
-
-        let userDetail = await user.findOne({
-            username: username
-        })
-        const listClasses = await classes.find({
-            classTeachers: { $in: [username] }
-        })
-        listClasses.forEach((i) => {
-            const k = i.classTeachers.indexOf(username)
-            if (k != -1) {
-                i.classTeachers.splice(k, 1)
-            }
-            i.save()
-        })
-        userDetail.teacher = false;
-        const userResult = await userDetail.save()
-        console.log(userResult)
-        res.send("Unset teacher successfully")
-    } catch (err) {
-        console.log(err);
-        throw err;
-    }
-}
-
-userController.deleteUser = async (req, res, next) => {
-    const username = req.body.username;
-    console.log(username)
-    try {
-        const listClasses = await classes.find({
-            classStudents: { $in: [username] }
-        })
-        listClasses.forEach((i) => {
-            const j = i.classStudents.indexOf(username)
-            i.classStudents.splice(j, 1)
-            const k = i.classTeachers.indexOf(username)
-            if (k != -1) {
-                i.classTeachers.splice(k, 1)
-            }
-            i.save()
-        })
-        await user.deleteOne({
-            username: username
-        });
-        res.send("User deleted successfully")
-    } catch (err) {
-        console.log(err);
-        throw err;
-    }
-}
 module.exports = userController;

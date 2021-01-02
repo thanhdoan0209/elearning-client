@@ -1,333 +1,233 @@
 <!DOCTYPE html>
+
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		/* Create two equal columns that floats next to each other */
+		.column {
+			float: left;
+			width: 33.3%;
+			padding: 10px;
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		/* Style the buttons */
+		.btn {
+			border: none;
+			outline: none;
+			padding: 12px 16px;
+			background-color: #666;
+			cursor: pointer;
+		}
+
+		.btn:hover {
+			background-color: #ddd;
+		}
+
+		.btn.active {
+			background-color: #666;
+			color: white;
+		}
+	</style>
+
+</head>
 <html lang="en">
-<title>Elearning | Users</title>
 
-<body class="hold-transition sidebar-mini layout-fixed">
-	<div class="wrapper">
+<!--classes-3-columns23:37  -->
 
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
-			<!-- Content Header (Page header) -->
-			<section class="content-header">
-				<div class="container-fluid">
-					<div class="row mb-2">
-						<div class="col-sm-6">
-							<h1>Users</h1>
-						</div>
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-								<li class="breadcrumb-item active">Users</li>
-							</ol>
-						</div>
-					</div>
-				</div><!-- /.container-fluid -->
-			</section>
+<!-- <button onclick="myFunction()">Try it</button>
 
-			<!-- Main content -->
-			<section class="content">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-12">
-							<div class="card">
-								<div class="card-header">
-									<h3 class="card-title">Users with default features</h3>
-								</div>
-								<!-- /.card-header -->
-								<div class="card-body">
-									<table id="example1" class="table table-bordered table-striped">
-										<thead>
-											<tr>
-												<th>Email</th>
-												<th>Username</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Phone</th>
-												<th>Address</th>
-												<th>Actions</th>
-											</tr>
-										</thead>
-										<tbody>
-											<% for (var prop in usersList ) { %>
-												<tr id='<%= usersList[prop].username %>'>
-													<td>
-														<%= usersList[prop].email %>
-													</td>
-													<td>
-														<a href="/users/user-detail/<%= usersList[prop].username %>">
-															<%= usersList[prop].username %>
-														</a>
-													</td>
-													<td>
-														<%= usersList[prop].firstName %>
-													</td>
-													<td>
-														<%= usersList[prop].lastName %>
-													</td>
-													<td>
-														<%= usersList[prop].phone %>
-													</td>
-													<td>
-														<%= usersList[prop].address %>
-													</td>
-													<td>
-														<button type="button" class="btn btn-sm dropdown-toggle"
-															data-toggle="dropdown" data-offset="-52"
-															aria-expanded="false">
-															<i class="fas fa-bars"></i>
-														</button>
-														<div class="dropdown-menu" role="menu">
-															<a onclick="setTeacher('<%= usersList[prop].username %>')"
-																class="dropdown-item">Set Teacher</a>
-															<a href="/users/user-detail/edit/<%= usersList[prop].username %>"
-																class="dropdown-item">Edit user</a>
-															<a onclick="popUpDeleteUser('<%= usersList[prop].username %>')"
-																class="dropdown-item">Delete user</a>
-														</div>
-													</td>
-												</tr>
-												<% } %>
-										</tbody>
-										<tfoot>
-											<tr>
-												<th>Email</th>
-												<th>Username</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Phone</th>
-												<th>Address</th>
-												<th>Actions</th>
-											</tr>
-										</tfoot>
-									</table>
-								</div>
-								<!-- /.card-body -->
-							</div>
-							<!-- /.card -->
+<script>
+	function myFunction() {
+		var x = document.getElementById("primary");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+		var x = document.getElementById("primary1");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+	}
+</script> -->
 
-							<div class="card">
-								<div class="card-header">
-									<h3 class="card-title">Tearchers with default features</h3>
-								</div>
-								<!-- /.card-header -->
-								<div class="card-body">
-									<table id="example2" class="table table-bordered table-striped">
-										<thead>
-											<tr>
-												<th>Email</th>
-												<th>Username</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Phone</th>
-												<th>Address</th>
-												<th>Actions</th>
-											</tr>
-										</thead>
-										<tbody id='teachersList'>
-											<% for (var prop in usersList ) { %>
-												<% if (usersList[prop].teacher) { %>
-													<tr id="teacher-<%= usersList[prop].username %>">
-														<td>
-															<%= usersList[prop].email %>
-														</td>
-														<td>
-															<a
-																href="/users/user-detail/<%= usersList[prop].username %>">
-																<%= usersList[prop].username %>
-															</a>
-														</td>
-														<td>
-															<%= usersList[prop].firstName %>
-														</td>
-														<td>
-															<%= usersList[prop].lastName %>
-														</td>
-														<td>
-															<%= usersList[prop].phone %>
-														</td>
-														<td>
-															<%= usersList[prop].address %>
-														</td>
-														<td>
-															<button type="button" class="btn btn-sm dropdown-toggle"
-																data-toggle="dropdown" data-offset="-52"
-																aria-expanded="false">
-																<i class="fas fa-bars"></i>
-															</button>
-															<div class="dropdown-menu" role="menu">
-																<a onclick="unsetTeacher('<%= usersList[prop].username %>')"
-																	class="dropdown-item">Unset Teacher</a>
-																<a href="/users/user-detail/edit/<%= usersList[prop].username %>"
-																	class="dropdown-item">Edit user</a>
-																<a onclick="popUpDeleteUser('<%= usersList[prop].username %>')"
-																	class="dropdown-item">Delete user</a>
-															</div>
-														</td>
-													</tr>
-													<% } } %>
-										</tbody>
-										<tfoot>
-											<tr>
-												<th>Email</th>
-												<th>Username</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Phone</th>
-												<th>Address</th>
-												<th>Actions</th>
-											</tr>
-										</tfoot>
-									</table>
-								</div>
-								<!-- /.card-body -->
-							</div>
-							<!-- /.card -->
-						</div>
-						<!-- /.col -->
-					</div>
-					<!-- /.row -->
-				</div>
-				<!-- /.container-fluid -->
-			</section>
-			<!-- /.content -->
+<div class="breadcrumb-section">
+	<div class="container">
+		<div class="row">
+			<header class="entry-header">
+				<h1 class="entry-title">Danh sách người dùng</h1>
+			</header>
 		</div>
-		<!-- /.content-wrapper -->
-
-		<!-- Control Sidebar -->
-		<aside class="control-sidebar control-sidebar-dark">
-			<!-- Control sidebar content goes here -->
-		</aside>
-		<!-- /.control-sidebar -->
 	</div>
-	<!-- ./wrapper -->
+</div>
+<div class="page-spacer clearfix">
+	<div id="primary">
+		<div class="container">
+			<div class="row">
+				<main class="site-main col-xs-12 ">
+					<div class="school-classes inner-classes">
 
-	<!-- jQuery -->
-	<script src="/plugins/jquery/jquery.min.js"></script>
-	<!-- Bootstrap 4 -->
-	<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- DataTables  & Plugins -->
-	<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
-	<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-	<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-	<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-	<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-	<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-	<script src="/plugins/jszip/jszip.min.js"></script>
-	<script src="/plugins/pdfmake/pdfmake.min.js"></script>
-	<script src="/plugins/pdfmake/vfs_fonts.js"></script>
-	<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-	<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-	<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-	<!-- AdminLTE App -->
-	<script src="/js/adminlte.min.js"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script src="/js/demo.js"></script>
-	<!-- Page specific script -->
+
+						<div id="btnContainer">
+							<button class="btn" onclick="listView()"><i class="fa fa-bars"></i> List</button>
+							<button class="btn active" onclick="gridView()"><i class="fa fa-th-large"></i> Grid</button>
+						</div>
+						<br>
+						<div class="row">
+							<% for (var prop in usersList ) { %>
+							<div id="test" ,class="col-xs-12o col-sm-4 zom">
+
+								<div class="classes-info">
+									<div class="column"><img src="images/use_img/avatar.jpg" width="80" height="80" /><a
+											href="/users/user-detail/<%= usersList[prop].username %>"
+											style="font: 700 18px Montserrat,sans-serif;color: black;">
+											 <%= usersList[prop].firstName %> <%= usersList[prop].lastName %></a>
+										<p></p>
+									</div>
+								</div>
+
+							</div>
+							<% } %>
+						</div>
+					</div>
+
+
+				</main>
+			</div>
+		</div>
+	</div>
+	<div id="primary1" style="display:none">
+		<div class="container">
+			<div class="row">
+				<main id="main" class="site-main col-xs-12 ">
+					<div class="site-main col-xs-12 ">
+						<ul class="menu">
+							<li><a href="home-1.html#">Home</a></li>
+							<li><a href="home-1.html#">Shortcodes</a></li>
+							<li><a href="home-1.html#">about US</a></li>
+							<li><a href="home-1.html#">Blog</a></li>
+							<li><a href="home-1.html#">classes</a></li>
+							<li><a href="home-1.html#">Contact US</a></li>
+							<li><a href="home-1.html#">Teachers</a></li>
+							<li><a href="home-1.html#">Privacy Policy</a></li>
+							<li><a href="home-1.html#">Events</a></li>
+						</ul>
+
+					</div>
+				</main>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="login-form" style="display:none;">
+		<div class="row">
+			<h3>Login</h3>
+			<p>Please Login to Create a New Course</p>
+			<form id="login" action="classes-3-columns.html#">
+				<input name="email" type="text" placeholder="Email or Username">
+				<input name="password" type="text" placeholder="Password">
+				<div class="row remeber">
+					<label><input name="rember" type="checkbox" value=""> Remember Me</label>
+					<a href="classes-3-columns.html#">Forgot Password?</a>
+				</div>
+				<div class="text-center button">
+					<input name="Login" type="button" value="Login Now">
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="register-form" style="display:none;">
+		<div class="row">
+			<h3>Register</h3>
+			<p>Please Register to Create a New Account</p>
+			<form id="register" action="classes-3-columns.html#">
+				<input name="name" type="text" placeholder="Name">
+				<input name="username" type="text" placeholder="Username">
+				<input name="email" type="text" placeholder="Email">
+				<input name="password" type="text" placeholder="Password">
+				<input name="confirmpassword" type="text" placeholder="Confirm Password">
+				<div class="row new-login">
+					Already have an account? <a href="classes-3-columns.html#">Login to your account! </a>
+				</div>
+				<div class="text-center button">
+					<input name="create-account" type="button" value="Create an Account">
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<script src="js/theme.js"></script>
+
+	<script type="text/javascript" src="vendor/fancybox/js/jquery.fancybox.js"></script>
+	<script type="text/javascript" src="vendor/fancybox/js/custom.fancybox.js"></script>
 	<script>
-		$(function () {
-			$("#example1").DataTable({
-				"responsive": true, "lengthChange": false, "autoWidth": false,
-				"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-			}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-			$('#example2').DataTable({
-				"paging": true,
-				"lengthChange": false,
-				"searching": false,
-				"ordering": true,
-				"info": true,
-				"autoWidth": false,
-				"responsive": true,
+		jQuery.noConflict();
+		jQuery('.fancybox').fancybox();
+	</script>
+	<script type="text/javascript">
+		jQuery.noConflict();
+		jQuery(document).ready(function ($) {
+			$('#list').click(function (event) { event.preventDefault(); $('#products .courses').addClass('list-group-item'); });
+			$('#grid').click(function (event) {
+				event.preventDefault(); $('#products .courses').removeClass('list-group-item');
+
+				$('#products .courses').addClass('grid-group-item');
 			});
 		});
 	</script>
 	<script>
-		function popUpDeleteUser(username) {
-			console.log(username)
-			const data = {
-				username: username
+		// Get the elements with class="column"
+		var elements = document.getElementsByClassName("column");
+
+		// Declare a loop variable
+		var i;
+
+		// List View
+		function listView() {
+			for (i = 0; i < elements.length; i++) {
+				elements[i].style.width = "100%";
 			}
-			var r = confirm("Do you want to delete a user ?");
-			if (r == true) {
-				$.ajax({
-					url: "/users/user-detail/delete/" + username,
-					method: "DELETE",
-					data: data,
-					success: (res) => {
-						console.log(res)
-						document.getElementById(username).remove();
-						document.getElementById("teacher-" + username).remove();
-					}
-				})
-			} else {
+		}
+
+		// Grid View
+		function gridView() {
+			for (i = 0; i < elements.length; i++) {
+				elements[i].style.width = "33.3%";
 			}
-		};
+		}
+
+		/* Optional: Add active class to the current button (highlight it) */
+		var container = document.getElementById("btnContainer");
+		var btns = container.getElementsByClassName("btn");
+		for (var i = 0; i < btns.length; i++) {
+			btns[i].addEventListener("click", function () {
+				var current = document.getElementsByClassName("active");
+				current[0].className = current[0].className.replace(" active", "");
+				this.className += " active";
+			});
+		}
 	</script>
-	<script>
-		function setTeacher(username) {
-			console.log(username)
-			const data = {
-				username: username
-			}
-			var r = confirm("Do you want to set teacher ?");
-			if (r == true) {
-				$.ajax({
-					url: "/users/user-detail/set-teacher/" + username,
-					method: "post",
-					data: data,
-					success: (res) => {
-						console.log(res)
-						if (res != "User had been teacher") {
-							$('#teachersList').prepend(
-								"<tr id='teacher-" + res.username + "'>\
-								<td> " + res.email + " </td>\
-								<td><a href='/users/user-detail/" + res.username + "'>\
-									" + res.username + "</a></td>\
-								<td> " + res.firstName + " </td>\
-								<td> " + res.lastName + " </td>\
-								<td> " + res.phone + " </td>\
-								<td> " + res.address + " </td>\
-								<td> <button type='button' class='btn btn-sm dropdown-toggle' \
-									data-toggle='dropdown' data-offset='-52' aria-expanded='false'>\
-									<i class='fas fa-bars'></i> \
-									</button> <div class='dropdown-menu' role='menu'> \
-									<a onclick='unsetTeacher('" + res.username + "')'\
-										class='dropdown-item'>Unset Teacher</a>\
-									<a href='/users/user-detail/edit/" + res.username + "'\
-										class='dropdown-item'>Edit user</a>\
-									<a onclick='popUpDeleteUser('" + res.username + "')'\
-										class='dropdown-item'>Delete user</a></div></td></tr>"
-							)
-						}
-					}
-				})
-			} else {
-			}
-		};
-	</script>
-	<script>
-		function unsetTeacher(username) {
-			console.log(username)
-			const data = {
-				username: username
-			}
-			var r = confirm("Do you want to unset teacher ?");
-			if (r == true) {
-				$.ajax({
-					url: "/users/user-detail/unset-teacher/" + username,
-					method: "post",
-					data: data,
-					success: (res) => {
-						console.log(res)
-						document.getElementById("teacher-" + username).remove();
-					}
-				})
-			} else {
-			}
-		};
-	</script>
-	<script>
-		$('#usersSidebar').addClass('active');
-	</script>
-</body>
+	</body>
+
+	<!--classes-3-columns23:37  -->
 
 </html>

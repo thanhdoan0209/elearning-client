@@ -45,25 +45,7 @@ classController.createClass = async (req, res, next) => {
     try {
         const classes = await newClass.save();
         console.log(classes)
-        res.redirect("/classes/")
-    } catch (err) {
-        if (err)
-            console.log(err);
-    }
-}
-
-classController.postEditClass = async (req, res, next) => {
-    const classData = req.body
-    let classExist = await classes.findOne({
-        classCode: req.params.classCode
-    })
-    try {
-        classExist.classCode = classData.classCode;
-        classExist.className = classData.className;
-        classExist.numberOfStudent = classData.numberOfStudent;
-        const classResult = await classExist.save();
-        console.log(classResult)
-        res.redirect("/classes/class-detail/" + classData.classCode)
+        res.redirect("/classes/class-detail/" + classes.classCode)
     } catch (err) {
         if (err)
             console.log(err);
@@ -79,28 +61,21 @@ classController.getClassDetail = async (req, res, next) => {
         const listComments = await comments.find({
             classCode: classCode
         })
+        console.log(listComments)
+
+        let slistComments = new Array()
+        let j = listComments.length - 1;
+        for (var i = 0; i < listComments.length; i++) {
+            slistComments[i] = listComments[j];
+            j--;
+        }
+
+        console.log(slistComments)
 
         res.render('layout', {
-            contentPage: '../views/classes/classDetailAdmin',
+            contentPage: '../views/classes/classDetail',
             classDetail: classDetail,
-            listComments: listComments.reverse()
-        })
-    } catch (err) {
-        console.log(err);
-        throw err;
-    }
-}
-
-classController.getEditClassDetail = async (req, res, next) => {
-    const classCode = req.params.classCode;
-    try {
-        const classDetail = await classes.findOne({
-            classCode: classCode
-        });
-
-        res.render('layout', {
-            contentPage: '../views/classes/editClass',
-            classDetail: classDetail,
+            listComments: slistComments
         })
     } catch (err) {
         console.log(err);
@@ -383,19 +358,6 @@ classController.getAdduser = async (req, res, next) => {
         console.log(err);
         throw err;
     }
-}
 
-classController.deleteClass = async (req, res, next) => {
-    const classCode = req.body.classCode;
-    console.log(classCode)
-    try {
-        await classes.deleteOne({
-            classCode: classCode
-        });
-        res.send("Class deleted successfully")
-    } catch (err) {
-        console.log(err);
-        throw err;
-    }
 }
 module.exports = classController;

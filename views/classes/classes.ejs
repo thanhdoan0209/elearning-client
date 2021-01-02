@@ -1,196 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Elearning | Classes</title>
+
+<!--classes-3-columns23:37  -->
+
+<!--button onclick="myFunction()">Try it</button>
+
+<script>
+	function myFunction() {
+		var x = document.getElementById("antt");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+		var x = document.getElementById("primary1");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+	}
+</script-->
+
+<body>
 
 
-<body class="hold-transition sidebar-mini layout-fixed">
-	<div class="wrapper">
-
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
-
-			<!-- Content Header (Page header) -->
-			<section class="content-header">
-				<div class="container-fluid">
-					<div class="row mb-2">
-						<div class="col-sm-6">
-							<h1>Classes</h1>
-						</div>
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-								<li class="breadcrumb-item active">Classes</li>
-							</ol>
-						</div>
-					</div>
-				</div><!-- /.container-fluid -->
-			</section>
-			<!-- Main content -->
-			<section class="content">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-12">
-							<div class="card">
-								<div class="card-header">
-									<h3 class="card-title">Classes with default features</h3>
-								</div>
-								<!-- /.card-header -->
-								<div class="card-body">
-									<table id="example1" class="table table-bordered table-striped">
-										<thead>
-											<tr>
-												<th>Class Code</th>
-												<th>Class Name</th>
-												<th>No. Students</th>
-												<th>Teachers</th>
-												<th>Students</th>
-												<th>Actions</th>
-											</tr>
-										</thead>
-										<tbody>
-											<% for (var prop in classesList ) { %>
-												<tr id="<%= classesList[prop].classCode %>">
-													<td>
-														<a
-															href="/classes/class-detail/<%= classesList[prop].classCode %>">
-															<%= classesList[prop].classCode %>
-														</a>
-													</td>
-													<td>
-														<%= classesList[prop].className %>
-													</td>
-													<td>
-														<%= classesList[prop].numberOfStudent %>
-													</td>
-													<td>
-														<%= classesList[prop].classTeachers %>
-													</td>
-													<td>
-														<% for (var prop_student in classesList[prop].classStudents ) {
-															%>
-															<a>
-																<%= classesList[prop].classStudents[prop_student] %> ;
-															</a>
-															<% } %>
-													</td>
-													<td>
-														<button type="button" class="btn btn-sm dropdown-toggle"
-															data-toggle="dropdown" data-offset="-52"
-															aria-expanded="false">
-															<i class="fas fa-bars"></i>
-														</button>
-														<div class="dropdown-menu" role="menu">
-															<a href="/classes/class-detail/edit/<%= classesList[prop].classCode %>"
-																class="dropdown-item">Edit class</a>
-															<a id=''
-																onclick="popUpDeleteClass('<%= classesList[prop].classCode %>')"
-																class="dropdown-item">Delete class</a>
-														</div>
-													</td>
-												</tr>
-												<% } %>
-										</tbody>
-										<tfoot>
-											<tr>
-												<th>Class Code</th>
-												<th>Class Name</th>
-												<th>No. Students</th>
-												<th>Teachers</th>
-												<th>Students</th>
-												<th>Actions</th>
-											</tr>
-										</tfoot>
-									</table>
-								</div>
-								<!-- /.card-body -->
-							</div>
-							<!-- /.card -->
-						</div>
-						<!-- /.col -->
-					</div>
-					<!-- /.row -->
-
-				</div>
-				<!-- /.container-fluid -->
-			</section>
-			<!-- /.content -->
+	<div class="breadcrumb-section">
+		<div class="container">
+			<div class="row">
+				<header class="entry-header">
+					<h1 class="entry-title">Danh sách lớp</h1>
+				</header>
+			</div>
 		</div>
-		<!-- /.content-wrapper -->
-
-		<!-- Control Sidebar -->
-		<aside class="control-sidebar control-sidebar-dark">
-			<!-- Control sidebar content goes here -->
-		</aside>
-		<!-- /.control-sidebar -->
 	</div>
-	<!-- ./wrapper -->
+	<div class="page-spacer clearfix">
+		<div id="primary">
+			<div class="container">
+				<div class="row">
+					<main class="site-main col-xs-12 ">
+						<div class="school-classes inner-classes">
 
-	<script>
+							<section class="our-features">
+								<% if (isAuthenticated) { %>
+									<a href="/classes/create-class" class="btn btn-orange btn-medium">
+										Tạo lớp học
+									</a>
+									<% } %>
 
-	</script>
+										<input type="text" id="searchClass" onkeyup="myFunction1()"
+											placeholder="Tìm kiếm lớp.." title="Type in a class">
+							</section>
 
-	<!-- jQuery -->
-	<script src="/plugins/jquery/jquery.min.js"></script>
-	<!-- Bootstrap 4 -->
-	<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- DataTables  & Plugins -->
-	<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
-	<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-	<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-	<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-	<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-	<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-	<script src="/plugins/jszip/jszip.min.js"></script>
-	<script src="/plugins/pdfmake/pdfmake.min.js"></script>
-	<script src="/plugins/pdfmake/vfs_fonts.js"></script>
-	<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-	<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-	<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-	<!-- AdminLTE App -->
-	<script src="/js/adminlte.min.js"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script src="/js/demo.js"></script>
-	<!-- Page specific script -->
-	<script>
-		$(function () {
-			$("#example1").DataTable({
-				"responsive": true, "lengthChange": false, "autoWidth": false,
-				"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-			}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-			$('#example2').DataTable({
-				"paging": true,
-				"lengthChange": false,
-				"searching": false,
-				"ordering": true,
-				"info": true,
-				"autoWidth": false,
-				"responsive": true,
-			});
-		});
-	</script>
-	<script>
-		function popUpDeleteClass(classCode) {
-			console.log(classCode)
-			const data = {
-				classCode: classCode
-			}
-			var r = confirm("Do you want to delete a class ?");
-			if (r == true) {
-				$.ajax({
-					url: "/classes/class-detail/delete/" + classCode,
-					method: "DELETE",
-					data: data,
-					success: (res) => {
-						console.log(res)
-						document.getElementById(classCode).remove();
-					}
-				})
-			}
-		};
-	</script>
-	<script>
-		$('#classesSidebar').addClass('active');
-	</script>
+							<% for (var prop in classesList ) { %>
+								<div id="<%= classesList[prop].className %>" , class="col-xs-12 col-sm-4 zoom">
+									<div class="classes">
+										<a id="pic1" , href="classes-3-columns.html#" class="img-thumb">
+											<figure>
+												<img src="images/use_img/course_img2.png" alt="" />
+											</figure>
+										</a>
+										<div class="classes-info">
+											<h3><a href="/classes/class-detail/<%= classesList[prop].classCode %>">
+													<%= classesList[prop].className %>
+												</a>
+											</h3>
+											<p></p>
+										</div>
+									</div>
+								</div>
+								<% } %>
+
+									<div class="pagination">
+										<span class="page-numbers current">1</span>
+										<a href="classes-3-columns.html#" class="page-numbers">2</a>
+										<a href="classes-3-columns.html#" class="page-numbers">3</a>
+										<a href="classes-3-columns.html#" class="next page-numbers"><i
+												class="fa fa-angle-right"></i></a>
+									</div>
+					</main>
+				</div>
+			</div>
+		</div>
+		<div id="primary1" style="display:none;">
+			<div class="container">
+				<div class="row">
+					<main id="main" class="site-main col-xs-12 ">
+						<div class="site-main col-xs-12 ">
+							<ul id="menu">
+								<% for (var prop in classesList ) { %>
+									<li><a href="/classes/class-detail/<%= classesList[prop].classCode %>">
+											<%= classesList[prop].className %>
+										</a>
+									</li>
+									<% } %>
+							</ul>
+
+						</div>
+					</main>
+				</div>
+			</div>
+
+		</div>
+
+		<div id="login-form" style="display:none;">
+			<div class="row">
+				<h3>Login</h3>
+				<p>Please Login to Create a New Course</p>
+				<form id="login" action="classes-3-columns.html#">
+					<input name="email" type="text" placeholder="Email or Username">
+					<input name="password" type="text" placeholder="Password">
+					<div class="row remeber">
+						<label><input name="rember" type="checkbox" value=""> Remember Me</label>
+						<a href="classes-3-columns.html#">Forgot Password?</a>
+					</div>
+					<div class="text-center button">
+						<input name="Login" type="button" value="Login Now">
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div id="register-form" style="display:none;">
+			<div class="row">
+				<h3>Register</h3>
+				<p>Please Register to Create a New Account</p>
+				<form id="register" action="classes-3-columns.html#">
+					<input name="name" type="text" placeholder="Name">
+					<input name="username" type="text" placeholder="Username">
+					<input name="email" type="text" placeholder="Email">
+					<input name="password" type="text" placeholder="Password">
+					<input name="confirmpassword" type="text" placeholder="Confirm Password">
+					<div class="row new-login">
+						Already have an account? <a href="classes-3-columns.html#">Login to your account! </a>
+					</div>
+					<div class="text-center button">
+						<input name="create-account" type="button" value="Create an Account">
+					</div>
+				</form>
+			</div>
+		</div>
 </body>
+
+<script>
+
+</script>
+<script>
+	function myFunction1() {
+		var input, filter, ul, li, a, i, txtValue;
+		input = document.getElementById("searchClass");
+		filter = input.value.toUpperCase();
+		ul = document.getElementById("menu");
+		li = ul.getElementsByTagName("li");
+		for (i = 0; i < li.length; i++) {
+			a = li[i].getElementsByTagName("a")[0];
+			txtValue = a.textContent || a.innerText;
+			var x = document.getElementById(txtValue);
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				x.style.display = "";
+				//li[i].style.display = "";
+			} else {
+				x.style.display = "none";
+				//li[i].style.display = "none";
+			}
+		}
+	}
+</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script src="js/theme.js"></script>
+
+<script type="text/javascript" src="vendor/fancybox/js/jquery.fancybox.js"></script>
+<script type="text/javascript" src="vendor/fancybox/js/custom.fancybox.js"></script>
+<script>
+	jQuery.noConflict();
+	jQuery('.fancybox').fancybox();
+</script>
+<script type="text/javascript">
+	jQuery.noConflict();
+	jQuery(document).ready(function ($) {
+		$('#list').click(function (event) { event.preventDefault(); $('#products .courses').addClass('list-group-item'); });
+		$('#grid').click(function (event) {
+			event.preventDefault(); $('#products .courses').removeClass('list-group-item');
+
+			$('#products .courses').addClass('grid-group-item');
+		});
+	});
+</script>
+
+<!--classes-3-columns23:37  -->
 
 </html>

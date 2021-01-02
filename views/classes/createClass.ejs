@@ -1,113 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+<body>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Class Add</title>
-
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="/css/adminlte.min.css">
-</head>
-
-<body class="hold-transition sidebar-mini layout-fixed">
-    <!-- Site wrapper -->
-    <div class="wrapper">
-        <!-- Navbar -->
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Class Add</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                                <li class="breadcrumb-item"><a href="/classes">classes</a></li>
-                                <li class="breadcrumb-item active">Class Add</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
-
-            <!-- Main content -->
-            <section class="content">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">General</h3>
-                            </div>
-                            <div class="card-body">
-                                <form name="createClass" id="student-settings" method="post">
-
-                                    <div class="form-group">
-                                        <label for="inputName">Class Name</label>
-                                        <input type="text" name="className" class="form-control" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputClientCompany">Class Code</label>
-                                        <input type="text" name="classCode" class="form-control" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputClassLeader">Number of Students</label>
-                                        <input type="text" name="numberOfStudent" class="form-control">
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <a href="/classes" class="btn btn-secondary">Cancel</a>
-                                            <input type="submit" value="Create new Class" class="btn btn-success">
-                                        </div>
-                                    </div>
-                                </form>
-
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                    </div>
-
-                </div>
-
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.1.0-rc
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <header class="entry-header">
+                    <h1 class="entry-title">Create Class</h1>
+                </header>
             </div>
-            <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
-        </footer>
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+        </div>
     </div>
-    <!-- ./wrapper -->
+    <div class="page-spacer clearfix">
+        <div id="primary" class="content-area">
+            <div class="container">
+                <div class="row">
+                    <main id="main" class="site-main col-xs-12">
+                        <div class="col-xs-12 col-sm-10 register-form form clearfix">
+                            <h3>Create class</h3>
+                            <form name="loginform" id="student-settings" class="student-settings" method="post">
+                                <label>Class Name<input name="className" value="" type="text"></label>
+                                <label>Class Code<input name="classCode" value="" type="text"></label>
+                                <label>Number of Student<input name="numberOfStudent" value=0 type="text"></label>
+                                <input name="submit" class="btn btn-default pull-right" value="Create"
+                                    style="margin-top: 80px;" type="submit">
+                            </form>
+                        </div>
 
-    <!-- jQuery -->
-    <script src="/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="/js/demo.js"></script>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="col-xs-12 col-sm-8">
+                        <h3>Remaining essentially unchanged.</h3>
+                        <p>When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        </p>
+                    </div>
+                    <a href="register.html#" class="btn btn-medium btn-default pull-right">Know More <i
+                            class="lnr lnr-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>
+
+<!--login23:54  -->
 
 </html>
