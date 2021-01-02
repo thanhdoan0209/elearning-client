@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Elearning | Dashboard</title>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Dashboard</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard</li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>
+                                        <%= classesList.length %>
+                                    </h3>
+
+                                    <p>Classes</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="/classes" class="small-box-footer">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>
+                                        <%= teachers %>
+                                    </h3>
+                                    <p>Teachers</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="/users" class="small-box-footer">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>
+                                        <%= noOfUsers %>
+                                    </h3>
+
+                                    <p>User Registrations</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                                <a href="/users" class="small-box-footer">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>
+                                        <%= comments %>
+                                    </h3>
+
+                                    <p>Comments</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-comments"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i
+                                        class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Main row -->
+                    <div class="row">
+
+                        <!-- Left col -->
+                        <section class="col-lg-7 connectedSortable">
+
+                            <!-- Custom tabs (Charts with tabs)-->
+
+                            <div class="card">
+                                <div class="card-header border-transparent">
+                                    <h3 class="card-title">Latest Classes</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <table class="table m-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Code</th>
+                                                    <th>Name</th>
+                                                    <th>Teachers</th>
+                                                    <th>Number of Students</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% for (var prop in classesList ) { %>
+                                                    <tr>
+                                                        <td><a
+                                                                href="/classes/class-detail/<%= classesList[prop].classCode %>">
+                                                                <%= classesList[prop].classCode %>
+                                                            </a></td>
+                                                        <td>
+                                                            <%= classesList[prop].className %>
+                                                        </td>
+                                                        <td><span class="badge badge-success">
+                                                                <%= classesList[prop].classTeachers %>
+                                                            </span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20">
+                                                                <%= classesList[prop].numberOfStudent %>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <% } %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer clearfix">
+                                    <a href="/classes/create-class" class="btn btn-sm btn-info float-left">Add New
+                                        Class</a>
+                                    <a href="/classes" class="btn btn-sm btn-secondary float-right">View All
+                                        Classes</a>
+                                </div>
+                                <!-- /.card-footer -->
+                            </div>
+                        </section>
+                        <!-- /.Left col -->
+
+                        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                        <section class="col-lg-5 connectedSortable">
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Latest Members</h3>
+
+                                    <div class="card-tools">
+                                        <span class="badge badge-danger">
+                                            <%= usersList.length %> New Members
+                                        </span>
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body p-0">
+                                    <ul class="users-list clearfix">
+
+                                        <% for (var prop in usersList ) { %>
+
+                                            <li>
+                                                <img src="/images/use_img/avatar-370.png" alt="User Image">
+                                                <a class="users-list-name"
+                                                    href="/users/user-detail/<%= usersList[prop].username %>">
+                                                    <%= usersList[prop].firstName %>
+                                                        <%= usersList[prop].lastName %>
+                                                </a>
+                                                <span class="users-list-date">Today</span>
+                                            </li>
+
+                                            <% } %>
+                                    </ul>
+                                    <!-- /.users-list -->
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer text-center">
+                                    <a href="/users">View All Users</a>
+                                </div>
+                                <!-- /.card-footer -->
+                            </div>
+                        </section>
+                        <!-- right col -->
+                    </div>
+                    <!-- /.row (main row) -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="/plugins/moment/moment.min.js"></script>
+    <script src="/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="/js/pages/dashboard.js"></script>
+
+    <script>
+        $('#dashboardSidebar').addClass('active');
+    </script>
+</body>
+
+</html>

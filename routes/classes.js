@@ -24,9 +24,13 @@ router.post('/class-detail/:classCode/courses/submit-exercise/:_id', classContro
 
 router.post('/class-detail/:classCode', classController.postComments);
 
+router.post('/class-detail/edit/:classCode', classController.postEditClass);
+
 router.post('/class-detail/:classCode/courses/:_id', classController.postAddExercise);
 
 // get đi tới url này 
+router.get('/class-detail/edit/:classCode', classController.getEditClassDetail);
+
 router.get('/class-detail/:classCode', classController.getClassDetail);
 
 router.get('/class-detail/:classCode/courses', classController.getClassDetailCourses);
@@ -45,5 +49,7 @@ router.get('/user', async (req, res, next) => {
   const users = await user.find();
   res.send(users);
 })
+
+router.delete('/class-detail/delete/:classcode', classController.deleteClass)
 
 module.exports = router;

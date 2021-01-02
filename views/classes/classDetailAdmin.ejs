@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title>
+  <%= classDetail.className %>
+</title>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>
+                Class Detail
+              </h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">
+                  <%= classDetail.className %>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3">
+
+              <!-- Profile Image -->
+              <div class="card card-primary card-outline">
+                <div class="card-body box-profile">
+                  <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle" src="/img/course_img5.png"
+                      alt="User profile picture">
+                  </div>
+
+                  <h3 class="profile-username text-center">
+                    <%= classDetail.className %>
+                  </h3>
+
+                  <p class="text-muted text-center">Code: <%= classDetail.classCode %>
+                  </p>
+
+                  <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item">
+                      <b>Teachers</b> <a class="float-right">
+                        <%= classDetail.classTeachers.length %>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Students</b> <a class="float-right">
+                        <%= classDetail.classStudents.length %>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Comments</b> <a class="float-right">
+                        <%= listComments.length %>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <a onclick="joinClass('<%= username %>', '<%= classDetail.classCode %>')"
+                    class="btn btn-primary btn-block"><b>Join Class</b></a>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+
+              <!-- About Me Box -->
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">About Me</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <strong><i class="fas fa-book mr-1"></i> Education</strong>
+
+                  <p class="text-muted">
+                    B.S. in Computer Science from the University of Tennessee at Knoxville
+                  </p>
+
+                  <hr>
+
+                  <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+
+                  <p class="text-muted">Tp Ho Chi Minh, Viet Nam</p>
+
+                  <hr>
+
+                  <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+
+                  <p class="text-muted">
+                    <span class="tag tag-danger">UI Design</span>
+                    <span class="tag tag-success">Coding</span>
+                    <span class="tag tag-info">Javascript</span>
+                    <span class="tag tag-warning">PHP</span>
+                    <span class="tag tag-primary">Node.js</span>
+                  </p>
+
+                  <hr>
+
+                  <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+
+                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim
+                    neque.</p>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+              <div class="card">
+                <div class="card-header p-2">
+                  <ul class="nav nav-pills">
+                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#members" data-toggle="tab">Members</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+                  </ul>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="active tab-pane" id="activity">
+                      <!-- Post -->
+                      <% for (var prop in listComments ) { %>
+                        <div class="post">
+                          <div class="user-block">
+                            <img class="img-circle img-bordered-sm" src="/img/avatar-370.png" alt="user image">
+                            <span class="username">
+                              <a href="/users/user-detail/<%=listComments[prop].user%>">
+                                <%=listComments[prop].fullname %>
+                              </a>
+                              <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                            </span>
+                            <span class="description">
+                              <%=listComments[prop].createDate %>
+                            </span>
+                          </div>
+                          <!-- /.user-block -->
+                          <p>
+                            <%=listComments[prop].text %>
+                          </p>
+
+                          <p>
+                            <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
+                            <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
+                            <span class="float-right">
+                              <a href="#" class="link-black text-sm">
+                                <i class="far fa-comments mr-1"></i> Comments (5)
+                              </a>
+                            </span>
+                          </p>
+
+                          <form class="form-horizontal">
+                            <div class="input-group input-group-sm mb-0">
+                              <input class="form-control form-control-sm" placeholder="Response">
+                              <div class="input-group-append">
+                                <button type="submit" class="btn btn-danger">Send</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <% } %>
+
+                    </div>
+                    <!-- /.tab-pane -->
+
+                    <div class="tab-pane" id="members">
+                      <!-- Post -->
+                      <h3>Teachers</h3>
+                      <% for (var prop in classDetail.classTeachers ) { %>
+                        <div class="user-block">
+                          <img class="img-circle img-bordered-sm" src="/img/avatar-370.png" alt="user image">
+                          <span class="username">
+                            <a href="/users/user-detail/<%= classDetail.classTeachers[prop] %>">
+                              <%= classDetail.classTeachers[prop] %> &emsp; &emsp; &emsp;
+                            </a>
+                            <label></label>
+                          </span>
+                          <span class="description">
+                            <br>
+                          </span>
+                        </div>
+                        <% } %>
+                          <br> <br>
+                          <h3>Students</h3>
+                          <% for (var prop in classDetail.classStudents ) { %>
+                            <div class="user-block">
+                              <img class="img-circle img-bordered-sm" src="/img/avatar-370.png" alt="user image">
+                              <span class="username">
+                                <a href="/users/user-detail/<%= classDetail.classStudents[prop] %>">
+                                  <%= classDetail.classStudents[prop] %>
+                                </a>
+                              </span>
+                            </div> <br> <br>
+                            <% } %>
+
+                    </div>
+
+                    <div class="tab-pane" id="settings">
+                      <form class="form-horizontal" action="/classes/class-detail/edit/<%= classDetail.classCode %>"
+                        method="POST">
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Class Name</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" name="className" id="inputName" placeholder="Name"
+                              value="<%= classDetail.className %>">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputEmail" class="col-sm-2 col-form-label">Class Code</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" name="classCode" id="inputEmail"
+                              placeholder="Class Code" , value="<%= classDetail.classCode %>">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputName2" class="col-sm-2 col-form-label">No. of Students</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" name="numberOfStudent" id="inputName2"
+                              placeholder="Name" value="<%= classDetail.numberOfStudent %>">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="offset-sm-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <!-- /.tab-pane -->
+                  </div>
+                  <!-- /.tab-content -->
+                </div><!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- jQuery -->
+  <script src="/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="/js/demo.js"></script>
+
+  <script>
+    function joinClass(username, classCode) {
+      console.log(username, classCode)
+      const data = {
+        username: username,
+        classCode: classCode
+      }
+      var r = confirm("Do you want to join the class ?");
+      if (r == true) {
+        $.ajax({
+          url: "/users/ajax-users/add",
+          method: "POST",
+          data: data,
+          success: (res) => {
+            console.log(res)
+            location.reload()
+          }
+        })
+      }
+    }
+  </script>
+</body>
+
+</html>

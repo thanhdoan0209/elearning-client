@@ -38,13 +38,24 @@ app.use(function (req, res, next) {
     res.locals.isAuthenticated = true;
     res.locals.name = req.user.firstName + req.user.lastName;
     res.locals.username = req.user.username;
-  } else res.locals.isAuthenticated = false;
+  } else {
+    res.locals.isAuthenticated = false;
+  }
   next();
 })
+
+app.all('*', function (req, res, next) {
+  if (req.isAuthenticated() || req.url === '/login') {
+    next();
+  } else {
+    res.redirect('/login')
+  }
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/classes', classesRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
