@@ -4,6 +4,7 @@ const classes = require('../models/classes');
 const exercises = require('../models/exercises');
 const submissions = require('../models/submissions')
 const comments = require('../models/comments')
+const user = require('../models/users')
 
 //https://www.npmjs.com/package/dotenv
 const cloudinary = require("cloudinary");
@@ -112,11 +113,14 @@ classController.postComments = async (req, res, next) => {
     var month = currentdate.getMonth() + 1
     var datetime = month + "/" + currentdate.getDate() + "/" + currentdate.getFullYear() + " - "
         + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
-
+    const userDetail = await user.findOne({
+        username: res.locals.username
+    });
     const newComments = new comments({
-        user: res.locals.username,
+        user: userDetail.username,
         classCode: req.params.classCode,
         createDate: datetime,
+        fullname: userDetail.firstName + userDetail.lastName,
         text: req.body.comment
     });
     try {

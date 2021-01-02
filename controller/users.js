@@ -33,6 +33,8 @@ userController.signUp = async (req, res, next) => {
             email: userData.email,
             firstName: userData.firstname,
             lastName: userData.lastname,
+            phone: userData.phone,
+            address: userData.address,
             teacher: teacher
         });
 
