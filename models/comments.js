@@ -8,6 +8,7 @@ var comments = new Schema({
         type: String,
         require: true
     },
+    fullname: String,
     classCode: {
         type: String,
         require: true

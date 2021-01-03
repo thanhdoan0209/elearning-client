@@ -33,6 +33,8 @@ userController.signUp = async (req, res, next) => {
             email: userData.email,
             firstName: userData.firstname,
             lastName: userData.lastname,
+            phone: userData.phone,
+            address: userData.address,
             teacher: teacher
         });
 
@@ -55,9 +57,15 @@ userController.getUserDetail = async (req, res, next) => {
         const userDetail = await user.findOne({
             username: username
         });
+        const listClasses = await classes.find({
+            classStudents: { $in: [username] }
+        })
+        console.log(username)
+        console.log(listClasses)
         res.render('layout', {
             contentPage: '../views/users/userDetail',
-            userDetail: userDetail
+            userDetail: userDetail,
+            classesList: listClasses
         })
     } catch (err) {
         console.log(err);
