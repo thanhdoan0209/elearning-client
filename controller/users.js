@@ -21,11 +21,6 @@ userController.getAllUser = async (req, res, next) => {
 
 userController.signUp = async (req, res, next) => {
     const userData = req.body
-    let teacher = false
-    if (userData.teacher == 'true') {
-        teacher = true
-    }
-
     try {
         const newUser = new user({
             username: userData.username,
@@ -35,7 +30,8 @@ userController.signUp = async (req, res, next) => {
             lastName: userData.lastname,
             phone: userData.phone,
             address: userData.address,
-            teacher: teacher
+            teacher: false,
+            admin: false
         });
 
         const userResult = await newUser.save();

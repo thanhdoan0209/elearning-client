@@ -20,6 +20,7 @@ var users = new Schema({
     firstName: String,
     lastName: String,
     teacher: Boolean,
+    admin: Boolean,
     password: {
         type: String,
         require: true

@@ -33,14 +33,17 @@
         <div class="tab-content">
 
           <section class="our-features">
-
-            <div class="dropdown">
-              <button id="buttonAddExercise" onclick="myFunction()" class="btn btn-orange btn-medium"> + Tạo </button>
-              <div id="myDropdown" class="dropdown-content">
-                <a href="/classes/class-detail/<%=classDetail.classCode%>/courses/add-exercise">Bài tập</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-              </div>
+            <div>
+              <% if (isAuthenticated) { %>
+                <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin) { %>
+                  <div class="dropdown">
+                    <button id="buttonAddExercise" onclick="myFunction()" class="btn btn-orange btn-medium"> + Tạo
+                    </button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <a href="/classes/class-detail/<%=classDetail.classCode%>/courses/add-exercise">Bài tập</a>
+                    </div>
+                  </div>
+                  <% } } %>
             </div>
 
             <div class="comments-area" id="comments">
@@ -75,7 +78,7 @@
                           </span>
                         </div>
                         <% if (isAuthenticated) { %>
-                          <% if (classDetail.classTeachers.indexOf(username) !=-1) { %>
+                          <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin) { %>
                             <a href="/classes/class-detail/<%=classDetail.classCode%>/courses/<%=listExercise[prop]._id%>"
                               class="comment-reply-link btn btn-default">Chi tiết</a>
                             <a href="/classes/class-detail/<%=classDetail.classCode%>/courses/management/<%=listExercise[prop]._id%>"

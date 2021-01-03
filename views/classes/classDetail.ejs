@@ -84,17 +84,18 @@
         <ul class="nav nav-tabs">
           <li class="active"><a href="/classes/class-detail/<%=classDetail.classCode%>"> Home </a></li>
           <% if (isAuthenticated) { %>
-            <li><a href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Bài tập </a></li>
-            <li><a href="/classes/class-detail/<%=classDetail.classCode%>/people"> Thành viên </a></li>
-            <% } %>
+            <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin) { %>
+              <li><a href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Bài tập </a></li>
+              <li><a href="/classes/class-detail/<%=classDetail.classCode%>/people"> Thành viên </a></li>
+              <% } } %>
         </ul>
 
         <div id="tab1" class="tab-pane fade in active">
-
           <section class="our-features">
             <% if (isAuthenticated) { %>
               <div onclick="commentform()" class="reply">
-                <p class="btn btn-orange btn-medium" style="font-weight: bold;	">(+) Thêm nội dung nào đó cho lớp học
+                <p class="btn btn-orange btn-medium" style="font-weight: bold;	">(+) Thêm nội dung nào đó cho lớp
+                  học
                   của bạn &emsp;</p>
               </div>
               <div id="mylocation"></div>
