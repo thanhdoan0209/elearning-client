@@ -32,7 +32,7 @@
 							</section>
 
 							<% for (var prop in classesList ) { %>
-								<div id="<%= classesList[prop].className %>" , class="col-xs-12 col-sm-4 zoom">
+								<div id= "<%= [prop]%>" , class="col-xs-12 col-sm-4 zoom">
 									<div class="classes">
 										<a id="pic1" , href="classes-3-columns.html#" class="img-thumb">
 											<figure>
@@ -134,7 +134,7 @@
 		for (i = 0; i < li.length; i++) {
 			a = li[i].getElementsByTagName("a")[0];
 			txtValue = a.textContent || a.innerText;
-			var x = document.getElementById(txtValue);
+			var x = document.getElementById(i);
 			if (txtValue.toUpperCase().indexOf(filter) > -1) {
 				x.style.display = "";
 				//li[i].style.display = "";
