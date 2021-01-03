@@ -119,7 +119,7 @@ classController.getClassDetailCourses = async (req, res, next) => {
             classCode: classCode
         });
         let listExercise
-        if (classDetail.classTeachers.indexOf(res.locals.username) != -1) {
+        if (classDetail.classTeachers.indexOf(res.locals.username) != -1 || res.locals.admin) {
             listExercise = await exercises.find({
                 classCode: classCode,
             })
