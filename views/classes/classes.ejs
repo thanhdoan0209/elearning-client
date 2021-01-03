@@ -31,7 +31,7 @@
 							</section>
 
 							<% for (var prop in classesList ) { %>
-								<div id= "<%= [prop]%>" , class="col-xs-12 col-sm-4 zoom">
+								<div id="<%= [prop]%>" , class="col-xs-12 col-sm-4 zoom">
 									<div class="classes">
 										<a id="pic1" , href="classes-3-columns.html#" class="img-thumb">
 											<figure>
@@ -143,21 +143,6 @@
 			}
 		}
 	}
-</script>
-<script>
-	jQuery.noConflict();
-	jQuery('.fancybox').fancybox();
-</script>
-<script type="text/javascript">
-	jQuery.noConflict();
-	jQuery(document).ready(function ($) {
-		$('#list').click(function (event) { event.preventDefault(); $('#products .courses').addClass('list-group-item'); });
-		$('#grid').click(function (event) {
-			event.preventDefault(); $('#products .courses').removeClass('list-group-item');
-
-			$('#products .courses').addClass('grid-group-item');
-		});
-	});
 </script>
 
 <!--classes-3-columns23:37  -->
