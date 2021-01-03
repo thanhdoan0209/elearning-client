@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<title>Danh sách người dùng</title>
 
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -88,19 +89,22 @@
 						<br>
 						<div class="row">
 							<% for (var prop in usersList ) { %>
-							<div id="test" ,class="col-xs-12o col-sm-4 zom">
+								<div id="test" ,class="col-xs-12o col-sm-4 zom">
 
-								<div class="classes-info">
-									<div class="column"><img src="images/use_img/avatar.jpg" width="80" height="80" /><a
-											href="/users/user-detail/<%= usersList[prop].username %>"
-											style="font: 700 18px Montserrat,sans-serif;color: black;">
-											 <%= usersList[prop].firstName %> <%= usersList[prop].lastName %></a>
-										<p></p>
+									<div class="classes-info">
+										<div class="column"><img src="images/use_img/avatar.jpg" width="80"
+												height="80" /><a
+												href="/users/user-detail/<%= usersList[prop].username %>"
+												style="font: 700 18px Montserrat,sans-serif;color: black;">
+												<%= usersList[prop].firstName %>
+													<%= usersList[prop].lastName %>
+											</a>
+											<p></p>
+										</div>
 									</div>
-								</div>
 
-							</div>
-							<% } %>
+								</div>
+								<% } %>
 						</div>
 					</div>
 
