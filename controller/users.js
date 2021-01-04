@@ -67,7 +67,46 @@ userController.getUserDetail = async (req, res, next) => {
         console.log(err);
         throw err;
     }
+}
 
+userController.getEditUser = async (req, res, next) => {
+    const username = req.params.username;
+    try {
+        const userDetail = await user.findOne({
+            username: username
+        });
+        console.log(username)
+        res.render('layout', {
+            contentPage: '../views/users/editUser',
+            userDetail: userDetail
+        })
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
+
+userController.postEditUser = async (req, res, next) => {
+    const userData = req.body
+    const username = req.params.username;
+    try {
+        const userDetail = await user.findOne({
+            username: username
+        });
+        userDetail.email = userData.email;
+        userDetail.firstName = userData.firstName;
+        userDetail.lastName = userData.lastName;
+        userDetail.phone = userData.phone;
+        userDetail.address = userData.address;
+
+        const userResult = await userDetail.save();
+        console.log(userResult)
+        res.redirect("/users/user-detail/" + username)
+
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
 }
 
 userController.getInviteUser = async (req, res, next) => {

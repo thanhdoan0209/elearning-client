@@ -10,6 +10,9 @@ router.get('/1', function (req, res, next) {
   res.send('I AM USER 1');
 });
 
+router.get('/:username/edit', userController.getEditUser);
+
+router.post('/:username/edit', userController.postEditUser);
 
 router.get('/', userController.getAllUser);
 

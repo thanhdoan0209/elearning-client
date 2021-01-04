@@ -82,7 +82,8 @@
         <ul class="nav nav-tabs">
           <li class="active"><a href="/classes/class-detail/<%=classDetail.classCode%>"> Home </a></li>
           <% if (isAuthenticated) { %>
-            <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin) { %>
+            <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin ||
+              classDetail.classStudents.indexOf(username)) { %>
               <li><a href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Bài tập </a></li>
               <li><a href="/classes/class-detail/<%=classDetail.classCode%>/people"> Thành viên </a></li>
               <% } } %>
@@ -91,51 +92,53 @@
         <div id="tab1" class="tab-pane fade in active">
           <section class="our-features">
             <% if (isAuthenticated) { %>
-              <div onclick="commentform()" class="reply">
-                <p class="btn btn-orange btn-medium" style="font-weight: bold;	">(+) Thêm nội dung nào đó cho lớp
-                  học
-                  của bạn &emsp;</p>
-              </div>
-              <div id="mylocation"></div>
-              <% } %>
-
-                <div class="comments-area" id="comments">
-                  <h2 class="comments-title"> <span>
-                      (<%=listComments.length%>)
-                    </span> Comments </h2>
-                  <ol class="comment-list">
-
-                    <% for (var prop in listComments ) { %>
-                      <li class="comment even thread-even">
-                        <article class="comment-body">
-                          <div class="author-photo"> <a href="/images/use_img/avatar-370.png" class="avatar"> <img
-                                class="avatar" src="/images/use_img/avatar-370.png" alt=""></a> </div> <br>
-                          <h4 class="fn">&emsp; <%=listComments[prop].user%>
-                          </h4>
-                          <div class="comment-metadata">
-                            <h4>
-                              <%=listComments[prop].text%>
-                            </h4>
-                          </div>
-                          <div class="comment-metadata">
-                            <span>
-                              <%=listComments[prop].createDate%>
-                            </span>
-                          </div>
-                          <div>
-                            <span>
-                              <form>
-                                <textarea placeholder='Để lại bình luận của bạn tại đây ' class=''
-                                  name='comment'></textarea>
-                                <input class="btn btn-default pull-right" type="submit" value="Gửi"> <br>
-                              </form>
-                            </span>
-                          </div>
-                        </article>
-                      </li> <br>
-                      <% } %>
-                  </ol>
+              <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin ||
+                classDetail.classStudents.indexOf(username)) { %>
+                <div onclick="commentform()" class="reply">
+                  <p class="btn btn-orange btn-medium" style="font-weight: bold;	">(+) Thêm nội dung nào đó cho lớp
+                    học
+                    của bạn &emsp;</p>
                 </div>
+                <div id="mylocation"></div>
+                <% } } %>
+
+                  <div class="comments-area" id="comments">
+                    <h2 class="comments-title"> <span>
+                        (<%=listComments.length%>)
+                      </span> Comments </h2>
+                    <ol class="comment-list">
+
+                      <% for (var prop in listComments ) { %>
+                        <li class="comment even thread-even">
+                          <article class="comment-body">
+                            <div class="author-photo"> <a href="/images/use_img/avatar-370.png" class="avatar"> <img
+                                  class="avatar" src="/images/use_img/avatar-370.png" alt=""></a> </div> <br>
+                            <h4 class="fn">&emsp; <%=listComments[prop].user%>
+                            </h4>
+                            <div class="comment-metadata">
+                              <h4>
+                                <%=listComments[prop].text%>
+                              </h4>
+                            </div>
+                            <div class="comment-metadata">
+                              <span>
+                                <%=listComments[prop].createDate%>
+                              </span>
+                            </div>
+                            <div>
+                              <span>
+                                <form>
+                                  <textarea placeholder='Để lại bình luận của bạn tại đây ' class=''
+                                    name='comment'></textarea>
+                                  <input class="btn btn-default pull-right" type="submit" value="Gửi"> <br>
+                                </form>
+                              </span>
+                            </div>
+                          </article>
+                        </li> <br>
+                        <% } %>
+                    </ol>
+                  </div>
           </section>
         </div>
 

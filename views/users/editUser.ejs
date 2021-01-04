@@ -1,0 +1,123 @@
+<title>
+    <%= userDetail.firstName %>
+        <%= userDetail.lastName %>
+</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.js">
+</script>
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+<body>
+
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <header class="entry-header">
+                    <h1 class="entry-title">Chỉnh sửa thông tin</h1>
+                </header>
+            </div>
+        </div>
+    </div>
+    <div class="page-spacer clearfix">
+        <div id="primary" class="content-area">
+            <div class="container">
+                <div class="row">
+                    <main id="main" class="site-main col-xs-12">
+                        <div class="col-xs-12 col-sm-10 register-form form clearfix">
+                            <h3>Thông tin</h3>
+                            <form id="validation" action="/users/<%= userDetail.username %>/edit" name="loginform"
+                                id="student-settings" class="student-settings" method="post">
+                                <label>Tên <input name="firstName" value="<%= userDetail.firstName %>"
+                                        type="text"></label>
+                                <label>Họ <input name="lastName" value="<%= userDetail.lastName %>" type="text"></label>
+                                <label>Số điện thoại <input name="phone" value="<%= userDetail.phone %>"
+                                        type="text"></label>
+                                <label>Địa chỉ <input name="address" value="<%= userDetail.address %>"
+                                        type="text"></label>
+                                <label>Tên đăng nhập <input name="username" value="<%= userDetail.username %>"
+                                        type="text" disabled></label>
+                                <label>Email <input name="email" value="<%= userDetail.email %>" type="text"></label>
+                                <input name="submit" class="btn btn-default pull-right" value="Lưu chỉnh sửa"
+                                    type="submit">
+                            </form>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.js">
+</script>
+<script>
+    $(document).ready(function () {
+        $("#validation").validate({
+            rules: {
+                firstname: {
+                    required: true
+
+                },
+                lastname: {
+                    required: true
+
+                },
+                username: {
+                    required: true,
+                    minlength: 5
+                },
+                email: {
+                    required: true,
+                    email: true // bắt lỗi định dạng mail
+                },
+
+
+                password: {
+                    required: true,
+                    minlength: 5
+                },
+                confirm_password: {
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                firstname: {
+                    required: "Vui lòng nhập Tên"
+
+                },
+                lastname: {
+                    required: "Vui lòng nhập Họ"
+
+                },
+                username: {
+                    required: "Vui lòng nhập tên đăng nhập",
+                    minlength: "Username quá ngắn"
+                },
+                email: {
+                    required: "Vui lòng nhập email ",
+                    email: "Email sai định dạng, xin vui lòng kiểm tra lại "
+                },
+
+
+                password: {
+                    minlength: "Vui lòng nhập ít nhất 5 ký tự"
+                },
+                confirm_password: {
+                    equalTo: "Mật khẩu không trùng"
+
+                }
+
+            }
+        });
+    });
+</script>
+
+<!--login23:54  -->
+
+</html>
