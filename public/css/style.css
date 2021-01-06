@@ -107,10 +107,6 @@ nav.meta-login ul
 {
 	margin-bottom:35px
 }
-.course .meta a
-{
-
-}
 .course h3 a
 {
 	color:#262c38
@@ -284,7 +280,6 @@ nav.meta-login ul
 	line-height:22px;
 	display:block;
 	text-align:center;
-	vertical-align:middle;
 	margin:0 3px;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
@@ -1317,8 +1312,8 @@ nav.meta-login ul
 }
 	#comments .author-photo img
 {
-	width:68px;
-	height:68px
+	width:55px;
+	height:55px
 }
 	#comments-title
 {
@@ -2111,7 +2106,6 @@ nav.meta-login ul
 {
 	display:inline-block;
 	margin-top:5px;
-	float:right
 }
 .review-list li .review-des
 {
@@ -2461,10 +2455,7 @@ nav.meta-login ul
 	border:1px solid #ff5722;
 	color:#ff5722
 }
-.shopping-table tr:last-child td:nth-child(2)
-{
 
-}
 .shopping-table tr:last-child td:nth-child(2) .btn-blue
 {
 	background:#fff;
@@ -2684,10 +2675,7 @@ nav.meta-login ul
 	border:none;
 	border-bottom:1px solid #dee3ec
 }
-.browse-by-category .by_cat
-{
 
-}
 .search-form .form-inline .input-group>.form-control
 {
 	width:80%

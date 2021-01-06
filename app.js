@@ -8,6 +8,7 @@ const expressSession = require('express-session');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const commentsRouter = require('./routes/comments');
 const classesRouter = require('./routes/classes');
 
 const bodyParser = require('body-parser');
@@ -41,7 +42,7 @@ app.use(function (req, res, next) {
     } else {
       res.locals.admin = false;
     }
-    res.locals.name = req.user.firstName + req.user.lastName;
+    res.locals.name = req.user.firstName + " " + req.user.lastName;
     res.locals.username = req.user.username;
   } else res.locals.isAuthenticated = false;
   next();
@@ -50,6 +51,8 @@ app.use(function (req, res, next) {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/classes', classesRouter);
+app.use('/comments', commentsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

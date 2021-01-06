@@ -14,6 +14,7 @@ var comments = new Schema({
         require: true
     },
     text: String,
+    reply: Array,
     createDate: String
 });
 

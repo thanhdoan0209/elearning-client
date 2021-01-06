@@ -36,11 +36,10 @@
   var flag = true;
   function commentform() {
     var cform = "<form action='#'style='padding-left: 50px' method='post'>"
-      + "<br><textarea placeholder='Viết bình luận vào đây!' class='pb-cmnt-textarea' name='comment'></textarea><br>"
-      + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;"
-      + "<input onclick='commentform()'class='reply' type='submit' value='Hủy'/>"
+      + "<br><textarea placeholder='Viết nội dung vào đây!' class='pb-cmnt-textarea' name='comment'></textarea><br>"
+      + "&emsp;<input type='submit' class='pull-right' value='Đăng' style='margin-right: 30px;''/> &emsp;"
+      + "&emsp;<input onclick='commentform()'class='reply pull-right' type='submit' value='Hủy' style='margin-right: 10px;'/> &emsp;"
       + "&emsp;"
-      + "<input type='submit' value='Đăng'/>"
       + "</form>";
     if (flag) {
       document.getElementById("mylocation").innerHTML = cform;
@@ -83,7 +82,7 @@
           <li class="active"><a href="/classes/class-detail/<%=classDetail.classCode%>"> Home </a></li>
           <% if (isAuthenticated) { %>
             <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin ||
-              classDetail.classStudents.indexOf(username)) { %>
+              classDetail.classStudents.indexOf(username) !=-1) { %>
               <li><a href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Bài tập </a></li>
               <li><a href="/classes/class-detail/<%=classDetail.classCode%>/people"> Thành viên </a></li>
               <% } } %>
@@ -91,99 +90,91 @@
 
         <div id="tab1" class="tab-pane fade in active">
           <section class="our-features">
-            <% if (isAuthenticated) { %>
-              <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin ||
-                classDetail.classStudents.indexOf(username)) { %>
-                <div onclick="commentform()" class="reply">
-                  <p class="btn btn-orange btn-medium" style="font-weight: bold;	">(+) Thêm nội dung nào đó cho lớp
-                    học
-                    của bạn &emsp;</p>
-                </div>
-                <div id="mylocation"></div>
-                <% } } %>
-
-                  <div class="comments-area" id="comments">
-                    <h2 class="comments-title"> <span>
-                        (<%=listComments.length%>)
-                      </span> Comments </h2>
-                    <ol class="comment-list">
-
-                      <% for (var prop in listComments ) { %>
-                        <li class="comment even thread-even">
-                          <article class="comment-body">
-                            <div class="author-photo"> <a href="/images/use_img/avatar-370.png" class="avatar"> <img
-                                  class="avatar" src="/images/use_img/avatar-370.png" alt=""></a> </div> <br>
-                            <h4 class="fn">&emsp; <%=listComments[prop].user%>
-                            </h4>
-                            <div class="comment-metadata">
-                              <h4>
-                                <%=listComments[prop].text%>
-                              </h4>
-                            </div>
-                            <div class="comment-metadata">
-                              <span>
-                                <%=listComments[prop].createDate%>
-                              </span>
-                            </div>
-                            <div>
-                              <span>
-                                <form>
-                                  <textarea placeholder='Để lại bình luận của bạn tại đây ' class=''
-                                    name='comment'></textarea>
-                                  <input class="btn btn-default pull-right" type="submit" value="Gửi"> <br>
-                                </form>
-                              </span>
-                            </div>
-                          </article>
-                        </li> <br>
-                        <% } %>
-                    </ol>
+            <div>
+              <% if (isAuthenticated) { %>
+                <% if ((classDetail.classTeachers.indexOf(username) !=-1 || admin) ||
+                  classDetail.classStudents.indexOf(username) !=-1) { %>
+                  <div onclick="commentform()" class="reply">
+                    <p class="btn btn-orange btn-medium" style="font-weight: bold;	">(+) Thêm nội dung nào đó cho lớp
+                      học của bạn &emsp;</p>
                   </div>
+                  <div id="mylocation"></div>
+                  <% } } %>
+            </div>
+
+            <div class="comments-area" id="comments">
+              <h2 class="comments-title"> <span>
+                  (<%=listComments.length%>)
+                </span> Comments </h2>
+              <ol class="comment-list">
+
+                <div>
+                  <% for (var prop in listComments ) { %>
+                    <li class="comment even thread-even" id='comment-<%=listComments[prop].id%>'>
+                      <article class="comment-body">
+                        <div class="author-photo main"> <a href="/images/use_img/avatar-370.png" class="avatar">
+                            <img class="avatar" src="/images/use_img/avatar-370.png" alt=""></a> </div> <br>
+                        <h4 class="fn"><a href="/users/user-detail/<%=listComments[prop].user%>"> &emsp;
+                            <%=listComments[prop].fullname%>
+                          </a>
+                          <div>
+                            <% if (isAuthenticated) { %>
+                              <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin) { %>
+                                <i onclick="deleteComment('<%=listComments[prop].id%>')"
+                                  class="glyphicon glyphicon-trash pull-right" style="margin-right: 30px;"></i>
+                                <% } } %>
+                          </div>
+                          &emsp; <%=listComments[prop].createDate%>
+                        </h4>
+                        <h4>
+                          <%=listComments[prop].text%>
+                        </h4>
+
+                        <hr width="99%" size="10px" align="center" />
+
+                        <a onclick="showComment('listReply-<%=listComments[prop].id%>')"
+                          id="numberOfComment-<%=listComments[prop].id%>">
+                          <%=listComments[prop].reply.length%> bình luận về bài viết
+                        </a> <br>
+
+                        <div id="listReply-<%=listComments[prop].id%>" class='reply-comment' style="display: none;">
+                          <% for (var k in listComments[prop].reply ) { %>
+                            <div>
+                              <div class="author-photo"> <a href="/images/use_img/avatar-370.png" class="avatar">
+                                  <img class="avatar" src="/images/use_img/avatar-370.png" alt=""></a> </div> <br>
+                              <span class="fn"><a href="/users/user-detail/<%=listComments[prop].reply[k].user%>">
+                                  &emsp;
+                                  <b>
+                                    <%=listComments[prop].reply[k].fullname%>
+                                  </b>
+                                </a> &ensp; <%=listComments[prop].reply[k].createDate%> <br>
+                                  &emsp; <%=listComments[prop].reply[k].text%>
+                              </span>
+                            </div>
+                            <% } %>
+                        </div>
+                        <br>
+                        <% if (isAuthenticated) { %>
+                          <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin ||
+                            classDetail.classStudents.indexOf(username) !=-1) { %>
+                            <span style="margin-left:30px">
+                              <textarea id="<%=listComments[prop].id%>" placeholder='Để lại bình luận của bạn tại đây'
+                                style="width: 96%"></textarea>
+                              <button onclick="replyComment('<%=listComments[prop].id%>')"
+                                class="btn btn-default pull-right" style="margin-right:30px; margin-bottom:10px">
+                                Gửi </button>
+                            </span>
+                            <% } } %>
+                      </article>
+                    </li> <br> <br>
+                    <% } %>
+                </div>
+
+              </ol>
+            </div>
           </section>
         </div>
-
       </div>
-
-      </p>
-    </div>
-  </div>
-  </div>
-
-  <div id="login-form" style="display:none;">
-    <div class="row">
-      <h3>Login</h3>
-      <p>Please Login to Create a New Course</p>
-      <form id="login" action="classes-details.html#">
-        <input name="email" type="text" placeholder="Email or Username">
-        <input name="password" type="text" placeholder="Password">
-        <div class="row remeber">
-          <label><input name="rember" type="checkbox" value=""> Remember Me</label>
-          <a href="classes-details.html#">Forgot Password?</a>
-        </div>
-        <div class="text-center button">
-          <input name="Login" type="button" value="Login Now">
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div id="register-form" style="display:none;">
-    <div class="row">
-      <h3>Register</h3>
-      <p>Please Register to Create a New Account</p>
-      <form id="register" action="classes-details.html#">
-        <input name="name" type="text" placeholder="Name">
-        <input name="username" type="text" placeholder="Username">
-        <input name="email" type="text" placeholder="Email">
-        <input name="password" type="text" placeholder="Password">
-        <input name="confirmpassword" type="text" placeholder="Confirm Password">
-        <div class="row new-login">
-          Already have an account? <a href="classes-details.html#">Login to your account! </a>
-        </div>
-        <div class="text-center button">
-          <input name="create-account" type="button" value="Create an Account">
-        </div>
-      </form>
     </div>
   </div>
 
@@ -194,9 +185,79 @@
 
   <script type="text/javascript" src="/vendor/fancybox/js/jquery.fancybox.js"></script>
   <script type="text/javascript" src="/vendor/fancybox/js/custom.fancybox.js"></script>
+
   <script>
     jQuery.noConflict();
     jQuery('.fancybox').fancybox();
+  </script>
+
+  <script>
+    function showComment(idComment) {
+      var x = document.getElementById(idComment);
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+  </script>
+
+  <script>
+    function deleteComment(idComment) {
+      console.log("CLICKED delete comment")
+      console.log(idComment)
+      const data = {
+        idComment: idComment
+      }
+      var r = confirm("Do you want to delete comment ?");
+      if (r == true) {
+        jQuery.ajax({
+          url: "/comments/delete/" + idComment,
+          method: "DELETE",
+          data: data,
+          success: (res) => {
+            console.log(res)
+            alert(res)
+            document.getElementById("comment-" + idComment).remove();
+          }
+        })
+      }
+    }
+  </script>
+
+  <script>
+    function replyComment(idComment) {
+      const text = document.getElementById(idComment).value;
+      console.log(text)
+      const data = {
+        comment: text,
+        idComment: idComment
+      }
+      if (text != "") {
+        jQuery.ajax({
+          url: "/comments/reply-comment/" + idComment,
+          method: "POST",
+          data: data,
+          success: (res) => {
+            console.log(res);
+            const n = res.reply.length
+            const newReply = res.reply[n - 1]
+            jQuery('#' + idComment).val("");
+            jQuery('#numberOfComment-' + idComment).text(n + " bình luận về bài viết")
+            // document.getElementById('#' + idComment).defaultValue
+            jQuery('#listReply-' + idComment).append("<div>\
+                <div class='author-photo'> <a href='/images/use_img/avatar-370.png' class='avatar'>\
+                <img class='avatar' src='/images/use_img/avatar-370.png'></a> </div> <br>\
+                <span class='fn'><a href='/users/user-detail/" + newReply.user + "'>&emsp;\
+                <b> " + newReply.fullname + " </b>\
+                </a> &ensp; " + newReply.createDate + " <br>\
+                &emsp; " + newReply.text + "\
+                </span> </div>"
+            )
+          }
+        })
+      }
+    }
   </script>
 
   <script>
@@ -220,7 +281,6 @@
     }
   </script>
 
-  <script type="text/javascript" src="/js/ajax.test.js"></script>
 </body>
 
 </html>

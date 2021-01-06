@@ -12,6 +12,12 @@
   width: 280px;
 }
 
+.reply-comment {
+  margin-left:30px;
+  max-height: 400px; 
+  overflow: auto;
+}
+
 .wrapper{
   width:200px;
   padding:20px;

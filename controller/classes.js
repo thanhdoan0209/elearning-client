@@ -61,7 +61,6 @@ classController.getClassDetail = async (req, res, next) => {
         const listComments = await comments.find({
             classCode: classCode
         })
-        console.log(listComments)
 
         let slistComments = new Array()
         let j = listComments.length - 1;
@@ -95,8 +94,9 @@ classController.postComments = async (req, res, next) => {
         user: userDetail.username,
         classCode: req.params.classCode,
         createDate: datetime,
-        fullname: userDetail.firstName + userDetail.lastName,
-        text: req.body.comment
+        fullname: userDetail.firstName + " " + userDetail.lastName,
+        text: req.body.comment,
+        repcomments: []
     });
     try {
         const resultComment = await newComments.save();
