@@ -1,0 +1,142 @@
+<title>
+  <%= classDetail.className %> | Bài tập
+</title>
+
+<body>
+
+  <div class="breadcrumb-section">
+    <div class="container">
+      <div class="row">
+        <header class="entry-header">
+          <h1 class="entry-title">
+            <%= classDetail.className %>
+          </h1>
+          <h4 class="entry-title" style="padding:0px 20px;"> Mã lớp: <span id="classCode">
+              <%= classDetail.classCode %>
+            </span>
+          </h4>
+        </header>
+      </div>
+    </div>
+  </div>
+
+  <div class="breadcrumb-detail-page">
+    <div class="container">
+      <div class="row">
+        <p><a href="/">HOME</a><i class="fa fa-angle-right"></i><a href="/classes">ALL
+            Classes</a><i class="fa fa-angle-right"></i>
+          <%= classDetail.className %>
+        </p>
+        <ul class="nav nav-tabs">
+          <li><a href="/classes/class-detail/<%=classDetail.classCode%>"> Home </a></li>
+          <li><a href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Bài tập </a></li>
+          <li class="active"><a href="/classes/class-detail/<%=classDetail.classCode%>/submissions"> Bài nộp </a></li>
+          <li><a href="/classes/class-detail/<%=classDetail.classCode%>/people"> Thành viên </a></li>
+        </ul>
+
+        <div class="tab-content">
+
+          <section class="our-features">
+            <div class="comments-area" id="comments">
+              <h2 class="comments-title"> <span>
+                  <%= listSubmission.length %>
+                </span> Bài nộp </h2>
+
+              <% for (var prop in listSubmission ) { %>
+                <div class="comment even thread-even">
+                  <div class="panel-body" style="margin-left: 20px; margin-right: 20px; ">
+                    <h5 class="fn">
+                      Tiêu đề: <%= listSubmission[prop].exerciseTitle %>
+                    </h5>
+                    <div class="pull-right">
+                      <h5>Điểm: <input id="<%= listSubmission[prop].id %>" type="number" step="0.01"
+                          style="margin-left:10px" min="0.00" max="10.00" value="<%= listSubmission[prop].point %>">
+                      </h5>
+                      <% if (isAuthenticated) { %>
+                        <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin) { %>
+                          <input type="button" onclick="enterPoint('<%= listSubmission[prop].id %>')"
+                            class="btn-default" style="margin-left: 50px;" value="Xác Nhận">
+                          <% } } %>
+
+                    </div>
+                    <div>
+                      <% if (isAuthenticated) { %>
+                        <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin) { %>
+                          Học viên: <a href="/users/user-detail/<%= listSubmission[prop].user %>">
+                            <%= listSubmission[prop].user %>
+                          </a> <br>
+                          <% } } %>
+                    </div>
+
+                    <div>
+                      Chú thích: <%= listSubmission[prop].description %> <br>
+                    </div>
+                    <div>
+                      File nộp: <a href="<%= listSubmission[prop].file %>">
+                        <%= listSubmission[prop].filename %>
+                      </a>
+                    </div>
+                    <div>
+                      Thời gian:
+                      <%= listSubmission[prop].createDate %>
+                    </div>
+                  </div>
+                  <br>
+                </div>
+                <% } %>
+
+
+            </div>
+        </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script>
+  function enterPoint(idSubmission) {
+    var point = jQuery("#" + idSubmission).val()
+    console.log(point)
+    console.log("CLICKED commit point")
+    const data = {
+      idSubmission: idSubmission,
+      point: point
+    }
+    console.log(data)
+    jQuery.ajax({
+      url: "/submissions/add-point/" + idSubmission,
+      method: "POST",
+      data: data,
+      success: (res) => {
+        console.log(res)
+      }
+    })
+  }
+</script>
+<script>
+  /* When the user clicks on the button, 
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function (event) {
+    if (!event.target.matches("#buttonAddExercise")) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
+
+<!--classes-details23:38  -->
+
+</html>

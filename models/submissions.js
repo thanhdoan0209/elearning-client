@@ -17,7 +17,9 @@ var submissions = new Schema({
         require: true
     },
     description: String,
+    exerciseTitle: String,
     file: String,
+    point: Number,
     filename: String,
     createDate: String
 });

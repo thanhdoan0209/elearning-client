@@ -69,6 +69,19 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
+                                                File bài tập</h4>
+                                        </div>
+                                        <div class="panel-collapse collapsed" id="custom-collapse-1"
+                                            data-toggle="collapse">
+                                            <div class="panel-body"> <a href="<%=exercise.file%>">
+                                                    <%=exercise.filename%>
+                                                </a><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
                                                 Hạn chót </h4>
                                         </div>
                                         <div class="panel-collapse collapsed" id="custom-collapse-1"
@@ -95,7 +108,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <input name="exerciseTitle" value="<%=exercise.title%>" type="hidden">
                                 <input name="submit" class="btn btn-default pull-right" value="Nộp bài" type="submit">
                                 <a class="btn btn-default btn-medium pull-right"
                                     href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Đóng </a>

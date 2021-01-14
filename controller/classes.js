@@ -62,19 +62,10 @@ classController.getClassDetail = async (req, res, next) => {
             classCode: classCode
         })
 
-        let slistComments = new Array()
-        let j = listComments.length - 1;
-        for (var i = 0; i < listComments.length; i++) {
-            slistComments[i] = listComments[j];
-            j--;
-        }
-
-        console.log(slistComments)
-
         res.render('layout', {
             contentPage: '../views/classes/classDetail',
             classDetail: classDetail,
-            listComments: slistComments
+            listComments: listComments.reverse()
         })
     } catch (err) {
         console.log(err);
@@ -134,7 +125,40 @@ classController.getClassDetailCourses = async (req, res, next) => {
         res.render('layout', {
             contentPage: '../views/classes/classDetailCourses',
             classDetail: classDetail,
-            listExercise: listExercise
+            listExercise: listExercise.reverse()
+        })
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
+
+classController.getClassDetailSubmimsstions = async (req, res, next) => {
+    const classCode = req.params.classCode;
+    const username = res.locals.username;
+    console.log("username:", username)
+
+    try {
+        const classDetail = await classes.findOne({
+            classCode: classCode
+        });
+        let listSubmission
+        if (classDetail.classTeachers.indexOf(res.locals.username) != -1 || res.locals.admin) {
+            listSubmission = await submissions.find({
+                classCode: classCode,
+            })
+        } else {
+            listSubmission = await submissions.find({
+                classCode: classCode,
+                user: res.locals.username
+            })
+        }
+
+        console.log(listSubmission.length)
+        res.render('layout', {
+            contentPage: '../views/classes/classDetailSubmission',
+            classDetail: classDetail,
+            listSubmission: listSubmission.reverse()
         })
     } catch (err) {
         console.log(err);
@@ -235,6 +259,7 @@ classController.postSubmitExercise = (req, res, next) => {
             const newSubmission = new submissions({
                 classCode: req.params.classCode,
                 exerciseId: req.params._id,
+                exerciseTitle: fields.exerciseTitle,
                 user: res.locals.username,
                 file: fileurl,
                 filename: files.file.name,

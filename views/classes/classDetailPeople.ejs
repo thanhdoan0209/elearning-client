@@ -32,127 +32,125 @@
         <ul class="nav nav-tabs">
           <li><a href="/classes/class-detail/<%=classDetail.classCode%>"> Home </a></li>
           <li><a href="/classes/class-detail/<%=classDetail.classCode%>/courses"> Bài tập </a></li>
+          <li><a href="/classes/class-detail/<%=classDetail.classCode%>/submissions"> Bài nộp </a></li>
           <li class="active"><a href="/classes/class-detail/<%=classDetail.classCode%>/people"> Thành viên </a></li>
         </ul>
-        <!-- <button id="button" type=button>A đến Z</button>
-        <button class="button1" type=button>Z đến A</button> -->
-        <aside class="widget widget_courses">
 
+        <div class="tab-content">
+          <aside class="widget widget_courses" style="margin-left: 20px;">
+            <div>
+              <h3 class=" widget-title">Giảng viên</h3>
+              <!-- Trigger the modal with a button -->
+              <% if (isAuthenticated) { %>
+                <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin) { %>
+                  <button type="button" id="btnAddTeachers" class="btn btn-danger btn-sm" data-toggle="modal"
+                    data-target="#myModal1">
+                    Thêm giảng viên</button>
+                  <% } } %>
+            </div><br>
 
-          <div>
-            <h3 class="widget-title">Giảng viên</h3>
-            <!-- Trigger the modal with a button -->
-            <% if (isAuthenticated) { %>
-              <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin) { %>
-                <button type="button" id="btnAddTeachers" class="btn btn-danger btn-sm" data-toggle="modal"
-                  data-target="#myModal1">
-                  Thêm giảng viên</button>
-                <% } } %>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal1" role="dialog">
+              <div class="modal-dialog">
 
-          </div><br>
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5>Thêm giảng viên</h5>
 
-          <!-- Modal -->
-          <div class="modal fade" id="myModal1" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h5>Thêm giảng viên</h5>
-
-                </div>
-                <div class="modal-body">
-                  <div class="md-form active-cyan-2 mb-3">
-                    <input type="text" placeholder="Search.." id="myInput2"
-                      onkeyup="filterFunction('myInput2','myDropdown2')" onclick="myFunction('myDropdown2')">
-                    <div id="myDropdown2" class="dropdown-content scrollStudent">
+                  </div>
+                  <div class="modal-body">
+                    <div class="md-form active-cyan-2 mb-3">
+                      <input type="text" placeholder="Search.." id="myInput2"
+                        onkeyup="filterFunction('myInput2','myDropdown2')" onclick="myFunction('myDropdown2')">
+                      <div id="myDropdown2" class="dropdown-content scrollStudent">
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class=" modal-footer">
-                  <button type="button" id="btnAddTeacher" class="btn btn-default" data-dismiss="modal">Thêm</button>
+                  <div class=" modal-footer">
+                    <button type="button" id="btnAddTeacher" class="btn btn-default" data-dismiss="modal">Thêm</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <ul class="sortby" id="listTeachers">
-            <% for (var prop in classDetail.classTeachers ) { %>
-              <li class="clearfix">
-                <div class="course-thumbnail">
-                  <img src="/images/use_img/avatar.jpg" class="course-media-img" alt="">
+            <ul class="sortby" id="listTeachers">
+              <% for (var prop in classDetail.classTeachers ) { %>
+                <li class="clearfix">
+                  <div class="course-thumbnail">
+                    <img src="/images/use_img/avatar.jpg" class="course-media-img" alt="">
 
-                </div>
-                <div class="simi-co">
-                  <h3><a href="/users/user-detail/<%= classDetail.classTeachers[prop] %>">
-                      <%= classDetail.classTeachers[prop] %>
-                    </a>
-                  </h3>
-                  </p>
-                </div>
-              </li>
-              <% } %>
-          </ul>
+                  </div>
+                  <div class="simi-co">
+                    <h3><a href="/users/user-detail/<%= classDetail.classTeachers[prop] %>">
+                        <%= classDetail.classTeachers[prop] %>
+                      </a>
+                    </h3>
+                    </p>
+                  </div>
+                </li>
+                <% } %>
+            </ul>
 
 
-          <div>
-            <h3 class="widget-title">Học viên</h3>
-            <% if (isAuthenticated) { %>
-              <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin) { %>
-                <!-- Trigger the modal with a button -->
-                <button type="button" id="btnAddStudents" class="btn btn-danger btn-sm" data-toggle="modal"
-                  data-target="#myModal2">
-                  Thêm học viên </button>
-                <% } } %>
+            <div>
+              <h3 class="widget-title">Học viên</h3>
+              <% if (isAuthenticated) { %>
+                <% if (classDetail.classTeachers.indexOf(username) !=-1 || admin) { %>
+                  <!-- Trigger the modal with a button -->
+                  <button type="button" id="btnAddStudents" class="btn btn-danger btn-sm" data-toggle="modal"
+                    data-target="#myModal2">
+                    Thêm học viên </button>
+                  <% } } %>
 
-          </div> <br>
+            </div> <br>
 
-          <!-- Modal -->
-          <div class="modal fade" id="myModal2" role="dialog">
-            <div class="modal-dialog">
+            <!-- Modal -->
+            <div class="modal fade" id="myModal2" role="dialog">
+              <div class="modal-dialog">
 
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h5>Thêm học viên</h5>
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5>Thêm học viên</h5>
 
-                </div>
-                <div class="modal-body">
-                  <div class="md-form active-cyan-2 mb-3">
-                    <input type="text" placeholder="Search.." id="myInput"
-                      onkeyup="filterFunction('myInput','myDropdown')" onclick="myFunction('myDropdown')">
-                    <div id="myDropdown" class="dropdown-content scrollStudent">
+                  </div>
+                  <div class="modal-body">
+                    <div class="md-form active-cyan-2 mb-3">
+                      <input type="text" placeholder="Search.." id="myInput"
+                        onkeyup="filterFunction('myInput','myDropdown')" onclick="myFunction('myDropdown')">
+                      <div id="myDropdown" class="dropdown-content scrollStudent">
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class=" modal-footer">
-                  <button type="button" id="btnAddStudent" class="btn btn-default" data-dismiss="modal">Thêm</button>
+                  <div class=" modal-footer">
+                    <button type="button" id="btnAddStudent" class="btn btn-default" data-dismiss="modal">Thêm</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <ul class="sortby" id="listStudents">
-            <% for (var prop in classDetail.classStudents ) { %>
-              <li class="clearfix" id="student">
-                <div class="course-thumbnail">
-                  <img src="/images/use_img/avatar.jpg" class="course-media-img" alt="">
-                </div>
-                <div class="simi-co">
-                  <h3><a href="/users/user-detail/<%= classDetail.classStudents[prop] %>">
-                      <%= classDetail.classStudents[prop] %>
-                    </a>
-                  </h3>
-                  </p>
-                </div>
-              </li>
-              <% } %>
-          </ul>
+            <ul class="sortby" id="listStudents">
+              <% for (var prop in classDetail.classStudents ) { %>
+                <li class="clearfix" id="student">
+                  <div class="course-thumbnail">
+                    <img src="/images/use_img/avatar.jpg" class="course-media-img" alt="">
+                  </div>
+                  <div class="simi-co">
+                    <h3><a href="/users/user-detail/<%= classDetail.classStudents[prop] %>">
+                        <%= classDetail.classStudents[prop] %>
+                      </a>
+                    </h3>
+                    </p>
+                  </div>
+                </li>
+                <% } %>
+            </ul>
 
-        </aside>
-
+          </aside>
+        </div>
       </div>
     </div>
 

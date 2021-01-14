@@ -9,6 +9,7 @@ const expressSession = require('express-session');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const commentsRouter = require('./routes/comments');
+const submissionsRouter = require('./routes/submissions');
 const classesRouter = require('./routes/classes');
 
 const bodyParser = require('body-parser');
@@ -52,6 +53,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/classes', classesRouter);
 app.use('/comments', commentsRouter);
+app.use('/submissions', submissionsRouter);
 
 
 // catch 404 and forward to error handler
